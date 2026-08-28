@@ -1,0 +1,283 @@
+/* ============================================================
+   reset.css — Modern CSS Reset
+   Pinion & Adams Fabricators
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.2;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+button, [type='button'], [type='reset'], [type='submit'] {
+  -webkit-appearance: button;
+  background-color: transparent;
+  background-image: none;
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+input, textarea {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+legend {
+  padding: 0;
+}
+
+progress {
+  vertical-align: baseline;
+}
+
+summary {
+  display: list-item;
+  cursor: pointer;
+}
+
+table {
+  text-indent: 0;
+  border-color: inherit;
+  border-collapse: collapse;
+}
+
+img, video, canvas, audio, iframe, embed, object {
+  display: block;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+img, video {
+  height: auto;
+}
+
+svg {
+  display: block;
+  overflow: visible;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+b, strong {
+  font-weight: bolder;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+hr {
+  height: 0;
+  color: inherit;
+  border-top-width: 1px;
+}
+
+pre, code, kbd, samp {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  font-size: 1em;
+}
+
+pre {
+  overflow: auto;
+}
+
+/* Focus-visible: accessible keyboard outlines, no mouse outline */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid #205785;
+  outline-offset: 3px;
+}
+
+/* Remove default button focus ring in Firefox */
+button::-moz-focus-inner {
+  border: 0;
+}
+
+/* Prevent iframes from overflowing */
+iframe {
+  border: 0;
+}
+
+/* Remove animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Ensure media elements do not overflow their containers */
+picture {
+  display: block;
+}
+
+picture img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Dialog reset */
+dialog {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+}
+
+/* Numeric inputs — remove spinners */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+/* Search inputs — remove default chrome styling */
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+}
+
+/* Remove default date picker icon in Edge */
+input[type='date']::-webkit-calendar-picker-indicator,
+input[type='time']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+/* Pointer cursor on interactive elements */
+label[for],
+[role='button'],
+[type='checkbox'],
+[type='radio'] {
+  cursor: pointer;
+}
+
+/* Disabled state */
+[disabled] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Remove default details marker inconsistencies */
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Visually hidden utility (accessibility) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.not-sr-only {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}

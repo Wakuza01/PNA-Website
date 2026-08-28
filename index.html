@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinion &amp; Adams Fabricators | South Africa's Leading Sheet Metal Fabricators</title>
+  <meta name="description" content="Pinion &amp; Adams Fabricators — 50+ years of precision sheet metal fabrication, CNC machining, welding, and epoxy powder coating. ISO 9001:2015 certified. Based in KZN, serving South Africa.">
+  <meta name="keywords" content="sheet metal fabrication South Africa, steel fabricator KZN, metal manufacturing Durban, CNC machining, welding, epoxy powder coating, ISO 9001">
+  <meta name="author" content="Pinion &amp; Adams Fabricators">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.pinionadams.co.za/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.pinionadams.co.za/">
+  <meta property="og:title" content="Pinion &amp; Adams Fabricators | South Africa's Leading Sheet Metal Fabricators">
+  <meta property="og:description" content="50+ years of precision sheet metal fabrication, CNC machining, welding, and epoxy powder coating. ISO 9001:2015 certified.">
+  <meta property="og:image" content="https://www.pinionadams.co.za/assets/images/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pinion &amp; Adams Fabricators | South Africa's Leading Sheet Metal Fabricators">
+  <meta name="twitter:description" content="50+ years of precision sheet metal fabrication. ISO 9001:2015 certified. KZN-based, nationally trusted.">
+  <meta name="twitter:image" content="https://www.pinionadams.co.za/assets/images/og-image.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets (critical order) -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="css/forms.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+/* ============================================================
+   HOMEPAGE — ALTERNATING DIAGONAL SECTIONS
+============================================================ */
+
+/* Hero clips its bottom diagonal and contains the stats */
+.hero {
+  z-index: 9;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%);
+  height: auto;
+  min-height: 100vh;
+  padding-bottom: 5vw;
+  overflow: hidden;
+}
+
+/* Hero content — tighter top padding so sub/buttons sit directly under headline */
+.hero-content { flex: none !important; padding-top: 140px !important; padding-bottom: 2rem; }
+/* Push stats strip to bottom of hero */
+.hero-stats-strip { margin-top: auto; }
+
+/* Stats strip — no background, just a top rule, sits on the hero image */
+.hero-stats-strip {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  padding: 2.25rem 0;
+}
+
+/* Shared positioning base */
+.home-sec { position: relative; }
+
+/* ── Sec 1: About Snapshot — white, bottom \ ── */
+/* Hero cuts /, so sec-1 cuts \ to alternate */
+.home-sec-1 {
+  background: #ffffff;
+  --color-text-primary: #1a2744;
+  --color-text-muted:   rgba(26,39,68,0.65);
+  --color-border:       rgba(26,39,68,0.12);
+  --color-surface-light: rgba(26,39,68,0.04);
+  --color-surface:      rgba(26,39,68,0.06);
+  z-index: 8;
+  margin-top: -5vw;
+  padding-top:    calc(var(--section-pad) + 5vw);
+  padding-bottom: calc(var(--section-pad) + 5vw);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw));
+}
+.home-sec-1 .section-label { color: var(--color-secondary); }
+.home-sec-1 .badge { border-color: rgba(26,39,68,0.15); color: rgba(26,39,68,0.65); }
+.home-sec-1 .badge svg { stroke: var(--color-secondary); }
+
+/* ── Sec 2: Services — blue, bottom / ── */
+.home-sec-2 {
+  background: var(--color-secondary);
+  --color-text-primary: #ffffff;
+  --color-text-muted:   rgba(255,255,255,0.72);
+  --color-border:       rgba(255,255,255,0.15);
+  --color-surface-light: rgba(255,255,255,0.08);
+  --color-surface:      rgba(255,255,255,0.05);
+  z-index: 7;
+  margin-top: -5vw;
+  padding-top:    calc(var(--section-pad) + 5vw);
+  padding-bottom: calc(var(--section-pad) + 5vw);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%);
+}
+.home-sec-2 .section-label { color: rgba(255,255,255,0.55); }
+.home-sec-2 .section-title::after { background: rgba(255,255,255,0.35); }
+.home-sec-2 .section-intro { color: rgba(255,255,255,0.7); }
+.home-sec-2 .card-icon svg { stroke: rgba(255,255,255,0.8); }
+.home-sec-2 .card:hover .card-icon svg { filter: none; }
+.home-sec-2 .card-link,
+.home-sec-2 .card-link svg { color: rgba(255,255,255,0.7); stroke: rgba(255,255,255,0.7); }
+.home-sec-2 .card-link:hover,
+.home-sec-2 .card-link:hover svg { color: #fff; stroke: #fff; border-bottom-color: rgba(255,255,255,0.6); }
+
+/* ── Sec 3: Products — white, bottom \ ── */
+.home-sec-3 {
+  background: #ffffff;
+  --color-text-primary: #1a2744;
+  --color-text-muted:   rgba(26,39,68,0.65);
+  --color-border:       rgba(26,39,68,0.12);
+  --color-surface-light: rgba(26,39,68,0.04);
+  z-index: 6;
+  margin-top: -5vw;
+  padding-top:    calc(var(--section-pad) + 5vw);
+  padding-bottom: calc(var(--section-pad) + 5vw);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw));
+}
+.home-sec-3 .section-label { color: var(--color-secondary); }
+
+/* ── Sec 4: Clients + MIE Trak — white, bottom / ── */
+.home-sec-4 {
+  background: #ffffff;
+  --color-text-primary: #1a2744;
+  --color-text-muted:   rgba(26,39,68,0.65);
+  --color-border:       rgba(26,39,68,0.12);
+  --color-surface-light: rgba(26,39,68,0.04);
+  z-index: 5;
+  margin-top: -5vw;
+  padding-top:    calc(var(--section-pad) + 5vw);
+  padding-bottom: calc(var(--section-pad) + 5vw);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%);
+  overflow: visible;
+}
+.home-sec-4::before { display: none; }
+/* Clients strip at top of this section */
+.home-sec-4 .clients-strip {
+  background: #1a2744;
+  padding: 2.5rem 0;
+  margin-bottom: 4rem;
+}
+.home-sec-4 .clients-eyebrow { color: rgba(255,255,255,0.35); }
+.home-sec-4 .marquee-item { color: rgba(255,255,255,0.6); }
+.home-sec-4 .marquee-item:hover { color: #ffffff; text-shadow: none; }
+/* MIE content */
+.home-sec-4 .section-label { color: var(--color-secondary); }
+.home-sec-4 .mie-number { color: var(--color-secondary); }
+.home-sec-4 .mie-claim { color: #1a2744; }
+.home-sec-4 .mie-sub { color: rgba(26,39,68,0.6); }
+.home-sec-4 .mie-description { color: rgba(26,39,68,0.65); }
+.home-sec-4 .mie-description strong { color: #1a2744; }
+.home-sec-4 .process-step-bubble { background: rgba(32,87,133,0.06); border-color: var(--color-secondary); }
+.home-sec-4 .process-step-bubble svg { stroke: var(--color-secondary); }
+.home-sec-4 .process-step-num { color: var(--color-secondary); }
+.home-sec-4 .process-step-label { color: rgba(26,39,68,0.65); }
+.home-sec-4 .process-step:not(:last-child)::after { background: rgba(26,39,68,0.12); }
+.home-sec-4 .btn--outline-dark { color: var(--color-secondary); border-color: rgba(26,39,68,0.25); }
+.home-sec-4 .btn--outline-dark::before { background: var(--color-secondary); }
+.home-sec-4 .btn--outline-dark:hover { color: #fff; }
+
+/* ── Sec 5: Feed / Blog — blue, bottom \ ── */
+.home-sec-5 {
+  background: var(--color-secondary);
+  --color-text-primary: #ffffff;
+  --color-text-muted:   rgba(255,255,255,0.72);
+  --color-border:       rgba(255,255,255,0.15);
+  --color-surface-light: rgba(255,255,255,0.08);
+  z-index: 4;
+  margin-top: -5vw;
+  padding-top:    calc(var(--section-pad) + 5vw);
+  padding-bottom: calc(var(--section-pad) + 5vw);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%);
+}
+.home-sec-5 .section-label { color: rgba(255,255,255,0.55); }
+.home-sec-5 .section-title::after { background: rgba(255,255,255,0.35); }
+.home-sec-5 .btn--outline { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.3); background: transparent; }
+.home-sec-5 .btn--outline::before { background: rgba(255,255,255,0.12); }
+.home-sec-5 .btn--outline:hover { color: #fff; border-color: rgba(255,255,255,0.8); }
+.home-sec-5 .card-link,
+.home-sec-5 .card-link svg { color: rgba(255,255,255,0.75); stroke: rgba(255,255,255,0.75); }
+.home-sec-5 .card-link:hover,
+.home-sec-5 .card-link:hover svg { color: #fff; stroke: #fff; border-bottom-color: rgba(255,255,255,0.5); }
+.home-sec-5 .blog-card-title { color: #ffffff; }
+.home-sec-5 .blog-card-category { color: rgba(255,255,255,0.9); }
+.home-sec-5 .blog-card-date { color: rgba(255,255,255,0.5); }
+.home-sec-5 .blog-card-excerpt { color: rgba(255,255,255,0.65); }
+
+/* ── Sec 6: Academy Teaser ── */
+.home-sec-6 {
+  z-index: 3;
+  margin-top: -5vw;
+  padding-top: 5vw;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw));
+}
+
+/* ── CTA Banner — slides under academy teaser ── */
+.cta-banner {
+  position: relative;
+  z-index: 2;
+  margin-top: -5vw;
+  padding-top: calc(5rem + 5vw);
+}
+
+/* ── Mobile ── */
+@media (max-width: 768px) {
+  /* hero /, sec-1 \, sec-2 /, sec-3 \, sec-4 /, sec-5 \, sec-6 / */
+  .hero { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8vw), 0 100%); padding-bottom: 8vw; }
+  .home-sec-1, .home-sec-3 {
+    margin-top: -8vw;
+    padding-top:    calc(var(--section-pad) + 8vw);
+    padding-bottom: calc(var(--section-pad) + 8vw);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 8vw));
+  }
+  .home-sec-2, .home-sec-4 {
+    margin-top: -8vw;
+    padding-top:    calc(var(--section-pad) + 8vw);
+    padding-bottom: calc(var(--section-pad) + 8vw);
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8vw), 0 100%);
+  }
+  .home-sec-5 {
+    margin-top: -8vw;
+    padding-top:    calc(var(--section-pad) + 8vw);
+    padding-bottom: calc(var(--section-pad) + 8vw);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 8vw));
+  }
+  .home-sec-6 { margin-top: -8vw; padding-top: 8vw; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8vw), 0 100%); }
+  .cta-banner { margin-top: -8vw; padding-top: calc(5rem + 8vw); }
+}
+  </style>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ManufacturingBusiness",
+    "name": "Pinion & Adams Fabricators",
+    "alternateName": "P&A Fabricators",
+    "url": "https://www.pinionadams.co.za",
+    "logo": "https://www.pinionadams.co.za/assets/logos/pa-logo.png",
+    "description": "South Africa's leading sheet metal fabricating and manufacturing company with 50+ years of experience. ISO 9001:2015 certified.",
+    "telephone": "+27317053104",
+    "email": "sales@pinionadams.co.za",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "15 Pineside Road",
+      "addressLocality": "New Germany",
+      "postalCode": "3610",
+      "addressCountry": "ZA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -29.8286,
+      "longitude": 30.9003
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "07:30",
+      "closes": "16:30"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/pinion-adams",
+      "https://www.facebook.com/PinionandAdamsFabricators"
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- Scroll progress bar -->
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<nav id="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Pinion &amp; Adams Fabricators — Home"><img src="assets/images/logo.png" alt="Pinion &amp; Adams Fabricators" style="height:40px;width:auto;"></a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="is-active">Home</a></li>
+      <li data-compact><a href="about.html">About</a></li>
+      <li data-compact><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="training-academy.html">Training Academy</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li data-compact><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="nav-cta-wrap">
+      <a href="contact.html" class="btn btn--primary btn--sm">
+        <span>Request a Quote</span>
+      </a>
+    </div>
+
+    <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-mobile-overlay">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Navigation Overlay -->
+<div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="nav-mobile-close" aria-label="Close navigation">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <nav aria-label="Mobile navigation links">
+    <ul class="nav-mobile-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li data-compact><a href="about.html">About</a></li>
+      <li data-compact><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="training-academy.html">Training Academy</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li data-compact><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<main id="main-content">
+
+<section class="hero" aria-label="Hero">
+  <div class="hero-bg">
+    <img
+      src="assets/images/Welding 2.jpg"
+      alt="Precision sheet metal fabrication at Pinion and Adams Fabricators, Durban"
+      fetchpriority="high"
+    >
+  </div>
+  <div class="hero-overlay" aria-hidden="true"></div>
+  <canvas class="hero-canvas" aria-hidden="true"></canvas>
+
+  <div class="hero-content">
+    <div class="container">
+      <span class="hero-eyebrow">Proudly South African Since 1971</span>
+      <h1 class="hero-headline">
+        <span class="line">Precision</span>
+        <span class="line">Forged.</span>
+        <span class="line">Sheet Metal</span>
+        <span class="line">Fabricators.</span>
+      </h1>
+      <p class="hero-sub">
+        Precision sheet metal to your drawings — 1mm to 20mm plate, CNC laser cutting, AMADA press brake forming, MIG/TIG/arc welding, in-house powder coating. ISO 9001:2015 certified.
+      </p>
+      <div class="hero-ctas">
+        <a href="services.html" class="btn btn--primary">
+          <span>Explore Our Services</span>
+        </a>
+        <a href="capabilities.html" class="btn btn--outline">
+          <span>View Our Work</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scrolling Ticker -->
+  <div class="hero-ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Sheet Metal Fabrication</span>
+      <span class="ticker-item">CNC Machining</span>
+      <span class="ticker-item">Welding</span>
+      <span class="ticker-item">Epoxy Powder Coating</span>
+      <span class="ticker-item">Design &amp; Engineering</span>
+      <span class="ticker-item">MIE Trak Tracked Production</span>
+      <span class="ticker-item">ISO 9001:2015 Certified</span>
+      <span class="ticker-item">SASSDA Member</span>
+    </div>
+  </div>
+
+  <!-- Stats strip inside hero -->
+  <div class="hero-stats-strip" aria-label="Company statistics">
+    <div class="container">
+      <div class="stats-grid stagger-children">
+        <div class="stat-item">
+          <span class="stat-number" data-target="50" data-suffix="+" aria-label="50 plus years experience">0+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" aria-label="ISO 9001:2015 Certified">ISO 9001:2015</span>
+          <span class="stat-label">Quality Certified</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="500" data-suffix="+" aria-label="500 plus projects delivered">0+</span>
+          <span class="stat-label">Projects Delivered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" aria-label="Full spectrum manufacturing">Full Spectrum</span>
+          <span class="stat-label">Under One Roof</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT SNAPSHOT
+============================================================ -->
+<section class="about-section section home-sec home-sec-1" aria-labelledby="about-heading">
+  <div class="container">
+    <div class="grid-2">
+      <div class="about-text-col">
+        <span class="section-label reveal">Our Story</span>
+        <h2 class="section-title reveal-heading" id="about-heading">
+          50 Years of Sheet Metal.<br>Built to Engineering Spec.
+        </h2>
+        <p class="about-body reveal">
+          P&amp;A is a <strong>proudly South African</strong> sheet metal fabricating and manufacturing company with over 50 years of experience. We work directly from your DXF, DWG, or STEP files — and where drawings don't exist yet, our in-house engineering team will produce them. Clients include <strong>MAN, Bell Equipment, Cash Connect Group, ND Engineering,</strong> and <strong>Bosch Projects</strong>.
+        </p>
+        <p class="about-body reveal">
+          Founded in 1971 and operating under ISO 9001:2015, every job is tracked from enquiry to delivery through MIE Trak — giving you full production visibility, documented quality control, and reliable scheduling on every order.
+        </p>
+        <div class="reveal">
+          <a href="about.html" class="btn btn--outline-dark">
+            <span>Our Full Story</span>
+          </a>
+        </div>
+        <div class="trust-badges stagger-children reveal">
+          <span class="badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg>
+            ISO 9001:2015
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            First in Africa — MIE Trak
+          </span>
+          <span class="badge">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+            SASSDA Member
+          </span>
+        </div>
+      </div>
+      <div class="about-image-wrap reveal-right">
+        <div class="img-hover-wrap reveal-image">
+          <img
+            src="assets/images/about/about-us.jpg"
+            alt="Workers and fabrication work at the Pinion and Adams facility in New Germany, Durban"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SERVICES GRID
+============================================================ -->
+<section class="services-section section home-sec home-sec-2" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:0;">
+      <span class="section-label reveal">What We Do</span>
+      <h2 class="section-title reveal-heading" id="services-heading">Our Services</h2>
+      <p class="section-intro reveal">From drawing submission to finished component — laser cutting, press brake forming, welding, and powder coating in a single ISO 9001:2015 managed facility.</p>
+    </div>
+
+    <div class="services-grid stagger-children" style="margin-top:3.5rem;">
+
+      <!-- Card 1 -->
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+          </svg>
+        </div>
+        <h3 class="card-title">Design &amp; Engineering</h3>
+        <p class="card-desc">Submit your DXF, DWG, or STEP files — or brief us from concept. Full technical drawings and BOMs issued before production begins. DFM review included.</p>
+        <a href="services.html#design" class="card-link">
+          <span>Learn More</span>
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="3" y1="9" x2="21" y2="9"></line>
+            <line x1="3" y1="15" x2="21" y2="15"></line>
+            <line x1="9" y1="3" x2="9" y2="21"></line>
+          </svg>
+        </div>
+        <h3 class="card-title">Sheet Metal Fabrication</h3>
+        <p class="card-desc">CNC laser cutting and AMADA press brake forming — mild steel, stainless, and aluminium from 1mm to 20mm. Complex profiles, tight tolerances, high-volume repeat.</p>
+        <a href="services.html#fabrication" class="card-link">
+          <span>Learn More</span>
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path>
+            <path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
+            <path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"></path>
+            <path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"></path>
+            <path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"></path>
+            <path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"></path>
+            <path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"></path>
+            <path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"></path>
+          </svg>
+        </div>
+        <h3 class="card-title">Manufacturing &amp; Welding</h3>
+        <p class="card-desc">MIG, TIG, and arc welding — light gauge to heavy structural. Certified welders, SANS-compliant procedures, and full MIE Trak traceability on every job.</p>
+        <a href="services.html#welding" class="card-link">
+          <span>Learn More</span>
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path>
+          </svg>
+        </div>
+        <h3 class="card-title">CNC Services</h3>
+        <p class="card-desc">CNC laser profiling, turret punching, and press brake programming from your CAD file. Consistent tolerances across high-volume repeat production runs.</p>
+        <a href="services.html#cnc" class="card-link">
+          <span>Learn More</span>
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
+            <path d="M12 12h.01"></path>
+            <path d="M17 12h.01"></path>
+            <path d="M7 12h.01"></path>
+          </svg>
+        </div>
+        <h3 class="card-title">Epoxy Powder Coating</h3>
+        <p class="card-desc">In-house epoxy powder coating with pre-treatment and phosphating — full RAL colour range, corrosion-rated finish. No outsourcing means no delays, no quality handoffs.</p>
+        <a href="services.html#coating" class="card-link">
+          <span>Learn More</span>
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="card reveal">
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+        </div>
+        <h3 class="card-title">Training Academy</h3>
+        <p class="card-desc">QCTO and MERSETA accredited. South Africa's first accredited sheet metal training academy, empowering the next generation of fabricators.</p>
+        <a href="training-academy.html" class="card-link">
+          <span>Learn More</span>
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHAT WE MAKE
+============================================================ -->
+<section class="products-section section home-sec home-sec-3" aria-labelledby="products-heading">
+  <div class="container">
+    <span class="section-label reveal">Our Product Range</span>
+    <h2 class="section-title reveal-heading" id="products-heading">What We Make</h2>
+    <p class="section-intro reveal">Enclosures, structural assemblies, hoppers, ducting, conveyor components, generator housings — fabricated to your drawings, across any industry.</p>
+
+    <div class="product-filters" role="group" aria-label="Filter products by category">
+      <button class="filter-chip is-active" data-category="all">All</button>
+      <button class="filter-chip" data-category="conveyor">Conveyor Components</button>
+      <button class="filter-chip" data-category="generator">Generator Housings</button>
+      <button class="filter-chip" data-category="truck">Truck &amp; Bus</button>
+      <button class="filter-chip" data-category="safes">Safes</button>
+      <button class="filter-chip" data-category="boom">Boom &amp; Turnstile</button>
+      <button class="filter-chip" data-category="rail">Rail Components</button>
+      <button class="filter-chip" data-category="hoppers">Hoppers &amp; Tanks</button>
+      <button class="filter-chip" data-category="ducting">Ducting</button>
+      <button class="filter-chip" data-category="filter">Filter Housings</button>
+      <button class="filter-chip" data-category="moulds">Concrete Moulds</button>
+    </div>
+
+    <div class="products-grid stagger-children">
+      <div class="product-card reveal" data-category="conveyor">
+        <img src="assets/images/projects/manuf3_electrical_control_console.jpg" alt="Electrical control console and switchboard fabricated by P&amp;A" loading="lazy">
+        <div class="product-card-overlay"><span class="product-card-label">Conveyor Components</span></div>
+      </div>
+      <div class="product-card reveal" data-category="generator">
+        <img src="assets/images/projects/manuf5_generator_enclosure.jpg" alt="Custom generator housing and enclosure assembly manufactured by Pinion and Adams" loading="lazy">
+        <div class="product-card-overlay"><span class="product-card-label">Generator Housings</span></div>
+      </div>
+      <div class="product-card reveal" data-category="truck">
+        <img src="assets/images/products/truck-bus-components.jpg" alt="Engine, gearbox and mounting components for the truck and bus industry" loading="lazy">
+        <div class="product-card-overlay"><span class="product-card-label">Truck &amp; Bus Components</span></div>
+      </div>
+      <div class="product-card reveal" data-category="safes">
+        <img src="assets/images/projects/manuf6_tail_cones_for_armament.jpg" alt="Precision metal enclosures and security housings fabricated by P&amp;A" loading="lazy">
+        <div class="product-card-overlay"><span class="product-card-label">Safes</span></div>
+      </div>
+      <div class="product-card reveal" data-category="boom">
+        <img src="assets/images/projects/manuf4_ticket_dispensing_kiosks.jpg" alt="Boom gate and turnstile housings for access control systems" loading="lazy">
+        <div class="product-card-overlay"><span class="product-card-label">Boom &amp; Turnstile Housings</span></div>
+      </div>
+      <div class="product-card reveal" data-category="rail">
+        <img src="assets/images/projects/fabri7_pipe_clamp.jpg" alt="Rail and pipe clamp components for coaches and locomotives" loading="lazy">
+        <div class="product-card-overlay"><span class="product-card-label">Rail Components</span></div>
+      </div>
+      <div class="product-card reveal" data-category="hoppers">
+        <img src="assets/images/projects/fabri_1air_filtration.jpg" alt="Custom hoppers, filtration tanks, and chutes fabricated in sheet metal" loading="lazy">
+        <div class="product-card-overlay"><span class="product-card-label">Hoppers &amp; Tanks</span></div>
+      </div>
+      <div class="product-card reveal" data-category="ducting">
+        <img src="assets/images/projects/fabri_8_spray_booth.jpg" alt="Welded ducting and spray booth fabrication for industrial applications" loading="lazy">
+        <div class="product-card-overlay"><span class="product-card-label">Ducting</span></div>
+      </div>
+      <div class="product-card reveal" data-category="filter">
+        <img src="assets/images/projects/fabri_2air_filtration_unit.jpg" alt="Bag and cartridge filter housings for air filtration fabricated by P&amp;A" loading="lazy">
+        <div class="product-card-overlay"><span class="product-card-label">Filter Housings</span></div>
+      </div>
+      <div class="product-card reveal" data-category="moulds">
+        <img src="assets/images/projects/manuf3_air_slides.jpg" alt="Standard and custom concrete moulds manufactured by Pinion and Adams Fabricators" loading="lazy">
+        <div class="product-card-overlay"><span class="product-card-label">Concrete Moulds</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CLIENTS + MIE TRAK (combined)
+============================================================ -->
+<section class="mie-section section home-sec home-sec-4" aria-labelledby="mie-heading">
+  <!-- Clients marquee strip at top -->
+  <div class="clients-strip">
+    <div class="container">
+      <p class="clients-eyebrow">Trusted by Industry Giants</p>
+    </div>
+    <div class="marquee-section" aria-label="Client logos">
+      <div class="marquee-track" aria-hidden="true">
+        <span class="marquee-item">MAN</span>
+        <span class="marquee-item">Bell Equipment</span>
+        <span class="marquee-item">Cash Connect Group</span>
+        <span class="marquee-item">ND Engineering</span>
+        <span class="marquee-item">Bosch Projects</span>
+        <span class="marquee-item">Gateway Theatre of Shopping</span>
+        <span class="marquee-item">Sun Coast Casino</span>
+        <span class="marquee-item">SASSDA</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MIE Trak content below -->
+  <div class="container">
+    <div class="grid-2">
+      <div class="reveal-left">
+        <span class="mie-number" aria-label="First in Africa">First</span>
+        <p class="mie-claim" id="mie-heading">in Africa</p>
+        <p class="mie-sub">MIE Trak — Advanced Manufacturing Tracking</p>
+        <a href="about.html#mie-trak" class="btn btn--outline-dark">
+          <span>Learn More</span>
+        </a>
+      </div>
+      <div class="reveal-right">
+        <p class="mie-description">
+          In <strong>2007</strong>, P&amp;A became the <strong>first company in Africa</strong> to implement MIE Trak — an advanced electronic manufacturing tracking system that monitors every job from enquiry through to delivery, including a full bill of materials.
+        </p>
+        <p class="mie-description" style="margin-top:1.25rem;">
+          Every job receives a unique tracking number. At any stage, you can know exactly where your components are in the production cycle — from material issue through to final inspection and dispatch.
+        </p>
+        <div class="process-flow stagger-children" aria-label="Production workflow">
+          <div class="process-step">
+            <div class="process-step-bubble">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <span class="process-step-num">01</span>
+            <span class="process-step-label">Enquiry</span>
+          </div>
+          <div class="process-step">
+            <div class="process-step-bubble">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path></svg>
+            </div>
+            <span class="process-step-num">02</span>
+            <span class="process-step-label">Engineering</span>
+          </div>
+          <div class="process-step">
+            <div class="process-step-bubble">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <span class="process-step-num">03</span>
+            <span class="process-step-label">Production</span>
+          </div>
+          <div class="process-step">
+            <div class="process-step-bubble">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            </div>
+            <span class="process-step-num">04</span>
+            <span class="process-step-label">QC</span>
+          </div>
+          <div class="process-step">
+            <div class="process-step-bubble">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+            </div>
+            <span class="process-step-num">05</span>
+            <span class="process-step-label">Delivery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     LINKEDIN FEED / BLOG PREVIEW
+============================================================ -->
+<section class="feed-section section home-sec home-sec-5" aria-labelledby="feed-heading">
+  <div class="container">
+    <div class="feed-header">
+      <div>
+        <span class="section-label reveal">News &amp; Insights</span>
+        <h2 class="section-title reveal-heading" id="feed-heading">Latest from P&amp;A</h2>
+      </div>
+      <a href="blog.html" class="btn btn--outline reveal">
+        <span>View All Posts</span>
+      </a>
+    </div>
+    <div id="linkedin-feed-container" aria-live="polite" aria-label="Latest blog posts"></div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TRAINING ACADEMY TEASER
+============================================================ -->
+<section class="academy-teaser home-sec home-sec-6" aria-labelledby="academy-heading">
+  <div class="academy-teaser-left">
+    <div class="academy-teaser-content reveal">
+      <span class="section-label">Accredited Training</span>
+      <h2 class="reveal-heading" id="academy-heading">P&amp;A Sheet Metal Training Academy</h2>
+      <p style="color:rgba(26,39,68,0.7);font-size:1rem;line-height:1.7;margin-bottom:2rem;max-width:440px;">QCTO &amp; MERSETA accredited — South Africa's first accredited sheet metal training academy. We empower the next generation of fabricators with hands-on, industry-recognised qualifications.</p>
+      <a href="training-academy.html" class="btn btn--primary">
+        <span>Learn More</span>
+      </a>
+    </div>
+  </div>
+  <div class="academy-teaser-right">
+    <img src="assets/images/services/welding.jpg" alt="Welding at the P&amp;A Sheet Metal Training Academy" loading="lazy">
+  </div>
+</section>
+
+<!-- ============================================================
+     CTA BANNER
+============================================================ -->
+<section class="cta-banner" aria-labelledby="cta-heading">
+  <div class="container cta-banner-content">
+    <h2 class="reveal-heading" id="cta-heading">Have Drawings? Let's Talk Spec.</h2>
+    <p class="reveal">Submit your drawings or describe your requirements — our engineering team will review and respond within 1 business day.</p>
+    <div class="cta-banner-btns reveal">
+      <a href="contact.html" class="btn btn--outline-red">
+        <span>Submit Drawings &amp; Get a Quote</span>
+      </a>
+      <a href="tel:+27317053104" class="btn btn--outline-red">
+        <span>Call Us: 031 705 3104</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer id="site-footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Col 1: Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo" aria-label="Pinion and Adams Fabricators"><img src="assets/images/logo.png" alt="Pinion &amp; Adams Fabricators" style="height:44px;width:auto;"></a>
+          <p class="footer-tagline">South Africa's leading sheet metal fabricating and manufacturing company. Precision-built since 1971.</p>
+          <span class="footer-iso">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg>
+            ISO 9001:2015 Certified
+          </span>
+        </div>
+
+        <!-- Col 2: Quick Links -->
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html">Home</a></li>
+            <li data-compact><a href="about.html">About P&amp;A</a></li>
+            <li data-compact><a href="services.html">Our Services</a></li>
+            <li><a href="facilities.html">Facilities</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="training-academy.html">Training Academy</a></li>
+            <li><a href="blog.html">News &amp; Blog</a></li>
+            <li data-compact><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Services -->
+        <div>
+          <h3 class="footer-heading">Services</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="services.html#design">Design &amp; Engineering</a></li>
+            <li><a href="services.html#fabrication">Sheet Metal Fabrication</a></li>
+            <li><a href="services.html#welding">Manufacturing &amp; Welding</a></li>
+            <li><a href="services.html#cnc">CNC Services</a></li>
+            <li><a href="services.html#coating">Epoxy Powder Coating</a></li>
+            <li><a href="training-academy.html">Training Academy</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Contact -->
+        <div>
+          <h3 class="footer-heading">Contact</h3>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+            </div>
+            <div class="footer-contact-text">
+              <span class="footer-contact-label">Address</span>
+              15 Pineside Road, New Germany, 3610
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.44 2 2 0 0 1 3.58 2.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"></path></svg>
+            </div>
+            <div class="footer-contact-text">
+              <span class="footer-contact-label">Phone</span>
+              <a href="tel:+27317053104">031 705 3104</a>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </div>
+            <div class="footer-contact-text">
+              <span class="footer-contact-label">Email</span>
+              <a href="mailto:sales@pinionadams.co.za">sales@pinionadams.co.za</a>
+            </div>
+          </div>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/pinion-adams" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow P&amp;A on LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://www.facebook.com/PinionandAdamsFabricators" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow P&amp;A on Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>&copy; <span id="footer-year"></span> Pinion &amp; Adams Fabricators. All rights reserved.</p>
+      <p class="footer-policies"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms &amp; Conditions</a></p>
+      
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button class="scroll-top-btn" id="scroll-top" aria-label="Scroll to top of page">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <line x1="12" y1="19" x2="12" y2="5"></line>
+    <polyline points="5 12 12 5 19 12"></polyline>
+  </svg>
+</button>
+
+<!-- JavaScript (deferred) -->
+<script src="js/main.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/counters.js" defer></script>
+<script src="js/gallery.js" defer></script>
+<script src="js/linkedin-feed.js" defer></script>
+<script src="js/scroll-effects.js" defer></script>
+
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

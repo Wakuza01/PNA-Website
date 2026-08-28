@@ -1,0 +1,563 @@
+/* ============================================================
+   COMPONENTS — components.css
+   Cards, stats, badges, marquee, process flow, scroll-top
+============================================================ */
+
+/* ============================================================
+   SECTION HEADERS
+============================================================ */
+
+.section-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.4rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--color-secondary);
+  margin-top: 1rem;
+  border-radius: 2px;
+}
+
+.section-title--center {
+  text-align: center;
+}
+
+.section-title--center::after {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-intro {
+  font-size: 1.075rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  max-width: 640px;
+}
+
+.section-intro--center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* ============================================================
+   CARD
+============================================================ */
+
+.card {
+  background: var(--color-surface-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+}
+
+.card .card-link {
+  margin-top: auto;
+}
+
+/* Red left border on hover */
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--color-secondary);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--transition-smooth);
+  border-radius: 0 0 0 var(--border-radius-lg);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55);
+}
+
+.card:hover::before {
+  transform: scaleY(1);
+}
+
+/* Card icon */
+.card-icon {
+  width: 52px;
+  height: 52px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--color-secondary);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform var(--transition-smooth), filter var(--transition-smooth);
+}
+
+.card:hover .card-icon svg {
+  transform: rotate(5deg);
+  filter: drop-shadow(0 0 8px rgba(32, 87, 133, 0.6));
+}
+
+/* Card content */
+.card-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.card-desc {
+  color: var(--color-text-muted);
+  font-size: 0.925rem;
+  line-height: 1.75;
+}
+
+/* Card link */
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-top: 1.5rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-fast), gap var(--transition-fast);
+}
+
+.card-link:hover {
+  border-bottom-color: var(--color-secondary);
+  gap: 0.75rem;
+}
+
+.card-link svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   STATS BAR
+============================================================ */
+
+.stats-bar {
+  background: var(--color-secondary);
+  padding: 3.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle steel texture overlay */
+.stats-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    -60deg,
+    transparent,
+    transparent 20px,
+    rgba(0, 0, 0, 0.04) 20px,
+    rgba(0, 0, 0, 0.04) 21px
+  );
+  pointer-events: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+
+.stat-item {
+  text-align: center;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.stat-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.stat-number {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+}
+
+.stat-label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  margin-top: 0.6rem;
+}
+
+/* ============================================================
+   TRUST BADGES
+============================================================ */
+
+.trust-badges {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2.25rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  transition: border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.badge:hover {
+  border-color: rgba(32, 87, 133, 0.4);
+  color: var(--color-text-primary);
+}
+
+.badge svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  stroke: var(--color-secondary);
+  fill: none;
+  stroke-width: 2;
+}
+
+/* ============================================================
+   CLIENT MARQUEE / LOGO STRIP
+============================================================ */
+
+.marquee-section {
+  overflow: hidden;
+  padding: 1.5rem 0 2rem;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 0;
+  align-items: center;
+  animation: marquee-scroll 28s linear infinite;
+  will-change: transform;
+}
+
+.marquee-item {
+  white-space: nowrap;
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  flex-shrink: 0;
+  transition: color var(--transition-smooth), text-shadow var(--transition-smooth);
+  cursor: default;
+  position: relative;
+}
+
+.marquee-item::after {
+  content: '✦';
+  margin-left: 5rem;
+  color: var(--color-secondary);
+  opacity: 0.5;
+  font-size: 0.5rem;
+  vertical-align: middle;
+}
+
+.marquee-item:hover {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(32, 87, 133, 0.6);
+}
+
+.marquee-item img {
+  height: 36px;
+  width: auto;
+  opacity: 0.3;
+  filter: grayscale(100%) brightness(2);
+  transition: opacity var(--transition-smooth), filter var(--transition-smooth);
+}
+
+.marquee-item:hover img {
+  opacity: 0.7;
+  filter: grayscale(0%) brightness(1);
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   PROCESS FLOW (MIE Trak section)
+============================================================ */
+
+.process-flow {
+  display: flex;
+  align-items: center;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.process-step {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  position: relative;
+  padding: 1.5rem 0.75rem;
+}
+
+/* Arrow connector */
+.process-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 2px;
+  background: linear-gradient(to right, var(--color-border), rgba(32, 87, 133, 0.4));
+  z-index: 1;
+}
+
+.process-step-bubble {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--color-secondary);
+  background: rgba(32, 87, 133, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.875rem;
+  transition: background var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.process-step:hover .process-step-bubble {
+  background: rgba(32, 87, 133, 0.2);
+  box-shadow: 0 0 20px rgba(32, 87, 133, 0.3);
+}
+
+.process-step-bubble svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--color-secondary);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.process-step-num {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-secondary);
+  opacity: 0.6;
+  margin-bottom: 0.25rem;
+}
+
+.process-step-label {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+/* ============================================================
+   SCROLL TO TOP BUTTON
+============================================================ */
+
+.scroll-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  background: var(--color-secondary);
+  color: var(--color-text-primary);
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-nav);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth), background var(--transition-fast);
+  pointer-events: none;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.scroll-top-btn:hover {
+  background: #164269;
+  transform: translateY(-3px);
+}
+
+.scroll-top-btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: white;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ============================================================
+   SKELETON LOADING
+============================================================ */
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-surface-light);
+  border-radius: var(--border-radius);
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent 100%
+  );
+  background-size: 400% 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-card {
+  height: 320px;
+  border-radius: var(--border-radius-lg);
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  margin-bottom: 0.75rem;
+}
+
+.skeleton-line--short {
+  width: 60%;
+}
+
+/* ============================================================
+   BLOG EMPTY STATE
+============================================================ */
+
+.blog-empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--color-text-muted);
+}
+
+.blog-empty-state p {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+============================================================ */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--color-secondary);
+  width: 0%;
+  z-index: calc(var(--z-nav) + 1);
+  transition: width 0.1s linear;
+  transform-origin: left;
+}

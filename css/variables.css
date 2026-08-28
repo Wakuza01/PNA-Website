@@ -1,0 +1,90 @@
+/* ============================================================
+   variables.css — CSS Custom Properties
+   Pinion & Adams Fabricators
+   ============================================================ */
+
+:root {
+
+  /* ----------------------------------------
+     Colors
+     ---------------------------------------- */
+  --color-primary:        #ffffff;          /* page background */
+  --color-surface:        #f5f5f5;          /* alternate section background */
+  --color-surface-light:  #e8e9ec;          /* input background, icon boxes */
+  --color-surface-dark:   #141c2e;          /* dark sections, overlays */
+
+  --color-secondary:      #205785;          /* steel blue — primary accent / CTA */
+  --color-secondary-hover:#164269;          /* steel blue hover */
+  --color-accent:         #269dcc;          /* teal — secondary accent */
+  --color-footer-bar:     #141c2e;          /* footer bottom bar */
+
+  --color-text-primary:   #444a59;          /* body text */
+  --color-text-heading:   #205785;          /* h1–h3 steel blue */
+  --color-text-dark:      #141c2e;          /* dark headings / dark sections */
+  --color-text-muted:     #5a6275;          /* secondary text */
+  --color-text-on-dark:   #ffffff;          /* text on dark backgrounds */
+
+  --color-border:         rgba(0, 0, 0, 0.10);
+  --color-border-dark:    rgba(255, 255, 255, 0.10);
+  --color-blue-glow:      rgba(32, 87, 133, 0.20);
+
+  /* ----------------------------------------
+     Typography
+     ---------------------------------------- */
+  --font-heading: 'Barlow Condensed', sans-serif;
+  --font-body:    'Inter', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* ----------------------------------------
+     Transitions
+     ---------------------------------------- */
+  --transition-fast:    0.2s ease;
+  --transition-smooth:  0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-bounce:  0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-slow:    0.8s ease;
+
+  /* ----------------------------------------
+     Shadows
+     ---------------------------------------- */
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 40px rgba(32, 87, 133, 0.20);
+
+  /* ----------------------------------------
+     Border Radius
+     ---------------------------------------- */
+  --border-radius:    4px;
+  --border-radius-lg: 8px;
+
+  /* ----------------------------------------
+     Spacing Scale
+     ---------------------------------------- */
+  --space-xs:   0.25rem;   /*  4px */
+  --space-sm:   0.5rem;    /*  8px */
+  --space-md:   1rem;      /* 16px */
+  --space-lg:   1.5rem;    /* 24px */
+  --space-xl:   2rem;      /* 32px */
+  --space-2xl:  3rem;      /* 48px */
+  --space-3xl:  5rem;      /* 80px */
+
+  /* ----------------------------------------
+     Container Max-Widths
+     ---------------------------------------- */
+  --container-sm:  640px;
+  --container-md:  960px;
+  --container-lg:  1280px;
+  --container-xl:  1440px;
+
+  /* ----------------------------------------
+     Z-Index Scale
+     ---------------------------------------- */
+  --z-nav:     100;
+  --z-overlay: 200;
+  --z-modal:   300;
+  --z-top:     400;
+
+  /* ----------------------------------------
+     Section Padding
+     ---------------------------------------- */
+  --section-pad: 160px;
+
+}

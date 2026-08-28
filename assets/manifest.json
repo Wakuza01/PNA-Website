@@ -1,0 +1,149 @@
+{
+  "generated": "2025-07-21",
+  "source": "https://www.pinionadams.co.za",
+  "note": "Asset manifest for Pinion & Adams Fabricators website rebuild. Images must be sourced manually from the live site or supplied by the client. Place all images in assets/images/ and all documents in assets/docs/.",
+  "required_images": [
+    {
+      "path": "assets/images/og-image.jpg",
+      "usage": "Open Graph and Twitter Card meta image (all pages)",
+      "dimensions": "1200x630",
+      "notes": "Should feature P&A branding, shop floor imagery, or logo on dark background"
+    },
+    {
+      "path": "assets/images/hero-bg.jpg",
+      "usage": "Homepage hero background",
+      "dimensions": "1920x1080 minimum",
+      "notes": "High-resolution shop floor or fabrication imagery, will be overlaid with dark gradient"
+    },
+    {
+      "path": "assets/images/about-hero.jpg",
+      "usage": "About page hero background",
+      "dimensions": "1920x1080 minimum",
+      "notes": "Company facility or team imagery"
+    },
+    {
+      "path": "assets/images/gerald-anthony-hero.jpg",
+      "usage": "Gerald's Story page hero background",
+      "dimensions": "1920x1080 minimum",
+      "notes": "Photo of Gerald Anthony at P&A facility"
+    },
+    {
+      "path": "assets/images/gerald-anthony.jpg",
+      "usage": "Gerald's Story page portrait (in-content)",
+      "dimensions": "600x700 recommended",
+      "notes": "Professional portrait or candid shop floor image of Gerald Anthony"
+    },
+    {
+      "path": "assets/images/about-story.jpg",
+      "usage": "About page - company story section",
+      "dimensions": "800x600 minimum",
+      "notes": "Historic or current facility imagery"
+    },
+    {
+      "path": "assets/images/about-team.jpg",
+      "usage": "About page - team section",
+      "dimensions": "800x600 minimum",
+      "notes": "Team or staff imagery"
+    },
+    {
+      "path": "assets/images/academy-hero.jpg",
+      "usage": "Training Academy page hero/background",
+      "dimensions": "1920x1080 minimum",
+      "notes": "Training facility or apprentices at work"
+    },
+    {
+      "path": "assets/images/academy-facility.jpg",
+      "usage": "Training Academy page - facility section",
+      "dimensions": "800x600 minimum",
+      "notes": "Interior of training academy"
+    },
+    {
+      "path": "assets/images/product-enclosures.jpg",
+      "usage": "Products grid - Electrical Enclosures card",
+      "dimensions": "600x400 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/product-panels.jpg",
+      "usage": "Products grid - Control Panels card",
+      "dimensions": "600x400 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/product-switchgear.jpg",
+      "usage": "Products grid - Switchgear Housings card",
+      "dimensions": "600x400 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/product-racks.jpg",
+      "usage": "Products grid - Server Racks card",
+      "dimensions": "600x400 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/product-cable-trays.jpg",
+      "usage": "Products grid - Cable Trays card",
+      "dimensions": "600x400 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/product-brackets.jpg",
+      "usage": "Products grid - Custom Brackets card",
+      "dimensions": "600x400 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/product-ducting.jpg",
+      "usage": "Products grid - Ventilation Ducting card",
+      "dimensions": "600x400 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/product-frames.jpg",
+      "usage": "Products grid - Structural Frames card",
+      "dimensions": "600x400 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/product-hoppers.jpg",
+      "usage": "Products grid - Hoppers & Chutes card",
+      "dimensions": "600x400 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/product-custom.jpg",
+      "usage": "Products grid - Custom Fabrication card",
+      "dimensions": "600x400 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/capabilities-hero.jpg",
+      "usage": "Capabilities page hero background",
+      "dimensions": "1920x1080 minimum",
+      "notes": ""
+    },
+    {
+      "path": "assets/images/services-hero.jpg",
+      "usage": "Services page hero background",
+      "dimensions": "1920x1080 minimum",
+      "notes": ""
+    }
+  ],
+  "optional_documents": [
+    {
+      "path": "assets/docs/pa-iso-certificate.pdf",
+      "usage": "ISO 9001:2015 certificate download (if linked)",
+      "notes": "Optional — link from about or capabilities page"
+    },
+    {
+      "path": "assets/docs/pa-company-profile.pdf",
+      "usage": "Company profile download (if linked)",
+      "notes": "Optional"
+    }
+  ],
+  "favicon": {
+    "path": "assets/images/favicon.ico",
+    "notes": "16x16, 32x32, 48x48 multi-size ICO, or use favicon.png + link rel=icon"
+  }
+}

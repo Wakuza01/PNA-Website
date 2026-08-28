@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Pinion &amp; Adams Fabricators | 50+ Years of Engineering Excellence</title>
+  <meta name="description" content="Founded in 1971, Pinion &amp; Adams Fabricators has grown into South Africa's leading sheet metal fabricator. ISO 9001:2015 certified, MIE Trak pioneers, and SASSDA members.">
+  <meta name="keywords" content="sheet metal fabrication South Africa, steel fabricator KZN, metal manufacturing Durban, CNC machining, welding, epoxy powder coating, ISO 9001">
+  <meta name="author" content="Pinion &amp; Adams Fabricators">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.pinionadams.co.za/about.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.pinionadams.co.za/about.html">
+  <meta property="og:title" content="About Pinion &amp; Adams Fabricators | 50+ Years of Engineering Excellence">
+  <meta property="og:description" content="Founded in 1971, Pinion &amp; Adams Fabricators has grown into South Africa's leading sheet metal fabricator. ISO 9001:2015 certified.">
+  <meta property="og:image" content="https://www.pinionadams.co.za/assets/images/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Pinion &amp; Adams Fabricators | 50+ Years of Engineering Excellence">
+  <meta name="twitter:description" content="Founded in 1971, P&amp;A has grown into South Africa's leading sheet metal fabricator.">
+  <meta name="twitter:image" content="https://www.pinionadams.co.za/assets/images/og-image.jpg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ManufacturingBusiness",
+    "name": "Pinion & Adams Fabricators",
+    "url": "https://www.pinionadams.co.za",
+    "logo": "https://www.pinionadams.co.za/assets/logos/pa-logo.png",
+    "description": "South Africa's leading sheet metal fabricating and manufacturing company with 50+ years of experience. ISO 9001:2015 certified.",
+    "telephone": "+27317053104",
+    "email": "sales@pinionadams.co.za",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "15 Pineside Road",
+      "addressLocality": "New Germany",
+      "postalCode": "3610",
+      "addressCountry": "ZA"
+    }
+  }
+  </script>
+
+  <style>
+/* ── About page — alternating diagonal section system ─────────── */
+
+/* Hero: reduce padding-bottom to 5vw so the gap matches the diagonal depth,
+   and sit it on top so its clip shows through the next section */
+main .page-hero--clipped {
+  padding-bottom: 5vw;
+  position: relative;
+  z-index: 10;
+}
+
+/* Base for all about sections */
+.about-sec { position: relative; padding: var(--section-pad) 0; }
+
+/* SECTION 1 — Story (white) — bottom \ */
+.about-sec-1 {
+  background: #ffffff;
+  z-index: 5;
+  margin-top: -5vw;
+  padding-top:    calc(var(--section-pad) + 5vw);
+  padding-bottom: calc(var(--section-pad) + 5vw);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw));
+}
+
+/* SECTION 2 — Timeline (blue) — bottom / */
+.about-sec-2 {
+  background: var(--color-secondary);
+  /* flip all tokens to white for this section */
+  --color-text-primary: #ffffff;
+  --color-text-muted: rgba(255,255,255,0.75);
+  --color-border: rgba(255,255,255,0.18);
+  --color-surface-light: rgba(255,255,255,0.1);
+  --section-label-color: rgba(255,255,255,0.55);
+  z-index: 4;
+  margin-top: -5vw;
+  padding-top:    calc(var(--section-pad) + 5vw);
+  padding-bottom: calc(var(--section-pad) + 5vw);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%);
+}
+.about-sec-2 .section-label { color: rgba(255,255,255,0.55); }
+.about-sec-2 .section-title::after { background: rgba(255,255,255,0.35); }
+.about-sec-2 .timeline-year { color: rgba(255,255,255,0.55); }
+
+/* Timeline line — visible on blue, centered with dots */
+/* Dot center = wrap padding (3rem) - dot offset (2.6rem) + half dot width (6px) = 0.4rem + 6px */
+/* Line is 2px wide so left = 0.4rem + 5px */
+.about-sec-2 .timeline-wrap::before {
+  left: calc(0.4rem + 5px);
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    rgba(255,255,255,0.45) 8%,
+    rgba(255,255,255,0.45) 92%,
+    transparent 100%);
+}
+
+/* Dot pop-in keyframe */
+@keyframes tl-dot-pop {
+  0%   { transform: scale(0); opacity: 0; }
+  55%  { transform: scale(1.35); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+/* Persistent pulse ring */
+@keyframes tl-dot-pulse {
+  0%,100% { box-shadow: 0 0 0 0px rgba(255,255,255,0.35), 0 0 0 3px rgba(255,255,255,0.12); }
+  50%      { box-shadow: 0 0 0 7px rgba(255,255,255,0.0), 0 0 0 3px rgba(255,255,255,0.25); }
+}
+
+/* Dots hidden by default until scroll-triggered */
+.about-sec-2 .timeline-item::before {
+  opacity: 0;
+  transform: scale(0);
+  transform-origin: center center;
+  border-color: rgba(255,255,255,0.4);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.12);
+}
+.about-sec-2 .timeline-item.tl-dot-in::before {
+  animation:
+    tl-dot-pop  0.55s cubic-bezier(0.34,1.56,0.64,1) forwards,
+    tl-dot-pulse 2.8s ease-in-out 0.6s infinite;
+}
+
+/* SECTION 3 — VMV (white) — bottom \ */
+.about-sec-3 {
+  background: #ffffff;
+  z-index: 3;
+  margin-top: -5vw;
+  padding-top:    calc(var(--section-pad) + 5vw);
+  padding-bottom: calc(var(--section-pad) + 5vw);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 5vw));
+}
+
+/* SECTION 4 — Gerald (blue) — bottom / */
+.about-sec-4 {
+  background: var(--color-secondary);
+  --color-text-primary: #ffffff;
+  --color-text-muted: rgba(255,255,255,0.75);
+  --color-border: rgba(255,255,255,0.18);
+  --color-surface-light: rgba(255,255,255,0.1);
+  z-index: 2;
+  margin-top: -5vw;
+  padding-top:    calc(var(--section-pad) + 5vw);
+  padding-bottom: calc(var(--section-pad) + 5vw);
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 5vw), 0 100%);
+}
+.about-sec-4 .section-label { color: rgba(255,255,255,0.55); }
+.about-sec-4 .section-title::after { background: rgba(255,255,255,0.35); }
+.about-sec-4 .btn--outline-dark { border-color: rgba(255,255,255,0.5); color: #fff; }
+.about-sec-4 .btn--outline-dark::before { background: rgba(255,255,255,0.15); }
+.about-sec-4 .btn--outline-dark:hover { color: #fff; border-color: rgba(255,255,255,0.9); }
+.about-sec-4 .btn--outline-dark span { color: inherit; }
+
+/* SECTION 5 — Credentials (white, black text) */
+.about-sec-5 {
+  background: #ffffff;
+  z-index: 1;
+  margin-top: -5vw;
+  padding-top: calc(var(--section-pad) + 5vw);
+  padding-bottom: 0;
+}
+.about-sec-5 .section-label { color: var(--color-secondary); }
+.about-sec-5 .mie-number { color: var(--color-secondary); }
+.about-sec-5 .mie-claim,
+.about-sec-5 .mie-sub { color: #1a2744; }
+.about-sec-5 .mie-description { color: rgba(26,39,68,0.7); }
+.about-sec-5 .mie-description strong { color: #1a2744; }
+.about-sec-5 .marquee-item:hover { color: #ffffff; }
+.about-sec-5 .section-title { color: #1a2744; }
+.about-sec-5 .section-title::after { background: var(--color-secondary); }
+
+@media(max-width:768px){
+  .about-sec-1,.about-sec-2,.about-sec-3,.about-sec-4,.about-sec-5 {
+    margin-top: -8vw;
+    padding-top: calc(var(--section-pad) + 8vw);
+  }
+  .about-sec-1,.about-sec-3,.about-sec-5 {
+    clip-path: polygon(0 0,100% 0,100% 100%,0 calc(100% - 8vw));
+    padding-bottom: calc(var(--section-pad) + 8vw);
+  }
+  .about-sec-2,.about-sec-4 {
+    clip-path: polygon(0 0,100% 0,100% calc(100% - 8vw),0 100%);
+    padding-bottom: calc(var(--section-pad) + 8vw);
+  }
+}
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress" aria-hidden="true"></div>
+
+<nav id="site-nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="Pinion &amp; Adams Fabricators — Home"><img src="assets/images/logo.png" alt="Pinion &amp; Adams Fabricators" style="height:40px;width:auto;"></a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li data-compact><a href="about.html" class="is-active">About</a></li>
+      <li data-compact><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="training-academy.html">Training Academy</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li data-compact><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta-wrap">
+      <a href="contact.html" class="btn btn--primary btn--sm"><span>Request a Quote</span></a>
+    </div>
+    <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-mobile-overlay">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile-overlay" id="nav-mobile-overlay" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+  <button class="nav-mobile-close" aria-label="Close navigation">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+  </button>
+  <nav aria-label="Mobile navigation links">
+    <ul class="nav-mobile-links" role="list">
+      <li><a href="index.html">Home</a></li>
+      <li data-compact><a href="about.html">About</a></li>
+      <li data-compact><a href="services.html">Services</a></li>
+      <li><a href="facilities.html">Facilities</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="training-academy.html">Training Academy</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li data-compact><a href="contact.html">Contact</a></li>
+    </ul>
+    
+  </nav>
+</div>
+
+<main id="main-content">
+
+  <!-- PAGE HERO -->
+  <section class="page-hero page-hero--clipped" aria-label="About page hero">
+    <div class="page-hero-bg">
+      <img src="assets/images/about/about-hero-bg.jpg" alt="P&amp;A fabrication facility interior" loading="lazy">
+    </div>
+    <div class="page-hero-overlay" aria-hidden="true"></div>
+    <div class="container page-hero-content">
+      <span class="page-hero-label">Our Story</span>
+      <h1>About P&amp;A</h1>
+      <p>Over 50 years of precision, craft, and engineering excellence in South Africa's industrial heartland.</p>
+    </div>
+  </section>
+
+  <!-- COMPANY STORY -->
+  <section class="about-sec about-sec-1" aria-labelledby="story-heading">
+    <div class="container">
+      <div class="grid-2">
+        <div>
+          <span class="section-label reveal">Founded 1971</span>
+          <h2 class="section-title reveal-heading" id="story-heading">A Legacy of Precision</h2>
+          <p class="about-body reveal">
+            Pinion &amp; Adams Fabricators was established in 1971, building its reputation on the craftsmanship and dedication of its founders. In 1975, the Davies family acquired the business, bringing new energy and a long-term vision for growth that would see P&amp;A evolve into one of South Africa's most capable and trusted fabrication houses.
+          </p>
+          <p class="about-body reveal">
+            Under the leadership of <strong>Gerald Anthony</strong>, P&amp;A entered a new era of operational excellence. Gerald drove the company's ISO 9001:2015 certification — a commitment to measurable quality standards across every process. In 2007, P&amp;A became the <strong>first company in Africa</strong> to implement MIE Trak, an advanced electronic manufacturing tracking system that brought complete production transparency to every job.
+          </p>
+          <p class="about-body reveal">
+            Today, P&amp;A operates from Durban and Johannesburg, serving South Africa's leading industrial, transport, and infrastructure sectors. Our clients include <strong>MAN, Bell Equipment, Cash Connect Group, ND Engineering, Bosch Projects</strong>, and iconic landmark developments including <strong>Gateway Theatre of Shopping</strong> and <strong>Sun Coast Casino</strong>.
+          </p>
+        </div>
+        <div class="about-video-wrap reveal-right">
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/dTvfMrkAWiU?start=93"
+              title="Pinion &amp; Adams — About Us"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem;">
+        <a href="#testimonials" class="btn btn--outline-dark"><span>View Testimonials</span></a>
+        <a href="assets/docs/B-BBEE_Certificate_P_And_A_Fabricators_Pty_Ltd.pdf" class="btn btn--outline-dark" target="_blank" rel="noopener noreferrer"><span>B-BBEE Certificate</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="about-sec about-sec-2" aria-labelledby="timeline-heading">
+    <div class="container">
+      <span class="section-label reveal">Our Journey</span>
+      <h2 class="section-title reveal-heading" id="timeline-heading">Key Milestones</h2>
+
+      <div class="timeline-wrap" style="margin-top:3rem;">
+        <div class="timeline-item reveal">
+          <p class="timeline-year">1971</p>
+          <h3 class="timeline-title">Founded</h3>
+          <p class="timeline-desc">Pinion &amp; Adams Fabricators established, building a reputation for precision sheet metal work in KwaZulu-Natal.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <p class="timeline-year">1975</p>
+          <h3 class="timeline-title">Davies Family Acquisition</h3>
+          <p class="timeline-desc">The Davies family acquires P&amp;A, bringing long-term investment in people, equipment, and quality systems.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <p class="timeline-year">Early 2000s</p>
+          <h3 class="timeline-title">ISO 9001 Certification</h3>
+          <p class="timeline-desc">P&amp;A achieves ISO 9001 quality management certification — a formal commitment to consistent, measurable quality at every stage of production.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <p class="timeline-year">2007</p>
+          <h3 class="timeline-title">First in Africa — MIE Trak</h3>
+          <p class="timeline-desc">P&amp;A becomes the first company in Africa to implement MIE Trak electronic manufacturing tracking, revolutionising job visibility and production management.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <p class="timeline-year">2010s</p>
+          <h3 class="timeline-title">Training Academy Established</h3>
+          <p class="timeline-desc">P&amp;A launches the Sheet Metal Training Academy — QCTO and MERSETA accredited, and the first of its kind in South Africa.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <p class="timeline-year">2015</p>
+          <h3 class="timeline-title">ISO 9001:2015 Upgrade</h3>
+          <p class="timeline-desc">P&amp;A upgrades to the latest ISO 9001:2015 standard, reflecting a risk-based, continual improvement approach to quality management.</p>
+        </div>
+        <div class="timeline-item reveal">
+          <p class="timeline-year">Today</p>
+          <h3 class="timeline-title">50+ Years Strong</h3>
+          <p class="timeline-desc">P&amp;A continues to grow, serving South Africa's top industrial clients from facilities in Durban and Johannesburg — precision-built for the next 50 years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION / MISSION / VALUES -->
+  <section class="about-sec about-sec-3" aria-labelledby="vmv-heading">
+    <div class="container">
+      <div style="text-align:center;">
+        <span class="section-label reveal">Who We Are</span>
+        <h2 class="section-title section-title--center reveal-heading" id="vmv-heading">Vision, Mission &amp; Values</h2>
+      </div>
+      <div class="vmv-grid stagger-children">
+        <div class="vmv-card reveal">
+          <h3>Vision</h3>
+          <p>To be the most trusted and technically capable sheet metal fabrication company in South Africa, recognised for precision, reliability, and the development of our people.</p>
+        </div>
+        <div class="vmv-card reveal">
+          <h3>Mission</h3>
+          <p>To deliver precision-engineered fabrication solutions that exceed client expectations — on time, to specification, and backed by an ISO 9001:2015 quality system that governs every stage of production.</p>
+        </div>
+        <div class="vmv-card reveal">
+          <h3>Values</h3>
+          <p>Precision in every component. Integrity in every commitment. Investment in our people. Continuous improvement in every process. Proudly South African in everything we do.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GERALD'S STORY / LEADERSHIP -->
+  <section class="about-sec about-sec-4" id="geralds-story" aria-labelledby="gerald-heading" style="padding-top:0;">
+
+    <!-- Photo gallery sits flush at the top of the blue section -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;">
+      <img src="assets/images/P&AFabricators-45.jpg" alt="P&amp;A fabrication team at work" loading="lazy" style="width:100%;height:420px;object-fit:cover;display:block;">
+      <img src="assets/images/P&AFabricators-72.jpg" alt="Precision fabrication process at P&amp;A" loading="lazy" style="width:100%;height:420px;object-fit:cover;display:block;">
+      <img src="assets/images/P&AFabricators-115.jpg" alt="Sheet metal work at P&amp;A" loading="lazy" style="width:100%;height:420px;object-fit:cover;display:block;">
+      <img src="assets/images/P&AFabricators-177.jpg" alt="P&amp;A fabricators craftsmanship" loading="lazy" style="width:100%;height:420px;object-fit:cover;display:block;">
+    </div>
+
+    <div class="container" style="padding-top:5rem;">
+      <div class="grid-2">
+        <div class="about-image-wrap reveal-left">
+          <div class="img-hover-wrap reveal-image">
+            <img src="assets/images/about/gerald-anthony.jpg" alt="Gerald Anthony, managing director of Pinion and Adams Fabricators" loading="lazy">
+          </div>
+        </div>
+        <div style="padding-top:4rem;">
+          <span class="section-label reveal">Leadership</span>
+          <h2 class="section-title reveal-heading" id="gerald-heading">Gerald's Story</h2>
+          <p class="about-body reveal">
+            Gerald Anthony joined P&amp;A as a young apprentice, learning the trade from the ground up. His passion for precision and his belief in the dignity of skilled work shaped every role he held as he rose through the company.
+          </p>
+          <p class="about-body reveal">
+            As Managing Director, Gerald has been the driving force behind P&amp;A's transformation into a modern, technology-forward fabrication house. His decision to pursue ISO 9001 certification and to implement MIE Trak ahead of any other African company reflected a belief that quality must be built into every system — not inspected in at the end.
+          </p>
+          <p class="about-body reveal">
+            Gerald's greatest legacy may be the Training Academy. Recognising the skills gap threatening South Africa's manufacturing sector, he championed the establishment of an accredited sheet metal training programme — ensuring that P&amp;A contributes not just products, but people, to South Africa's industrial future.
+          </p>
+          <div class="reveal">
+            <a href="geralds-story.html" class="btn btn--outline-dark"><span>Read Gerald's Full Story</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS + CLIENTS (combined dark section) -->
+  <section class="about-sec about-sec-5" id="credentials" aria-label="Credentials and clients">
+
+    <!-- MIE Trak achievement -->
+    <div id="mie-trak" style="padding:5rem 0 4rem;">
+      <div class="container">
+        <div class="grid-2" style="align-items:center;">
+          <div>
+            <span class="mie-number" aria-label="First in Africa">First</span>
+            <p class="mie-claim" id="mie-about-heading">in Africa</p>
+            <p class="mie-sub">MIE Trak Implementation — 2007</p>
+          </div>
+          <div>
+            <span class="section-label">Why It Matters</span>
+            <p class="mie-description">
+              In 2007, P&amp;A became the <strong>first company in Africa</strong> to implement MIE Trak — an advanced electronic manufacturing tracking system that monitors every job from enquiry through to delivery, including a full bill of materials.
+            </p>
+            <p class="mie-description" style="margin-top:1.25rem;">
+              Every job entered into our system receives a unique tracking number. At any point, you can know exactly where your components are in the production cycle. This level of transparency is not a feature — it is our standard.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications + Documents row -->
+    <div id="testimonials" style="border-top:1px solid rgba(0,0,0,0.1);padding:2.5rem 0;">
+      <div class="container">
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;">
+          <!-- Badges -->
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;">
+            <span style="font-family:var(--font-body);font-size:0.65rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,0,0,0.4);margin-right:0.5rem;">Certified &amp; Accredited</span>
+            <span class="badge" style="border-color:rgba(0,0,0,0.15);color:rgba(26,39,68,0.7);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg>
+              ISO 9001:2015
+            </span>
+            <span class="badge" style="border-color:rgba(0,0,0,0.15);color:rgba(26,39,68,0.7);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
+              SASSDA Member
+            </span>
+            <span class="badge" style="border-color:rgba(0,0,0,0.15);color:rgba(26,39,68,0.7);">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              B-BBEE Compliant
+            </span>
+          </div>
+          <!-- PDF links -->
+          <div style="display:flex;gap:0.75rem;flex-wrap:wrap;">
+            <a href="assets/docs/Letter-of-Appreciation_Pinion-and-Adams.pdf" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.65rem 1.25rem;border-radius:var(--border-radius);color:#fff;font-family:var(--font-body);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;background:var(--color-secondary);transition:background 0.2s;" onmouseover="this.style.background='#164269'" onmouseout="this.style.background='var(--color-secondary)'">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+              Letter of Appreciation
+            </a>
+            <a href="assets/docs/B-BBEE_Certificate_P_And_A_Fabricators_Pty_Ltd.pdf" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.65rem 1.25rem;border-radius:var(--border-radius);color:#fff;font-family:var(--font-body);font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;background:var(--color-secondary);transition:background 0.2s;" onmouseover="this.style.background='#164269'" onmouseout="this.style.background='var(--color-secondary)'">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#fff" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              B-BBEE Certificate
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Clients marquee -->
+    <div style="background:#141c2e;margin-top:2.5rem;border-radius:var(--border-radius-lg);padding:2rem 0;overflow:hidden;">
+      <p style="text-align:center;font-family:var(--font-heading);font-size:1.1rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.75);margin-bottom:1.5rem;">Trusted by Industry Giants</p>
+      <div class="marquee-section" style="padding:0;border-top:none;" aria-label="Client names">
+        <div class="marquee-track" aria-hidden="true">
+          <span class="marquee-item">MAN</span>
+          <span class="marquee-item">Bell Equipment</span>
+          <span class="marquee-item">Cash Connect Group</span>
+          <span class="marquee-item">ND Engineering</span>
+          <span class="marquee-item">Bosch Projects</span>
+          <span class="marquee-item">Gateway Theatre of Shopping</span>
+          <span class="marquee-item">Sun Coast Casino</span>
+          <span class="marquee-item">SASSDA</span>
+          <span class="marquee-item">MAN</span>
+          <span class="marquee-item">Bell Equipment</span>
+          <span class="marquee-item">Cash Connect Group</span>
+          <span class="marquee-item">ND Engineering</span>
+          <span class="marquee-item">Bosch Projects</span>
+          <span class="marquee-item">Gateway Theatre of Shopping</span>
+          <span class="marquee-item">Sun Coast Casino</span>
+          <span class="marquee-item">SASSDA</span>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner" aria-labelledby="about-cta-heading">
+    <div class="container cta-banner-content">
+      <h2 class="reveal-heading" id="about-cta-heading">Ready to Work with P&amp;A?</h2>
+      <p class="reveal">Submit your drawings or describe your requirements — our engineering team will review and respond within 1 business day.</p>
+      <div class="cta-banner-btns reveal">
+        <a href="contact.html" class="btn btn--outline-red"><span>Submit Drawings &amp; Get a Quote</span></a>
+        <a href="services.html" class="btn btn--outline-red"><span>View Our Services</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="site-footer" role="contentinfo">
+  <div class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo"><img src="assets/images/logo.png" alt="Pinion &amp; Adams Fabricators" width="120" height="40"></a>
+          <p class="footer-tagline">South Africa's leading sheet metal fabricating and manufacturing company. Precision-built since 1971.</p>
+          <span class="footer-iso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg>ISO 9001:2015 Certified</span>
+        </div>
+        <div>
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="index.html">Home</a></li>
+            <li data-compact><a href="about.html">About P&amp;A</a></li>
+            <li data-compact><a href="services.html">Our Services</a></li>
+            <li><a href="facilities.html">Facilities</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="training-academy.html">Training Academy</a></li>
+            <li><a href="blog.html">News &amp; Blog</a></li>
+            <li data-compact><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Services</h3>
+          <ul class="footer-links" role="list">
+            <li><a href="services.html#design">Design &amp; Engineering</a></li>
+            <li><a href="services.html#fabrication">Sheet Metal Fabrication</a></li>
+            <li><a href="services.html#welding">Manufacturing &amp; Welding</a></li>
+            <li><a href="services.html#cnc">CNC Services</a></li>
+            <li><a href="services.html#coating">Epoxy Powder Coating</a></li>
+            <li><a href="training-academy.html">Training Academy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-heading">Contact</h3>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+            <div class="footer-contact-text"><span class="footer-contact-label">Address</span>15 Pineside Road, New Germany, 3610</div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.61 4.44 2 2 0 0 1 3.58 2.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2z"></path></svg></div>
+            <div class="footer-contact-text"><span class="footer-contact-label">Phone</span><a href="tel:+27317053104">031 705 3104</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg></div>
+            <div class="footer-contact-text"><span class="footer-contact-label">Email</span><a href="mailto:sales@pinionadams.co.za">sales@pinionadams.co.za</a></div>
+          </div>
+          <div class="footer-socials">
+            <a href="https://www.linkedin.com/company/pinion-adams" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow P&amp;A on LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://www.facebook.com/PinionandAdamsFabricators" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Follow P&amp;A on Facebook">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>&copy; <span id="footer-year"></span> Pinion &amp; Adams Fabricators. All rights reserved.</p>
+      <p class="footer-policies"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms &amp; Conditions</a></p>
+      
+    </div>
+  </div>
+</footer>
+
+<button class="scroll-top-btn" id="scroll-top" aria-label="Scroll to top of page">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
+
+<script src="js/main.js" defer></script>
+<script src="js/nav.js" defer></script>
+<script src="js/animations.js" defer></script>
+<script src="js/scroll-effects.js" defer></script>
+<script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+<script>
+(function () {
+  'use strict';
+  if (!('IntersectionObserver' in window)) return;
+
+  /* ── Draw the vertical line ───────────────────────────────── */
+  var wrap = document.querySelector('.about-sec-2 .timeline-wrap');
+  if (wrap) {
+    var lineObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('is-drawing');
+        lineObs.unobserve(e.target);
+      });
+    }, { threshold: 0.05 });
+    lineObs.observe(wrap);
+  }
+
+  /* ── Staggered dot pop-in ─────────────────────────────────── */
+  var items = document.querySelectorAll('.about-sec-2 .timeline-item');
+  if (!items.length) return;
+
+  var dotObs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      var idx = Array.prototype.indexOf.call(items, e.target);
+      var delay = idx * 110;   /* 110ms stagger between dots */
+      setTimeout(function () {
+        e.target.classList.add('tl-dot-in');
+      }, delay);
+      dotObs.unobserve(e.target);
+    });
+  }, { threshold: 0.4, rootMargin: '0px 0px -60px 0px' });
+
+  items.forEach(function (item) { dotObs.observe(item); });
+}());
+</script>
+</body>
+</html>

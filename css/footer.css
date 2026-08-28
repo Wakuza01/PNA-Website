@@ -1,0 +1,219 @@
+/* ============================================================
+   FOOTER — footer.css
+============================================================ */
+
+#site-footer {
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-main {
+  padding: 5rem 0 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1.5fr;
+  gap: 3rem;
+}
+
+/* Column 1 — Brand */
+.footer-brand {}
+
+.footer-logo {
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.footer-logo img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.footer-tagline {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  line-height: 1.75;
+  margin-bottom: 1.75rem;
+  max-width: 260px;
+}
+
+.footer-iso {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.875rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.footer-iso svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--color-secondary);
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+/* Column headers */
+.footer-heading {
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Nav links */
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.7rem;
+}
+
+.footer-links a {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: color var(--transition-fast), padding-left var(--transition-fast);
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  color: var(--color-text-primary);
+  padding-left: 4px;
+}
+
+/* Column 4 — Contact */
+.footer-contact-item {
+  display: flex;
+  gap: 0.875rem;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+}
+
+.footer-contact-icon {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  background: var(--color-surface-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.1rem;
+}
+
+.footer-contact-icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: var(--color-secondary);
+  fill: none;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.footer-contact-text {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.footer-contact-text a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-contact-text a:hover {
+  color: var(--color-secondary);
+}
+
+.footer-contact-label {
+  display: block;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+  margin-bottom: 0.2rem;
+}
+
+/* Social icons */
+.footer-socials {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.social-link:hover {
+  background: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: white;
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+  display: block;
+}
+
+/* Bottom bar */
+.footer-bottom {
+  background: var(--color-footer-bar);
+  padding: 1.25rem 0;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.footer-bottom p,
+.footer-bottom span {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-bottom a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-bottom a:hover {
+  color: #ffffff;
+}

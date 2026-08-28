@@ -1,0 +1,15 @@
+# Basic authentication for admin panel
+# Uncomment and configure the lines below after creating your .htpasswd file
+#
+# AuthType Basic
+# AuthName "P&A Admin"
+# AuthUserFile /path/to/.htpasswd
+# Require valid-user
+
+# Deny direct access to sensitive files
+<Files ".htpasswd">
+  Require all denied
+</Files>
+
+# Prevent directory listing
+Options -Indexes

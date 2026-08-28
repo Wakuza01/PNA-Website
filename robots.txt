@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /assets/cache/
+
+Sitemap: https://www.pinionadams.co.za/sitemap.xml

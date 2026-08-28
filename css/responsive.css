@@ -1,0 +1,601 @@
+/* ============================================================
+   RESPONSIVE — responsive.css
+   Breakpoints: Mobile 768px | Tablet 1024px | Desktop+ | Wide 1400px+
+============================================================ */
+
+/* ============================================================
+   WIDE SCREENS: 1400px+
+============================================================ */
+@media (min-width: 1400px) {
+  :root {
+    --section-pad: 140px;
+  }
+
+  .hero-headline {
+    font-size: clamp(5rem, 9vw, 10rem);
+  }
+}
+
+/* ============================================================
+   TABLET: max 1024px
+============================================================ */
+@media (max-width: 1024px) {
+  :root {
+    --section-pad: 80px;
+  }
+
+  /* Grid: 2-col layout collapses */
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Services: 2 columns */
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Stats: 2x2 */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stat-item:nth-child(2)::after {
+    display: none;
+  }
+
+  .stat-item:nth-child(4)::after {
+    display: none;
+  }
+
+  /* Footer: 2x2 */
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  /* Blog: remove sidebar */
+  .blog-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-sidebar {
+    display: none;
+  }
+
+  /* Blog grid: 2 columns */
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Post layout: remove sidebar */
+  .post-layout,
+  .blog-post-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .post-layout .blog-sidebar,
+  .blog-post-layout .blog-sidebar {
+    display: none;
+  }
+
+  /* Contact: single column */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  /* VMV: 2-col + 1 below */
+  .vmv-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Capabilities */
+  .capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* MIE number size */
+  .mie-number {
+    font-size: clamp(4rem, 10vw, 7rem);
+  }
+
+  /* Process flow — wrap */
+  .process-flow {
+    gap: 1rem;
+  }
+
+  .process-step:not(:last-child)::after {
+    display: none;
+  }
+
+  /* Service accordion body */
+  .service-item-body {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  /* About text col */
+  .about-text-col {
+    padding-right: 0;
+  }
+
+  /* Related posts: 2 col */
+  .related-posts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================================
+   MOBILE: max 768px
+============================================================ */
+@media (max-width: 768px) {
+  :root {
+    --section-pad: 60px;
+  }
+
+  /* ---- NAVIGATION ---- */
+  .nav-links,
+  .nav-cta-wrap {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  /* ---- HERO ---- */
+  .hero-headline {
+    font-size: clamp(2.5rem, 10vw, 4.5rem);
+  }
+
+  .hero-sub {
+    font-size: 0.95rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Ticker: speed up on mobile (less content visible = needs to move faster) */
+  .ticker-track {
+    animation-duration: 18s;
+  }
+
+  /* ---- STATS BAR ---- */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 1rem;
+  }
+
+  .stat-item::after {
+    display: none;
+  }
+
+  .stat-number {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  /* ---- SERVICES ---- */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---- PRODUCTS ---- */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* ---- FOOTER ---- */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  /* ---- BLOG ---- */
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .related-posts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-filter-bar {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0;
+  }
+
+  .filter-btn {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  /* ---- SECTIONS ---- */
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---- PROCESS FLOW — vertical timeline ---- */
+  .process-flow {
+    flex-direction: column;
+    gap: 0;
+    padding: 0 0 0 1rem;
+    overflow: visible;
+    position: relative;
+    flex-wrap: nowrap;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Single continuous line through bubble centers */
+  .process-flow::before {
+    content: '';
+    position: absolute;
+    left: calc(1rem + 27px);      /* process-flow left-pad + half of 54px bubble */
+    top: calc(0.75rem + 27px);    /* first step top-pad + half bubble */
+    bottom: calc(0.75rem + 27px); /* last step bottom-pad + half bubble */
+    width: 2px;
+    background: var(--color-secondary);
+    opacity: 0.35;
+    z-index: 0;
+  }
+
+  .process-step {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.75rem 0;
+    position: relative;
+    background: none;
+    border: none;
+    box-shadow: none;
+    text-align: left;
+    width: auto;
+    max-width: none;
+    min-width: 0;
+  }
+
+  /* Icon bubble — sits on top of the line */
+  .process-step-bubble {
+    flex-shrink: 0;
+    margin: 0;
+    width: 54px;
+    height: 54px;
+    z-index: 1;
+    background: #ffffff;
+    border: 2px solid var(--color-secondary);
+  }
+
+  .process-step-bubble svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  /* Stack number and label */
+  .process-step-num {
+    display: block;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: var(--color-secondary);
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+  }
+
+  .process-step-label {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: var(--color-text-primary);
+    line-height: 1.1;
+    white-space: nowrap;
+  }
+
+  /* No horizontal arrows on mobile */
+  .process-step:not(:last-child)::after {
+    display: none;
+  }
+  .process-step:not(:last-child)::before {
+    display: none;
+  }
+
+  /* ---- ABOUT decorative corner ---- */
+  .about-image-wrap::after {
+    display: none;
+  }
+
+  /* ---- PAGE HERO ---- */
+  .page-hero {
+    padding: 7rem 0 3.5rem;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+  }
+
+  /* ---- TIMELINE ---- */
+  .timeline-wrap {
+    padding-left: 2rem;
+  }
+
+  .timeline-item::before {
+    left: -1.85rem;
+  }
+
+  /* ---- VMV ---- */
+  .vmv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---- CAPABILITIES ---- */
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .equipment-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---- SERVICE CAPABILITIES LIST ---- */
+  .service-capabilities-list {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---- SECTION TITLE size ---- */
+  .section-title {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+  }
+
+  /* ---- MIE ---- */
+  .mie-number {
+    font-size: clamp(3.5rem, 14vw, 5.5rem);
+  }
+
+  /* ---- CTA BANNER ---- */
+  .cta-banner-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-banner-btns .btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  /* ---- SHARE BUTTONS ---- */
+  .share-buttons {
+    flex-wrap: wrap;
+  }
+
+  /* ---- SCROLL TO TOP ---- */
+  .scroll-top-btn {
+    bottom: 1.25rem;
+    right: 1.25rem;
+  }
+
+  /* ---- FEED HEADER ---- */
+  .feed-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #linkedin-feed-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* ---- CLIP PATHS: disable on mobile (performance) ---- */
+  .clip-bottom,
+  .clip-top,
+  .clip-both {
+    clip-path: none;
+  }
+
+  /* ---- MARQUEE: adjust speed ---- */
+  .marquee-track {
+    animation-duration: 40s;
+  }
+
+  /* ---- ACADEMY TEASER (homepage) ---- */
+  .academy-teaser {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .academy-teaser-right {
+    min-height: 260px;
+    order: -1;
+  }
+
+  .academy-teaser-left {
+    padding: 3rem 1.5rem;
+  }
+
+  .academy-teaser-left::after {
+    display: none;
+  }
+
+  /* ---- BLOG POST layout ---- */
+  .blog-post-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-post-layout .blog-sidebar {
+    display: none;
+  }
+
+  /* ---- FACILITIES: inline grid sections ---- */
+  .facility-photo-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .facility-content-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .facility-content-grid > div[style*="height:360px"] {
+    height: 220px !important;
+  }
+}
+
+/* ============================================================
+   VERY SMALL SCREENS: max 400px
+============================================================ */
+@media (max-width: 400px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-ctas .btn {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.8rem;
+  }
+
+  .trust-badges {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ============================================================
+   Projects & Facilities
+============================================================ */
+@media (max-width: 900px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .facility-gallery {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .facility-stats {
+    gap: 1.5rem;
+  }
+}
+
+/* Academy Vision: stack on tablet and below */
+@media (max-width: 900px) {
+  .academy-vision-section {
+    grid-template-columns: 1fr;
+  }
+  .academy-vision-right {
+    min-height: 340px;
+    order: -1;
+  }
+  .academy-vision-right::before {
+    background: linear-gradient(180deg, var(--color-primary) 0%, transparent 25%);
+  }
+  .academy-vision-left {
+    padding: 4rem 0;
+  }
+  .academy-vision-left .container-inner {
+    max-width: 100%;
+    margin: 0;
+    padding: 0 1.5rem;
+  }
+}
+
+/* ============================================================
+   TOUCH TARGETS: ensure 44px minimum
+============================================================ */
+@media (max-width: 768px) {
+  .btn {
+    min-height: 44px;
+  }
+
+  .filter-chip,
+  .filter-btn,
+  .share-btn,
+  .pagination-btn,
+  .sidebar-category-list a,
+  .footer-links a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .nav-hamburger {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .social-link {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ============================================================
+   PRINT
+============================================================ */
+@media print {
+  #site-nav,
+  .hero-ticker,
+  .scroll-top-btn,
+  .scroll-progress,
+  .share-buttons,
+  .hero-canvas,
+  .nav-hamburger,
+  .nav-mobile-overlay {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}

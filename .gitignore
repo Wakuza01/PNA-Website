@@ -1,0 +1,19 @@
+# Database
+admin/data/
+
+# Uploaded files
+admin/uploads/
+
+# LinkedIn cache
+api/linkedin-cache.json
+
+# Rate limit files
+/tmp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.log
