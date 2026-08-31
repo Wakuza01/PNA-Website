@@ -183,19 +183,19 @@
   z-index: 1;
 }
 
-/* Primary — light blue on dark, dark blue on light (see section overrides) */
+/* Primary — dark blue by default (works on white/light backgrounds) */
 .btn--primary {
-  background: var(--color-accent);
+  background: var(--color-secondary);
   color: #ffffff;
-  border-color: var(--color-accent);
+  border-color: var(--color-secondary);
 }
 
 .btn--primary::before {
-  background: #1a8fb8;
+  background: var(--color-secondary-hover);
 }
 
 .btn--primary:hover {
-  box-shadow: 0 4px 24px rgba(38, 157, 204, 0.45);
+  box-shadow: 0 4px 24px rgba(32, 87, 133, 0.4);
 }
 
 /* Outline — white border */

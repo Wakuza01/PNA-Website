@@ -216,32 +216,19 @@
   padding-top: calc(5rem + 5vw);
 }
 
-/* ── Button colour overrides per section ── */
-/* White sections: use dark steel blue for primary buttons */
-.home-sec-1 .btn--primary,
-.home-sec-3 .btn--primary,
-.home-sec-4 .btn--primary {
-  background: var(--color-secondary);
-  border-color: var(--color-secondary);
-  box-shadow: none;
-}
-.home-sec-1 .btn--primary::before,
-.home-sec-3 .btn--primary::before,
-.home-sec-4 .btn--primary::before { background: var(--color-secondary-hover); }
-.home-sec-1 .btn--primary:hover,
-.home-sec-3 .btn--primary:hover,
-.home-sec-4 .btn--primary:hover { box-shadow: 0 4px 20px rgba(32,87,133,0.35); }
-
-/* Dark blue sections: use light blue for primary buttons */
+/* ── Button colour overrides: dark sections only get light blue ── */
 .home-sec-2 .btn--primary,
-.home-sec-5 .btn--primary {
+.home-sec-5 .btn--primary,
+.hero .btn--primary {
   background: var(--color-accent);
   border-color: var(--color-accent);
 }
 .home-sec-2 .btn--primary::before,
-.home-sec-5 .btn--primary::before { background: #1a8fb8; }
+.home-sec-5 .btn--primary::before,
+.hero .btn--primary::before { background: #1a8fb8; }
 .home-sec-2 .btn--primary:hover,
-.home-sec-5 .btn--primary:hover { box-shadow: 0 4px 20px rgba(38,157,204,0.45); }
+.home-sec-5 .btn--primary:hover,
+.hero .btn--primary:hover { box-shadow: 0 4px 20px rgba(38,157,204,0.45); }
 
 /* ── Mobile ── */
 @media (max-width: 768px) {
