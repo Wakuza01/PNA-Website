@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -64,11 +64,10 @@
 /* Push stats strip to bottom of hero */
 .hero-stats-strip { margin-top: auto; }
 
-/* Stats strip — no background, just a top rule, sits on the hero image */
+/* Stats strip — no background, sits on the hero image */
 .hero-stats-strip {
   position: relative;
   z-index: 2;
-  border-top: 1px solid rgba(255,255,255,0.15);
   padding: 2.25rem 0;
 }
 
@@ -216,6 +215,14 @@
   padding-top: calc(5rem + 5vw);
 }
 
+/* ── Our Story image — no hover effect ── */
+.home-sec-1 .img-hover-wrap img { filter: none; }
+.home-sec-1 .img-hover-wrap:hover img { transform: none; filter: none; }
+.home-sec-1 .img-hover-wrap:hover::after { opacity: 0; }
+
+/* ── Services cards — white left border on hover ── */
+.home-sec-2 .card::before { background: rgba(255,255,255,0.8); }
+
 /* ── Button colour overrides: dark sections only get light blue ── */
 .home-sec-2 .btn--primary,
 .home-sec-5 .btn--primary,
@@ -307,7 +314,7 @@
     <a href="index.html" class="nav-logo" aria-label="Pinion &amp; Adams Fabricators — Home"><img src="assets/images/logo.png" alt="Pinion &amp; Adams Fabricators" style="height:40px;width:auto;"></a>
 
     <ul class="nav-links" role="list">
-      <li><a href="index.html" class="is-active">Home</a></li>
+      <li data-compact><a href="index.html" class="is-active">Home</a></li>
       <li data-compact><a href="about.html">About</a></li>
       <li data-compact><a href="services.html">Services</a></li>
       <li><a href="facilities.html">Facilities</a></li>
@@ -341,7 +348,7 @@
   </button>
   <nav aria-label="Mobile navigation links">
     <ul class="nav-mobile-links" role="list">
-      <li><a href="index.html">Home</a></li>
+      <li data-compact><a href="index.html">Home</a></li>
       <li data-compact><a href="about.html">About</a></li>
       <li data-compact><a href="services.html">Services</a></li>
       <li><a href="facilities.html">Facilities</a></li>
@@ -834,7 +841,7 @@
         <div>
           <h3 class="footer-heading">Quick Links</h3>
           <ul class="footer-links" role="list">
-            <li><a href="index.html">Home</a></li>
+            <li data-compact><a href="index.html">Home</a></li>
             <li data-compact><a href="about.html">About P&amp;A</a></li>
             <li data-compact><a href="services.html">Our Services</a></li>
             <li><a href="facilities.html">Facilities</a></li>
