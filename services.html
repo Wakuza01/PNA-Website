@@ -59,7 +59,7 @@
 /* ── Service scroll column ───────────────────────────────────── */
 .services-scroll-col{border-left:1px solid var(--color-border);overflow:hidden;height:100vh;}
 .si-slider{will-change:transform;transition:transform 0.65s cubic-bezier(0.76,0,0.24,1);}
-.service-item{height:100vh;padding:4rem 4rem;border-bottom:1px solid var(--color-border);display:flex;flex-direction:column;justify-content:center;position:relative;}
+.service-item{height:100vh;padding:5rem 4rem 4rem;border-bottom:1px solid var(--color-border);display:flex;flex-direction:column;justify-content:flex-start;position:relative;}
 .service-item::after{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--color-secondary);transition:width 0.55s ease;}
 .service-item.is-active::after{width:100%;}
 .si-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
@@ -147,7 +147,7 @@
 
 <main id="main-content">
 
-  <section class="page-hero page-hero--clipped" aria-label="Services hero">
+  <section class="page-hero" aria-label="Services hero">
     <div class="page-hero-bg">
       <img src="assets/images/services/services-hero-bg.jpg" alt="Sheet metal fabrication equipment at Pinion and Adams" loading="lazy">
     </div>
