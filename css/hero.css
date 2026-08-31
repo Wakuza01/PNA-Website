@@ -392,10 +392,8 @@
 ============================================================ */
 
 .scroll-hint {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
+  display: block;
+  text-align: center;
   margin-top: 2.5rem;
   cursor: default;
 }
@@ -410,7 +408,7 @@
 }
 
 .scroll-hint-icon {
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   align-items: center;
   gap: 3px;
