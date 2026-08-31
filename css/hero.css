@@ -31,16 +31,23 @@
   display: block;
 }
 
-/* Overlay — lighter so the image breathes through */
+/* Overlay — left-to-right fade: text stays readable, image breathes on the right */
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    125deg,
-    rgba(13, 25, 41, 0.72) 0%,
-    rgba(13, 25, 41, 0.45) 55%,
-    rgba(32, 87, 133, 0.18) 100%
-  );
+  background:
+    linear-gradient(
+      to right,
+      rgba(10, 18, 32, 0.82) 0%,
+      rgba(10, 18, 32, 0.55) 38%,
+      rgba(10, 18, 32, 0.15) 65%,
+      rgba(10, 18, 32, 0.00) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(10, 18, 32, 0.45) 0%,
+      transparent 35%
+    );
   z-index: 1;
 }
 
@@ -93,6 +100,7 @@
   color: var(--color-text-on-dark);
   margin-bottom: 1.75rem;
   max-width: 1000px;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
 }
 
 /* Each line wraps for clip-path animation */
