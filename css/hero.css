@@ -386,3 +386,45 @@
   clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
   padding-bottom: 8rem;
 }
+
+/* ============================================================
+   SCROLL HINT — animated indicator on page heros
+============================================================ */
+
+.scroll-hint {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 2.5rem;
+  cursor: default;
+}
+
+.scroll-hint-text {
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.scroll-hint-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  animation: scrollBounce 1.6s ease-in-out infinite;
+}
+
+.scroll-hint-icon svg {
+  width: 28px;
+  height: 28px;
+  color: rgba(255, 255, 255, 0.70);
+  display: block;
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(7px); }
+}
