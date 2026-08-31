@@ -359,11 +359,11 @@
 .page-hero-label {
   display: block;
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--color-secondary);
+  color: var(--color-accent);
   margin-bottom: 1rem;
 }
 
