@@ -31,22 +31,22 @@
   display: block;
 }
 
-/* Overlay — left-to-right fade: text stays readable, image breathes on the right */
+/* Overlay — left fade for text readability, right fully open so image shines */
 .hero-overlay {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(
       to right,
-      rgba(10, 18, 32, 0.82) 0%,
-      rgba(10, 18, 32, 0.55) 38%,
-      rgba(10, 18, 32, 0.15) 65%,
-      rgba(10, 18, 32, 0.00) 100%
+      rgba(10, 18, 32, 0.60) 0%,
+      rgba(10, 18, 32, 0.28) 40%,
+      rgba(10, 18, 32, 0.05) 65%,
+      transparent 100%
     ),
     linear-gradient(
       to top,
-      rgba(10, 18, 32, 0.45) 0%,
-      transparent 35%
+      rgba(10, 18, 32, 0.28) 0%,
+      transparent 28%
     );
   z-index: 1;
 }
