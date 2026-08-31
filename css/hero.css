@@ -267,7 +267,9 @@
   z-index: 3;
   width: 100%;
   overflow: hidden;
-  background: #0d1929;
+  background: rgba(10, 18, 32, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 1.25rem 0;
   flex-shrink: 0;
 }
