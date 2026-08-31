@@ -52,8 +52,8 @@
   /* ----------------------------------------
      Border Radius
      ---------------------------------------- */
-  --border-radius:    4px;
-  --border-radius-lg: 8px;
+  --border-radius:    10px;
+  --border-radius-lg: 16px;
 
   /* ----------------------------------------
      Spacing Scale
