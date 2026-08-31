@@ -92,14 +92,14 @@
 /* Headline */
 .hero-headline {
   font-family: var(--font-heading);
-  font-size: clamp(3rem, 5.5vw, 7rem);
+  font-size: clamp(2rem, 3.6vw, 5rem);
   font-weight: 800;
-  line-height: 0.92;
+  line-height: 0.95;
   letter-spacing: -0.02em;
   text-transform: uppercase;
   color: var(--color-text-on-dark);
-  margin-bottom: 1.75rem;
-  max-width: 1000px;
+  margin-bottom: 1.25rem;
+  max-width: 900px;
   text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
 }
 
