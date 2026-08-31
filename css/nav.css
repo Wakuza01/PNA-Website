@@ -15,10 +15,10 @@
   width: calc(100% - 40px);
   max-width: 680px;
   z-index: var(--z-nav);
-  background: rgba(20, 28, 46, 0.85);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(20, 28, 46, 0.18);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
   transition:
@@ -32,7 +32,7 @@
 }
 
 #site-nav.scrolled {
-  background: rgba(20, 28, 46, 0.92);
+  background: rgba(20, 28, 46, 0.82);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
   border-color: rgba(255, 255, 255, 0.10);
