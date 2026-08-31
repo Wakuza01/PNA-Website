@@ -267,9 +267,7 @@
   z-index: 3;
   width: 100%;
   overflow: hidden;
-  background: rgba(10, 18, 32, 0.35);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: transparent;
   padding: 1.25rem 0;
   flex-shrink: 0;
 }
@@ -306,10 +304,7 @@
   to   { transform: translateX(-50%); }
 }
 
-/* Pause on hover */
-.hero-ticker:hover .ticker-track {
-  animation-play-state: paused;
-}
+/* Never pause on hover */
 
 /* ============================================================
    PAGE HERO (inner pages — shorter)
