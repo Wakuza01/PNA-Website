@@ -312,6 +312,7 @@
 
 .page-hero {
   position: relative;
+  min-height: 500px;
   padding: 10rem 0 5rem;
   background: var(--color-surface);
   overflow: hidden;
