@@ -66,8 +66,8 @@
 /* Column headers */
 .footer-heading {
   font-family: var(--font-heading);
-  font-size: 0.7rem;
-  letter-spacing: 0.22em;
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   font-weight: 700;
   color: var(--color-text-primary);
