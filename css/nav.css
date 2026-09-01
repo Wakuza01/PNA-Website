@@ -135,15 +135,21 @@
   transition: color var(--transition-fast), background var(--transition-fast);
 }
 
-.nav-links a:hover,
-.nav-links a.is-active {
+.nav-links a:hover {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.1);
 }
 
-#site-nav.scrolled .nav-links a.is-active {
-  background: var(--color-secondary);
+.nav-links a.is-active {
   color: #ffffff;
+  background: var(--color-accent);
+  box-shadow: 0 0 12px rgba(38, 157, 204, 0.45);
+}
+
+#site-nav.scrolled .nav-links a.is-active {
+  background: var(--color-accent);
+  color: #ffffff;
+  box-shadow: 0 0 12px rgba(38, 157, 204, 0.45);
 }
 
 /* ----------------------------------------
