@@ -147,7 +147,7 @@
       if (!linkPath) return;
 
       try {
-        var url = new URL(linkPath, window.location.origin);
+        var url = new URL(linkPath, window.location.href);
         var path = url.pathname.replace(/\/$/, '').replace(/\.html$/, '') || '/';
         var normPath = path === '/index' ? '/' : path;
         if (normPath === currentPath) {
