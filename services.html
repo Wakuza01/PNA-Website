@@ -62,10 +62,15 @@
 @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){
   .svc-grid{grid-template-columns:1fr;}
-  .svc-card{aspect-ratio:auto;min-height:300px;}
-  /* Always show description on mobile — no hover needed */
-  .svc-card::before{background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.6) 50%,rgba(0,0,0,0.18) 100%);}
-  .svc-card-body{opacity:1;transform:translateY(0);max-height:none;padding-bottom:0.75rem;}
+  .svc-card{aspect-ratio:3/4;}
+  /* Tap to expand — controlled by JS .is-open class */
+  .svc-card.is-open{aspect-ratio:auto;min-height:320px;}
+  .svc-card.is-open::before{background:linear-gradient(to top,rgba(0,0,0,0.97) 0%,rgba(0,0,0,0.8) 55%,rgba(0,0,0,0.3) 100%);}
+  .svc-card.is-open .svc-card-body{opacity:1;transform:translateY(0);max-height:none;padding-bottom:0.85rem;}
+  .svc-card.is-open .svc-card-plus{background:#269dcc;border-color:#269dcc;transform:rotate(45deg);}
+  /* "Tap" hint below + button */
+  .svc-card-footer::after{content:'TAP FOR DETAILS';display:block;width:100%;text-align:right;font-size:0.55rem;letter-spacing:0.15em;color:rgba(255,255,255,0.45);padding-top:0.25rem;font-family:var(--font-body);}
+  .svc-card.is-open .svc-card-footer::after{display:none;}
 }
   </style>
 </head>
@@ -333,5 +338,27 @@
 <script src="js/scroll-effects.js" defer></script>
 <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
 <script src="js/theme.js" defer></script>
+<script>
+// Mobile: tap to expand service cards
+(function(){
+  if(!window.matchMedia('(max-width:560px)').matches)return;
+  var cards=document.querySelectorAll('.svc-card');
+  cards.forEach(function(card){
+    card.addEventListener('click',function(e){
+      if(!card.classList.contains('is-open')){
+        e.preventDefault();
+        cards.forEach(function(c){c.classList.remove('is-open');});
+        card.classList.add('is-open');
+      }
+      // if already open, follow the href naturally
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!e.target.closest('.svc-card')){
+      cards.forEach(function(c){c.classList.remove('is-open');});
+    }
+  });
+})();
+</script>
 </body>
 </html>

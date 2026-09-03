@@ -159,7 +159,7 @@
 
   /* ---- HERO ---- */
   .hero-headline {
-    font-size: clamp(3.5rem, 13vw, 5.5rem);
+    font-size: clamp(2rem, 8.5vw, 3rem);
   }
 
   /* Hide sub-services text on mobile — buttons below are sufficient */
@@ -295,7 +295,7 @@
     bottom: calc(0.75rem + 27px); /* last step bottom-pad + half bubble */
     width: 2px;
     background: var(--color-secondary);
-    opacity: 0.35;
+    opacity: 0.5;
     z-index: 0;
   }
 
@@ -315,15 +315,15 @@
     min-width: 0;
   }
 
-  /* Icon bubble — sits on top of the line */
+  /* Icon bubble — sits on top of the line; use page bg to mask line */
   .process-step-bubble {
     flex-shrink: 0;
     margin: 0;
     width: 54px;
     height: 54px;
     z-index: 1;
-    background: #ffffff;
-    border: 2px solid var(--color-secondary);
+    background: var(--color-primary) !important;
+    border: 2px solid var(--color-secondary) !important;
   }
 
   .process-step-bubble svg {
@@ -375,8 +375,9 @@
     font-size: clamp(2rem, 8vw, 3.5rem);
   }
 
-  /* ---- ABOUT: video/image column stacks above text on mobile ---- */
-  .about-video-wrap {
+  /* ---- ABOUT: image/video column stacks above text on mobile ---- */
+  .about-video-wrap,
+  .about-image-wrap {
     order: -1;
   }
 
@@ -460,8 +461,10 @@
 
   /* ---- SCROLL TO TOP ---- */
   .scroll-top-btn {
-    bottom: 1.25rem;
+    bottom: 2.5rem;
     right: 1.25rem;
+    width: 42px;
+    height: 42px;
   }
 
   /* ---- FEED HEADER ---- */
