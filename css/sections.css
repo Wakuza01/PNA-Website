@@ -775,15 +775,45 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+}
+
+/* ── Animated gradient border (blue) ── */
+@property --pcard-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes pcard-spin {
+  to { --pcard-angle: 360deg; }
 }
 
 .project-card {
   cursor: pointer;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
-  background: var(--color-surface-light);
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#e8e9ec, #e8e9ec) padding-box,
+    conic-gradient(
+      from var(--pcard-angle),
+      #0a2a4a 0%,
+      #0d5fa8 25%,
+      #269dcc 45%,
+      #5dd4f8 50%,
+      #269dcc 55%,
+      #0d5fa8 75%,
+      #0a2a4a 100%
+    ) border-box;
+  animation: pcard-spin 4s linear infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(38, 157, 204, 0.25);
 }
 
 .project-card img {
@@ -801,13 +831,12 @@
 }
 
 .project-card-caption {
-  font-family: var(--font-heading);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   color: var(--color-text-primary);
-  padding: 0.75rem 1rem;
+  padding: 0.85rem 1rem;
 }
 
 /* ============================================================
