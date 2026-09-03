@@ -160,59 +160,61 @@
     });
   }
 
-  // ─── Random Letter Swap Hover ─────────────────────────────────────────────────
+  // ─── Variable Font Cursor Proximity ──────────────────────────────────────────
   function initCharHover() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    var POOL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    var DURATION = 550; // ms for all chars to resolve
+    var MIN_WEIGHT  = 400;
+    var MAX_WEIGHT  = 800;
+    var MAX_DIST    = 100; // px — distance at which effect begins
 
     var links = document.querySelectorAll('.nav-links a');
     if (!links.length) return;
 
+    // Wrap every character in a span so we can measure individual positions
     links.forEach(function (link) {
-      var originalText = link.textContent;
-      var rafId = null;
-      var startTime = null;
-
-      function scramble(ts) {
-        if (!startTime) startTime = ts;
-        var elapsed = ts - startTime;
-        var chars = Array.from(originalText);
-        var out = '';
-
-        chars.forEach(function (char, i) {
-          if (char === ' ') { out += '\u00a0'; return; }
-          // Each character settles proportionally left-to-right
-          var settleAt = DURATION * (i / chars.length);
-          if (elapsed >= settleAt) {
-            out += char;
-          } else {
-            out += POOL[Math.floor(Math.random() * POOL.length)];
-          }
-        });
-
-        link.textContent = out;
-
-        if (elapsed < DURATION) {
-          rafId = requestAnimationFrame(scramble);
-        } else {
-          link.textContent = originalText;
-          rafId = null;
-        }
-      }
-
-      link.addEventListener('mouseenter', function () {
-        if (rafId) cancelAnimationFrame(rafId);
-        startTime = null;
-        rafId = requestAnimationFrame(scramble);
-      });
-
-      link.addEventListener('mouseleave', function () {
-        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-        link.textContent = originalText;
+      var text = link.textContent;
+      link.textContent = '';
+      Array.from(text).forEach(function (char) {
+        var span = document.createElement('span');
+        span.className = 'prox-char';
+        span.textContent = char === ' ' ? '\u00a0' : char;
+        link.appendChild(span);
       });
     });
+
+    var pendingRaf = null;
+    var mouseX = -999, mouseY = -999;
+
+    function update() {
+      pendingRaf = null;
+      document.querySelectorAll('.nav-links a .prox-char').forEach(function (span) {
+        var r   = span.getBoundingClientRect();
+        var cx  = r.left + r.width  / 2;
+        var cy  = r.top  + r.height / 2;
+        var d   = Math.sqrt((mouseX - cx) * (mouseX - cx) + (mouseY - cy) * (mouseY - cy));
+        var t   = Math.max(0, 1 - d / MAX_DIST);
+        var w   = Math.round(MIN_WEIGHT + t * (MAX_WEIGHT - MIN_WEIGHT));
+        span.style.fontWeight = w;
+      });
+    }
+
+    document.addEventListener('mousemove', function (e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!pendingRaf) pendingRaf = requestAnimationFrame(update);
+    });
+
+    // Reset all to normal weight when mouse leaves the nav
+    var nav = document.querySelector('.nav-links');
+    if (nav) {
+      nav.addEventListener('mouseleave', function () {
+        mouseX = -999; mouseY = -999;
+        document.querySelectorAll('.nav-links a .prox-char').forEach(function (span) {
+          span.style.fontWeight = MIN_WEIGHT;
+        });
+      });
+    }
   }
 
   // ─── Boot ────────────────────────────────────────────────────────────────────

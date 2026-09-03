@@ -140,6 +140,11 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+.prox-char {
+  display: inline-block;
+  transition: font-weight 0.08s ease;
+}
+
 .nav-links a.is-active {
   color: #ffffff;
   background: var(--color-accent);
