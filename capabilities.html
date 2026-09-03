@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script>!function(){var t=localStorage.getItem('pna-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}();</script>
   <link rel="icon" type="image/png" href="assets/images/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Capabilities | Pinion &amp; Adams Fabricators</title>
@@ -60,6 +61,10 @@
     <div class="nav-cta-wrap">
       <a href="contact.html" class="btn btn--primary btn--sm"><span>Request a Quote</span></a>
     </div>
+    <button class="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
     <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-mobile-overlay">
       <span class="hamburger-bar"></span><span class="hamburger-bar"></span><span class="hamburger-bar"></span>
     </button>
@@ -75,6 +80,11 @@
       <li data-compact><a href="index.html">Home</a></li><li data-compact><a href="about.html">About</a></li><li data-compact><a href="services.html">Services</a></li><li><a href="facilities.html">Facilities</a></li><li><a href="projects.html">Projects</a></li><li><a href="training-academy.html">Training Academy</a></li><li><a href="blog.html">Blog</a></li><li data-compact><a href="contact.html">Contact</a></li>
     </ul>
     
+    <button class="theme-toggle theme-toggle--mobile" aria-label="Switch to dark mode" aria-pressed="false">
+      <svg class="theme-icon theme-icon--sun" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="theme-icon theme-icon--moon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <span class="theme-toggle-label">Toggle theme</span>
+    </button>
   </nav>
 </div>
 
@@ -344,5 +354,6 @@
 <script src="js/animations.js" defer></script>
 <script src="js/scroll-effects.js" defer></script>
 <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+<script src="js/theme.js" defer></script>
 </body>
 </html>
