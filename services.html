@@ -60,7 +60,13 @@
 .svc-card-plus{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;font-weight:300;flex-shrink:0;transition:background 0.3s ease,transform 0.3s ease,border-color 0.3s ease;}
 .svc-card:hover .svc-card-plus{background:#269dcc;border-color:#269dcc;transform:rotate(45deg);}
 @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.svc-grid{grid-template-columns:1fr;}.svc-card{aspect-ratio:4/3;}}
+@media(max-width:560px){
+  .svc-grid{grid-template-columns:1fr;}
+  .svc-card{aspect-ratio:auto;min-height:300px;}
+  /* Always show description on mobile — no hover needed */
+  .svc-card::before{background:linear-gradient(to top,rgba(0,0,0,0.96) 0%,rgba(0,0,0,0.6) 50%,rgba(0,0,0,0.18) 100%);}
+  .svc-card-body{opacity:1;transform:translateY(0);max-height:none;padding-bottom:0.75rem;}
+}
   </style>
 </head>
 <body>
@@ -137,11 +143,6 @@
             <span class="svc-card-chip">3D CAD modelling</span>
             <span class="svc-card-chip">DFM review</span>
             <span class="svc-card-chip">Reverse engineering</span>
-          </div>
-          <div class="footer-theme-row">
-            <svg class="footer-theme-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-            <button class="theme-toggle footer-switch" aria-label="Toggle dark mode" aria-pressed="false"><span class="switch-thumb"></span></button>
-            <svg class="footer-theme-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           </div>
 
         </div>
@@ -304,6 +305,11 @@
             <a href="https://www.facebook.com/PinionandAdamsFabricators" class="footer-social-circle" target="_blank" rel="noopener noreferrer" aria-label="Follow P&amp;A on Facebook">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
             </a>
+          </div>
+          <div class="footer-theme-row">
+            <svg class="footer-theme-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            <button class="theme-toggle footer-switch" aria-label="Toggle dark mode" aria-pressed="false"><span class="switch-thumb"></span></button>
+            <svg class="footer-theme-icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           </div>
         </div>
       </div>

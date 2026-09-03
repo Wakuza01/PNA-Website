@@ -152,13 +152,19 @@
     display: flex;
   }
 
-  /* ---- HERO ---- */
-  .hero-headline {
-    font-size: clamp(2.5rem, 10vw, 4.5rem);
+  /* Hide theme toggle in nav bar; keep .footer-switch visible */
+  .theme-toggle:not(.footer-switch) {
+    display: none;
   }
 
+  /* ---- HERO ---- */
+  .hero-headline {
+    font-size: clamp(3.5rem, 13vw, 5.5rem);
+  }
+
+  /* Hide sub-services text on mobile — buttons below are sufficient */
   .hero-sub {
-    font-size: 0.95rem;
+    display: none;
   }
 
   .hero-ctas {
@@ -369,13 +375,27 @@
     font-size: clamp(2rem, 8vw, 3.5rem);
   }
 
+  /* ---- ABOUT: video/image column stacks above text on mobile ---- */
+  .about-video-wrap {
+    order: -1;
+  }
+
+  /* ---- ABOUT: hide 4-image mosaic gallery on mobile ---- */
+  .about-sec-4 > div:first-child {
+    display: none;
+  }
+
   /* ---- TIMELINE ---- */
   .timeline-wrap {
     padding-left: 2rem;
   }
 
+  /* Align dot centre with the vertical line at left: 8px of .timeline-wrap.
+     Wrap padding-left = 2rem (32px), item padding-left = 1rem (16px).
+     Dot is 12px wide (6px radius). Centre must land at 8px + 1px (half line) = 9px.
+     left = 9px − 32px − 16px − 6px = −45px ≈ calc(−3rem + 3px) */
   .timeline-item::before {
-    left: -1.85rem;
+    left: calc(-3rem + 3px);
   }
 
   /* ---- VMV ---- */
@@ -408,6 +428,15 @@
   }
 
   /* ---- CTA BANNER ---- */
+  .cta-banner {
+    padding: 3rem 0;
+  }
+
+  .cta-banner p {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+  }
+
   .cta-banner-btns {
     flex-direction: column;
     align-items: center;
@@ -417,6 +446,11 @@
     width: 100%;
     max-width: 320px;
     justify-content: center;
+  }
+
+  /* ---- FACILITIES: transport thumbnails ---- */
+  .transport-thumbs {
+    grid-template-columns: repeat(2, 1fr) !important;
   }
 
   /* ---- SHARE BUTTONS ---- */
