@@ -188,6 +188,60 @@
   display: block;
 }
 
+/* ── Theme Toggle Switch ── */
+.footer-theme-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.footer-theme-icon {
+  width: 17px;
+  height: 17px;
+  stroke: #9ca3af;
+  flex-shrink: 0;
+}
+
+.footer-switch {
+  width: 46px;
+  height: 26px;
+  border-radius: 100px;
+  background: #374151;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease;
+  flex-shrink: 0;
+  display: block;
+}
+
+.switch-thumb {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: transform 0.25s ease;
+  display: block;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .footer-switch {
+  background: #269dcc;
+}
+
+[data-theme="dark"] .switch-thumb {
+  transform: translateX(20px);
+}
+
+[data-theme="dark"] .footer-theme-icon {
+  stroke: #8898aa;
+}
+
 /* ── Bottom bar ── */
 .footer-bottom {
   background: transparent;
