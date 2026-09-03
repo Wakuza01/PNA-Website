@@ -55,7 +55,11 @@
   /* Footer: 2x2 */
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 2.5rem;
+    gap: 2rem;
+  }
+
+  .footer-stay-title {
+    font-size: 2rem;
   }
 
   /* Blog: remove sidebar */
@@ -202,10 +206,19 @@
     gap: 2rem;
   }
 
+  .footer-stay-title {
+    font-size: 1.75rem;
+  }
+
+  .footer-newsletter {
+    max-width: 100%;
+  }
+
   .footer-bottom-inner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5rem;
+    text-align: center;
   }
 
   /* ---- BLOG ---- */
