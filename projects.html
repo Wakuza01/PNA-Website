@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
@@ -325,5 +325,31 @@
 <script src="js/animations.js" defer></script>
 <script src="js/scroll-effects.js" defer></script>
 <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.project-card').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r   = card.getBoundingClientRect();
+        var x   = e.clientX - r.left;
+        var y   = e.clientY - r.top;
+        var cx  = r.width  / 2;
+        var cy  = r.height / 2;
+        var rotY =  ((x - cx) / cx) * 12;
+        var rotX = -((y - cy) / cy) *  9;
+        card.style.transform = 'perspective(900px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale3d(1.03,1.03,1.03)';
+        card.style.setProperty('--shine-x', x + 'px');
+        card.style.setProperty('--shine-y', y + 'px');
+      });
+      card.addEventListener('mouseleave', function () {
+        card.style.transform = '';
+        card.style.setProperty('--shine-x', '50%');
+        card.style.setProperty('--shine-y', '50%');
+      });
+    });
+  });
+}());
+</script>
 </body>
 </html>

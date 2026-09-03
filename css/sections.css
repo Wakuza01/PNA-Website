@@ -779,7 +779,7 @@
   gap: 1.5rem;
 }
 
-/* ── Animated gradient border (blue) ── */
+/* ── Animated gradient border + 3D tilt ── */
 @property --pcard-angle {
   syntax: '<angle>';
   initial-value: 0deg;
@@ -794,26 +794,51 @@
   cursor: pointer;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
+  position: relative;
   border: 2px solid transparent;
   background:
     linear-gradient(#e8e9ec, #e8e9ec) padding-box,
     conic-gradient(
       from var(--pcard-angle),
-      #0a2a4a 0%,
-      #0d5fa8 25%,
-      #269dcc 45%,
-      #5dd4f8 50%,
-      #269dcc 55%,
-      #0d5fa8 75%,
-      #0a2a4a 100%
+      #030d1a 0%,
+      #0d5fa8 22%,
+      #269dcc 42%,
+      #9ef8ff 50%,
+      #269dcc 58%,
+      #0d5fa8 78%,
+      #030d1a 100%
     ) border-box;
-  animation: pcard-spin 4s linear infinite;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pcard-spin 3s linear infinite;
+  transform-style: preserve-3d;
+  transition: box-shadow 0.25s ease;
+  will-change: transform;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(38, 157, 204, 0.25);
+  box-shadow:
+    0 24px 60px rgba(38, 157, 204, 0.4),
+    0 0 40px rgba(38, 157, 204, 0.18);
+}
+
+/* Cursor spotlight overlay */
+.project-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--shine-x, 50%) var(--shine-y, 50%),
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(38, 157, 204, 0.07) 40%,
+    transparent 70%
+  );
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.project-card:hover::after {
+  opacity: 1;
 }
 
 .project-card img {
@@ -831,10 +856,11 @@
 }
 
 .project-card-caption {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.92rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--color-text-primary);
   padding: 0.85rem 1rem;
 }
