@@ -159,7 +159,8 @@
 
   /* ---- HERO ---- */
   .hero-headline {
-    font-size: clamp(2.4rem, 10.5vw, 3.2rem);
+    font-size: clamp(3rem, 14vw, 4.5rem);
+    line-height: 0.95;
   }
 
   /* Hide sub-services text on mobile — buttons below are sufficient */
