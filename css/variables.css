@@ -136,9 +136,13 @@
   background-image: radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
 }
 
-[data-theme="dark"] .footer-stay-title,
 [data-theme="dark"] .footer-heading {
   color: #e2e8f0;
+}
+
+[data-theme="dark"] .footer-iso {
+  border-color: rgba(255, 255, 255, 0.10);
+  color: #8898aa;
 }
 
 [data-theme="dark"] .footer-tagline,

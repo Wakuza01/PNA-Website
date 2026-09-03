@@ -21,79 +21,50 @@
   gap: 3rem;
 }
 
-/* ── Column 1: Stay Connected ── */
+/* ── Column 1: Brand ── */
 .footer-brand {}
 
-.footer-stay-title {
-  font-family: var(--font-body);
-  font-size: 2.75rem;
-  font-weight: 800;
-  line-height: 1.05;
-  color: #111827;
-  margin-bottom: 1rem;
-  letter-spacing: -0.02em;
+.footer-logo {
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 1.25rem;
+}
+
+.footer-logo img {
+  height: 44px;
+  width: auto;
+  display: block;
 }
 
 .footer-tagline {
   color: #6b7280;
   font-size: 0.875rem;
   line-height: 1.75;
-  margin-bottom: 1.5rem;
-  max-width: 260px;
+  margin-bottom: 1.25rem;
+  max-width: 270px;
 }
 
-/* Newsletter form */
-.footer-newsletter {
-  display: flex;
-  max-width: 290px;
-}
-
-.footer-newsletter-input {
-  flex: 1;
-  padding: 0.72rem 1rem;
-  border: 1.5px solid #e5e7eb;
-  border-right: none;
-  border-radius: 8px 0 0 8px;
-  font-size: 0.875rem;
-  background: #f9fafb;
-  color: #111827;
-  outline: none;
-  font-family: var(--font-body);
-  transition: border-color 0.2s ease;
-}
-
-.footer-newsletter-input::placeholder {
-  color: #9ca3af;
-}
-
-.footer-newsletter-input:focus {
-  border-color: #269dcc;
-  background: #ffffff;
-}
-
-.footer-newsletter-btn {
-  padding: 0.72rem 1.1rem;
-  background: #111827;
-  color: #ffffff;
-  border: 1.5px solid #111827;
-  border-radius: 0 8px 8px 0;
-  cursor: pointer;
-  display: flex;
+.footer-iso {
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.85rem;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.footer-iso svg {
+  width: 14px;
+  height: 14px;
+  stroke: #269dcc;
+  fill: none;
+  stroke-width: 2;
   flex-shrink: 0;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.footer-newsletter-btn:hover {
-  background: #269dcc;
-  border-color: #269dcc;
-}
-
-.footer-newsletter-btn svg {
-  width: 17px;
-  height: 17px;
-  display: block;
 }
 
 /* ── Column headings ── */
