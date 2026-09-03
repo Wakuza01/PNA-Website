@@ -74,6 +74,37 @@
   animation: text-reveal 0.9s 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
+/* ---- TYPEWRITER LOOP ---- */
+.tw-wrap {
+  display: inline-flex;
+  align-items: center;
+  vertical-align: bottom;
+  white-space: nowrap;
+}
+.tw-loop {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  /* max-width driven by JS */
+}
+.tw-text {
+  display: inline-block;
+}
+.tw-cursor {
+  display: inline-block;
+  width: 4px;
+  height: 0.68em;
+  background: #00c8ff;
+  margin-left: 6px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  animation: tw-blink 0.8s ease-in-out infinite alternate;
+}
+@keyframes tw-blink {
+  from { opacity: 1; }
+  to   { opacity: 0.15; }
+}
+
 /* Hero sub and CTAs */
 .hero-sub {
   opacity: 0;
