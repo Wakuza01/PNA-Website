@@ -41,70 +41,25 @@
   </script>
 
   <style>
-/* ── Mobile image per service (hidden on desktop) ─────────────── */
-.si-mobile-img{display:none;}
-/* ── Services split layout ───────────────────────────────────── */
-.services-split{display:grid;grid-template-columns:1fr 1fr;align-items:start;border-radius:0;}
-.services-image-panel{position:sticky;top:0;height:100vh;overflow:hidden;border-radius:0;}
-.sip-inner{position:relative;width:100%;height:100%;}
-.sip-img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity 0.35s ease,transform 0.55s ease;}
-.sip-img.is-fading{opacity:0;transform:scale(1.04);}
-.sip-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(10,18,35,0.45) 0%,transparent 55%),linear-gradient(to top,rgba(10,18,35,0.75) 0%,transparent 45%);pointer-events:none;}
-.sip-label{position:absolute;bottom:2.75rem;left:2.75rem;z-index:2;}
-.sip-service-num{font-family:var(--font-body);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--color-secondary);display:block;margin-bottom:0.5rem;font-weight:600;}
-.sip-service-name{font-family:var(--font-heading);font-size:1.35rem;font-weight:700;text-transform:uppercase;color:#fff;letter-spacing:0.01em;transition:opacity 0.25s ease;}
-.sip-index{position:absolute;top:2.75rem;left:2.75rem;z-index:2;display:flex;flex-direction:column;gap:0.4rem;}
-.sip-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.2);transition:background 0.3s,transform 0.3s;}
-.sip-dot.is-active{background:var(--color-secondary);transform:scale(1.5);}
-/* ── Service scroll column ───────────────────────────────────── */
-.services-scroll-col{overflow:hidden;height:100vh;border-radius:0;}
-.si-slider{will-change:transform;transition:transform 0.65s cubic-bezier(0.76,0,0.24,1);}
-.service-item{height:100vh;padding:5rem 4rem 4rem;border-bottom:1px solid var(--color-border);display:flex;flex-direction:column;justify-content:flex-start;position:relative;}
-.service-item::after{content:'';position:absolute;top:0;left:0;width:0;height:2px;background:var(--color-secondary);transition:width 0.55s ease;}
-.service-item.is-active::after{width:100%;}
-.si-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;}
-.si-num{font-family:var(--font-body);font-size:0.6rem;letter-spacing:0.25em;color:var(--color-secondary);font-weight:700;flex-shrink:0;}
-.si-rule{flex:1;height:1px;background:var(--color-border);}
-.si-title{font-family:var(--font-heading);font-size:clamp(2.25rem,3.2vw,3.5rem);font-weight:800;text-transform:uppercase;color:var(--color-text-primary);letter-spacing:-0.02em;line-height:1;margin-bottom:1.75rem;}
-.si-desc{font-size:0.95rem;line-height:1.9;color:var(--color-text-muted);margin-bottom:2rem;max-width:520px;}
-.si-chips{display:flex;flex-wrap:wrap;gap:0.5rem;}
-.si-chip{display:inline-flex;align-items:center;gap:0.4rem;padding:0.35rem 0.875rem;background:var(--color-surface-light);border:1px solid var(--color-border);border-radius:100px;font-size:0.72rem;color:var(--color-text-muted);font-weight:500;}
-.si-chip::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--color-secondary);flex-shrink:0;}
-.si-cta{margin-top:2rem;}
-/* ── Responsive ──────────────────────────────────────────────── */
-@media(max-width:900px){
-  .services-split{grid-template-columns:1fr;}
-  .services-image-panel{display:none;}
-  .services-scroll-col{border-left:none;height:auto;overflow:visible;padding:1.5rem 1rem;background:var(--color-surface);}
-  .si-slider{transform:none!important;transition:none;display:flex;flex-direction:column;gap:1.5rem;}
-  .service-item{
-    height:auto;
-    padding:0 0 2rem 0;
-    border:1px solid var(--color-border);
-    border-radius:var(--border-radius-lg);
-    background:var(--color-primary);
-    box-shadow:0 2px 12px rgba(0,0,0,0.06);
-    overflow:hidden;
-  }
-  .service-item.is-active::after{display:none;}
-  .si-eyebrow,.si-title,.si-desc,.si-chips,.si-cta{padding-left:1.25rem;padding-right:1.25rem;}
-  .si-mobile-img{
-    display:block;
-    width:100%;
-    height:220px;
-    overflow:hidden;
-    margin-bottom:1.5rem;
-  }
-  .si-mobile-img img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    filter:brightness(0.85);
-  }
-  .si-title{font-size:clamp(1.75rem,6vw,2.5rem);}
-  .si-desc{font-size:0.9rem;}
-}
+/* ── Linear Card Grid ────────────────────────────────────────── */
+.svc-grid-section{background:#0c0c0e;padding:3rem 2rem 5rem;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1400px;margin:0 auto;}
+.svc-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;cursor:pointer;background:#111;}
+.svc-card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.4s ease;z-index:0;}
+.svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.35) 45%,transparent 100%);z-index:1;transition:background 0.4s ease;}
+.svc-card:hover::before{background:linear-gradient(to top,rgba(0,0,0,0.97) 0%,rgba(0,0,0,0.65) 55%,rgba(0,0,0,0.15) 100%);}
+.svc-card:hover .svc-card-img{transform:scale(1.06);filter:brightness(0.8);}
+.svc-card-body{position:relative;z-index:2;padding:0 1.5rem 0;opacity:0;transform:translateY(12px);transition:opacity 0.3s ease,transform 0.3s ease;max-height:0;overflow:hidden;}
+.svc-card:hover .svc-card-body{opacity:1;transform:translateY(0);max-height:300px;}
+.svc-card-desc{font-size:0.78rem;line-height:1.7;color:rgba(255,255,255,0.72);margin-bottom:0.85rem;}
+.svc-card-chips{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.75rem;}
+.svc-card-chip{font-size:0.62rem;font-weight:500;padding:0.2rem 0.55rem;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);border-radius:100px;color:rgba(255,255,255,0.65);white-space:nowrap;}
+.svc-card-footer{position:relative;z-index:2;padding:1rem 1.4rem 1.4rem;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.svc-card-name{font-family:var(--font-heading);font-size:1rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.04em;line-height:1.2;}
+.svc-card-plus{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.12);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;font-weight:300;flex-shrink:0;transition:background 0.3s ease,transform 0.3s ease,border-color 0.3s ease;}
+.svc-card:hover .svc-card-plus{background:#269dcc;border-color:#269dcc;transform:rotate(45deg);}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.svc-grid{grid-template-columns:1fr;}.svc-card{aspect-ratio:4/3;}}
   </style>
 </head>
 <body>
@@ -166,271 +121,120 @@
     </div>
   </section>
 
-  <!-- SERVICES SPLIT LAYOUT -->
-  <section class="services-split" aria-label="Our services">
+  <!-- SERVICES CARD GRID -->
+  <section class="svc-grid-section" aria-label="Our services">
+    <div class="svc-grid">
 
-    <!-- LEFT: Sticky image panel -->
-    <div class="services-image-panel" aria-hidden="true">
-      <div class="sip-inner">
-        <img id="sip-img" class="sip-img"
-             src="assets/images/services/design-engineering.jpg"
-             alt="Current service visual">
-        <div class="sip-overlay"></div>
-        <div class="sip-index" id="sip-index">
-          <span class="sip-dot is-active"></span>
-          <span class="sip-dot"></span>
-          <span class="sip-dot"></span>
-          <span class="sip-dot"></span>
-          <span class="sip-dot"></span>
-          <span class="sip-dot"></span>
+      <!-- 01 Design & Engineering -->
+      <a class="svc-card" href="contact.html" id="design" aria-label="Design and Engineering — Request a quote">
+        <img class="svc-card-img" src="assets/images/services/design-engineering.jpg" alt="Design and Engineering" loading="lazy">
+        <div class="svc-card-body">
+          <p class="svc-card-desc">Submit your CAD files (DXF, DWG, STEP, or IGES) or brief us from concept. Our engineering team produces full technical drawings, BOMs, and a DFM review — with client sign-off before a single piece of material is cut.</p>
+          <div class="svc-card-chips">
+            <span class="svc-card-chip">DXF / DWG / STEP / IGES</span>
+            <span class="svc-card-chip">3D CAD modelling</span>
+            <span class="svc-card-chip">DFM review</span>
+            <span class="svc-card-chip">Reverse engineering</span>
+          </div>
         </div>
-        <div class="sip-label">
-          <span class="sip-service-num" id="sip-num">01 / 06</span>
-          <span class="sip-service-name" id="sip-name">Design &amp; Engineering</span>
+        <div class="svc-card-footer">
+          <span class="svc-card-name">Design &amp; Engineering</span>
+          <span class="svc-card-plus" aria-hidden="true">+</span>
         </div>
-      </div>
-    </div>
+      </a>
 
-    <!-- RIGHT: Scrolling service items -->
-    <div class="services-scroll-col">
-    <div class="si-slider" id="si-slider">
+      <!-- 02 Sheet Metal Fabrication -->
+      <a class="svc-card" href="contact.html" id="fabrication" aria-label="Sheet Metal Fabrication — Request a quote">
+        <img class="svc-card-img" src="assets/images/services/sheet-metal-fabrication.jpg" alt="Sheet Metal Fabrication" loading="lazy">
+        <div class="svc-card-body">
+          <p class="svc-card-desc">CNC laser cutting and AMADA press brake forming across mild steel, stainless steel, and aluminium — 1mm to 20mm plate. Tight tolerances and consistent results on high-volume repeat production.</p>
+          <div class="svc-card-chips">
+            <span class="svc-card-chip">CNC laser cutting</span>
+            <span class="svc-card-chip">AMADA press brake</span>
+            <span class="svc-card-chip">Plate rolling</span>
+            <span class="svc-card-chip">Mild / SS / Aluminium</span>
+          </div>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-card-name">Sheet Metal Fabrication</span>
+          <span class="svc-card-plus" aria-hidden="true">+</span>
+        </div>
+      </a>
 
-      <div class="service-item is-active" id="design"
-           data-img="assets/images/services/design-engineering.jpg"
-           data-name="Design &amp; Engineering"
-           data-num="01 / 06">
-        <div class="si-mobile-img"><img src="assets/images/services/design-engineering.jpg" alt="Design &amp; Engineering" loading="lazy"></div>
-        <div class="si-eyebrow">
-          <span class="si-num">01</span>
-          <span class="si-rule"></span>
+      <!-- 03 Manufacturing & Welding -->
+      <a class="svc-card" href="contact.html" id="welding" aria-label="Manufacturing and Welding — Request a quote">
+        <img class="svc-card-img" src="assets/images/services/welding.jpg" alt="Manufacturing and Welding" loading="lazy">
+        <div class="svc-card-body">
+          <p class="svc-card-desc">MIG, TIG, and arc welding from light gauge sheet to heavy structural assemblies. SANS-compliant procedures with full production traceability through MIE Trak — every weld is logged and auditable.</p>
+          <div class="svc-card-chips">
+            <span class="svc-card-chip">MIG welding</span>
+            <span class="svc-card-chip">TIG welding</span>
+            <span class="svc-card-chip">Structural assembly</span>
+            <span class="svc-card-chip">SANS-compliant</span>
+          </div>
         </div>
-        <h2 class="si-title">Design &amp;<br>Engineering</h2>
-        <p class="si-desc">Submit your CAD files (DXF, DWG, STEP, or IGES) or brief us from concept. Our in-house engineering team produces full technical drawings, BOMs, and a design-for-manufacture review — with client sign-off before a single piece of material is cut.</p>
-        <div class="si-chips">
-          <span class="si-chip">DXF / DWG / STEP / IGES</span>
-          <span class="si-chip">3D CAD modelling</span>
-          <span class="si-chip">Technical drawings &amp; BOMs</span>
-          <span class="si-chip">DFM review</span>
-          <span class="si-chip">Reverse engineering</span>
-          <span class="si-chip">Material selection advice</span>
+        <div class="svc-card-footer">
+          <span class="svc-card-name">Manufacturing &amp; Welding</span>
+          <span class="svc-card-plus" aria-hidden="true">+</span>
         </div>
-      </div>
+      </a>
 
-      <div class="service-item" id="fabrication"
-           data-img="assets/images/Bending.jpg"
-           data-name="Sheet Metal Fabrication"
-           data-num="02 / 06">
-        <div class="si-mobile-img"><img src="assets/images/Bending.jpg" alt="Sheet Metal Fabrication" loading="lazy"></div>
-        <div class="si-eyebrow">
-          <span class="si-num">02</span>
-          <span class="si-rule"></span>
+      <!-- 04 CNC Services -->
+      <a class="svc-card" href="contact.html" id="cnc" aria-label="CNC Services — Request a quote">
+        <img class="svc-card-img" src="assets/images/services/cnc-machining.jpg" alt="CNC Services" loading="lazy">
+        <div class="svc-card-body">
+          <p class="svc-card-desc">CNC laser profiling, turret punching, and press brake programming from your CAD file. CAD to finished component in one facility — tight tolerances across high-volume repeat runs with no dimensional drift.</p>
+          <div class="svc-card-chips">
+            <span class="svc-card-chip">CNC laser profiling</span>
+            <span class="svc-card-chip">Turret punch</span>
+            <span class="svc-card-chip">Tight tolerances</span>
+            <span class="svc-card-chip">CAD-to-component</span>
+          </div>
         </div>
-        <h2 class="si-title">Sheet Metal<br>Fabrication</h2>
-        <p class="si-desc">CNC laser cutting and AMADA press brake forming across mild steel, stainless steel, and aluminium — 1mm to 20mm plate. Complex profiles, tight tolerances, and consistent results on high-volume repeat production.</p>
-        <div class="si-chips">
-          <span class="si-chip">CNC laser cutting</span>
-          <span class="si-chip">Plasma cutting</span>
-          <span class="si-chip">AMADA press brake bending</span>
-          <span class="si-chip">Plate rolling</span>
-          <span class="si-chip">Punching &amp; nibbling</span>
-          <span class="si-chip">Mild steel / stainless / aluminium</span>
+        <div class="svc-card-footer">
+          <span class="svc-card-name">CNC Services</span>
+          <span class="svc-card-plus" aria-hidden="true">+</span>
         </div>
-      </div>
+      </a>
 
-      <div class="service-item" id="welding"
-           data-img="assets/images/Robotic Welding.jpg"
-           data-name="Manufacturing &amp; Welding"
-           data-num="03 / 06">
-        <div class="si-mobile-img"><img src="assets/images/Robotic Welding.jpg" alt="Manufacturing &amp; Welding" loading="lazy"></div>
-        <div class="si-eyebrow">
-          <span class="si-num">03</span>
-          <span class="si-rule"></span>
+      <!-- 05 Epoxy Powder Coating -->
+      <a class="svc-card" href="contact.html" id="coating" aria-label="Epoxy Powder Coating — Request a quote">
+        <img class="svc-card-img" src="assets/images/services/powder-coating.jpg" alt="Epoxy Powder Coating" loading="lazy">
+        <div class="svc-card-body">
+          <p class="svc-card-desc">In-house epoxy powder coating with pre-treatment and phosphating — full RAL colour range, corrosion-rated finish. No outsourcing means no delays and single-point accountability from fabrication to final coat.</p>
+          <div class="svc-card-chips">
+            <span class="svc-card-chip">Full RAL range</span>
+            <span class="svc-card-chip">Phosphating</span>
+            <span class="svc-card-chip">Corrosion-rated</span>
+            <span class="svc-card-chip">In-house</span>
+          </div>
         </div>
-        <h2 class="si-title">Manufacturing<br>&amp; Welding</h2>
-        <p class="si-desc">MIG, TIG, and arc welding from light gauge sheet to heavy structural assemblies. All procedures SANS-compliant. Certified welders with full production traceability through MIE Trak — every weld job is logged and auditable.</p>
-        <div class="si-chips">
-          <span class="si-chip">MIG welding</span>
-          <span class="si-chip">TIG welding</span>
-          <span class="si-chip">Arc welding</span>
-          <span class="si-chip">Structural assembly</span>
-          <span class="si-chip">SANS-compliant procedures</span>
-          <span class="si-chip">Certified &amp; auditable</span>
+        <div class="svc-card-footer">
+          <span class="svc-card-name">Epoxy Powder Coating</span>
+          <span class="svc-card-plus" aria-hidden="true">+</span>
         </div>
-      </div>
+      </a>
 
-      <div class="service-item" id="cnc"
-           data-img="assets/images/Laser punch combination.jpg"
-           data-name="CNC Services"
-           data-num="04 / 06">
-        <div class="si-mobile-img"><img src="assets/images/Laser punch combination.jpg" alt="CNC Services" loading="lazy"></div>
-        <div class="si-eyebrow">
-          <span class="si-num">04</span>
-          <span class="si-rule"></span>
+      <!-- 06 Training Academy -->
+      <a class="svc-card" href="training-academy.html" id="training" aria-label="Training Academy — Learn more">
+        <img class="svc-card-img" src="assets/images/services/training-academy.jpg" alt="P&A Sheet Metal Training Academy" loading="lazy">
+        <div class="svc-card-body">
+          <p class="svc-card-desc">The P&amp;A Sheet Metal Training Academy is QCTO and MERSETA accredited — South Africa's first. We develop the next generation of fabricators with hands-on, NQF-aligned qualifications.</p>
+          <div class="svc-card-chips">
+            <span class="svc-card-chip">QCTO accredited</span>
+            <span class="svc-card-chip">MERSETA accredited</span>
+            <span class="svc-card-chip">NQF-aligned</span>
+            <span class="svc-card-chip">SA's first</span>
+          </div>
         </div>
-        <h2 class="si-title">CNC<br>Services</h2>
-        <p class="si-desc">CNC laser profiling, turret punching, and press brake programming from your CAD file — CAD to finished component in one facility. Tight tolerances maintained across high-volume repeat runs with no dimensional drift.</p>
-        <div class="si-chips">
-          <span class="si-chip">CNC laser profiling</span>
-          <span class="si-chip">CNC turret punch</span>
-          <span class="si-chip">CNC press brake programming</span>
-          <span class="si-chip">Tight tolerance work</span>
-          <span class="si-chip">High-volume repeat runs</span>
-          <span class="si-chip">CAD-to-component workflow</span>
+        <div class="svc-card-footer">
+          <span class="svc-card-name">Training Academy</span>
+          <span class="svc-card-plus" aria-hidden="true">+</span>
         </div>
-      </div>
+      </a>
 
-      <div class="service-item" id="coating"
-           data-img="assets/images/Powder coating 1.jpg"
-           data-name="Epoxy Powder Coating"
-           data-num="05 / 06">
-        <div class="si-mobile-img"><img src="assets/images/Powder coating 1.jpg" alt="Epoxy Powder Coating" loading="lazy"></div>
-        <div class="si-eyebrow">
-          <span class="si-num">05</span>
-          <span class="si-rule"></span>
-        </div>
-        <h2 class="si-title">Epoxy Powder<br>Coating</h2>
-        <p class="si-desc">In-house epoxy powder coating with pre-treatment and phosphating — full RAL colour range, corrosion-rated finish. No outsourcing means no delays, no quality handoffs, and single-point accountability from fabrication through to final coat.</p>
-        <div class="si-chips">
-          <span class="si-chip">Epoxy powder coating</span>
-          <span class="si-chip">Pre-treatment &amp; phosphating</span>
-          <span class="si-chip">Full RAL colour range</span>
-          <span class="si-chip">Corrosion-rated finish</span>
-          <span class="si-chip">In-house — no third-party delays</span>
-          <span class="si-chip">Industrial &amp; architectural spec</span>
-        </div>
-      </div>
-
-      <div class="service-item" id="training"
-           data-img="assets/images/Apprentices.jpg"
-           data-name="Training Academy"
-           data-num="06 / 06">
-        <div class="si-mobile-img"><img src="assets/images/Apprentices.jpg" alt="Training Academy" loading="lazy"></div>
-        <div class="si-eyebrow">
-          <span class="si-num">06</span>
-          <span class="si-rule"></span>
-        </div>
-        <h2 class="si-title">Training<br>Academy</h2>
-        <p class="si-desc">The P&amp;A Sheet Metal Training Academy is QCTO and MERSETA accredited — South Africa's first. We develop the next generation of fabricators with hands-on, NQF-aligned qualifications.</p>
-        <div class="si-chips">
-          <span class="si-chip">QCTO accredited</span>
-          <span class="si-chip">MERSETA accredited</span>
-          <span class="si-chip">South Africa's first</span>
-          <span class="si-chip">Formal apprenticeships</span>
-          <span class="si-chip">NQF-aligned certification</span>
-          <span class="si-chip">KZN Premier initiative</span>
-        </div>
-        <div class="si-cta">
-          <a href="training-academy.html" class="btn btn--primary"><span>Visit the Academy</span></a>
-        </div>
-      </div>
-
-    </div>
     </div>
   </section>
-
-  <script>
-  (function(){
-    var section = document.querySelector('.services-split');
-    var slider  = document.getElementById('si-slider');
-    var imgEl   = document.getElementById('sip-img');
-    var nameEl  = document.getElementById('sip-name');
-    var numEl   = document.getElementById('sip-num');
-    var dots    = document.querySelectorAll('#sip-index .sip-dot');
-    var items   = document.querySelectorAll('.service-item');
-    if (!section || !slider || !imgEl || !items.length) return;
-
-    var current   = 0;
-    var locked    = false;
-    var animating = false;
-    var cooldown  = false;
-    var snapScroll = 0;
-    var NAV_H = 70;
-
-    function activate(index) {
-      if (animating || index < 0 || index >= items.length) return;
-      animating = true;
-      setTimeout(function(){ animating = false; }, 700);
-
-      current = index;
-
-      // Slide right column to show current item
-      slider.style.transform = 'translateY(-' + (index * 100) + 'vh)';
-
-      // Swap left image
-      var item = items[index];
-      imgEl.classList.add('is-fading');
-      setTimeout(function(){
-        imgEl.src         = item.getAttribute('data-img');
-        nameEl.innerHTML  = item.getAttribute('data-name');
-        numEl.textContent = item.getAttribute('data-num');
-        imgEl.classList.remove('is-fading');
-      }, 280);
-
-      items.forEach(function(i){ i.classList.remove('is-active'); });
-      item.classList.add('is-active');
-      dots.forEach(function(d,di){ d.classList.toggle('is-active', di === index); });
-    }
-
-    function lock() {
-      if (locked) return;
-      locked = true;
-      var rect = section.getBoundingClientRect();
-      snapScroll = Math.round(window.scrollY + rect.top - NAV_H);
-      window.scrollTo(0, snapScroll);
-    }
-
-    function unlock(forward) {
-      if (!locked) return;
-      locked = false;
-      cooldown = true;
-      var dest = forward ? snapScroll + Math.round(window.innerHeight * 0.5) : snapScroll - 250;
-      window.scrollTo(0, Math.max(0, dest));
-      setTimeout(function(){ cooldown = false; }, 1000);
-    }
-
-    window.addEventListener('wheel', function(e) {
-      if (cooldown) return;
-
-      var rect = section.getBoundingClientRect();
-      var inZone = rect.top >= (NAV_H - 60) && rect.top <= (NAV_H + 80);
-
-      if (!locked && !inZone) return;
-
-      e.preventDefault();
-
-      if (!locked) {
-        lock();
-        activate(0);
-        return;
-      }
-
-      if (animating) return;
-
-      if (e.deltaY > 0) {
-        if (current < items.length - 1) { activate(current + 1); }
-        else { unlock(true); }
-      } else {
-        if (current > 0) { activate(current - 1); }
-        else { unlock(false); }
-      }
-    }, { passive: false });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', function(e) {
-      if (!locked) return;
-      if (e.key === 'ArrowDown') {
-        if (current < items.length - 1) activate(current + 1); else unlock(true);
-      } else if (e.key === 'ArrowUp') {
-        if (current > 0) activate(current - 1); else unlock(false);
-      } else if (e.key === 'Escape') {
-        unlock(true);
-      }
-    });
-
-    // Initialise first item
-    activate(0);
-  })();
-  </script>
 
   <!-- CTA -->
   <section class="cta-banner" aria-labelledby="services-cta-heading">
