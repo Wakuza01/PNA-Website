@@ -160,50 +160,57 @@
     });
   }
 
-  // ─── Character Hover Effect ───────────────────────────────────────────────────
+  // ─── Random Letter Swap Hover ─────────────────────────────────────────────────
   function initCharHover() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var POOL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    var DURATION = 550; // ms for all chars to resolve
 
     var links = document.querySelectorAll('.nav-links a');
     if (!links.length) return;
 
     links.forEach(function (link) {
-      // Store original text
       var originalText = link.textContent;
+      var rafId = null;
+      var startTime = null;
 
-      function buildSpans() {
-        link.textContent = '';
-        Array.from(originalText).forEach(function (char, i) {
-          var span = document.createElement('span');
-          span.className = 'nav-char';
-          span.textContent = char === ' ' ? '\u00a0' : char;
-          span.style.transitionDelay = (i * 30) + 'ms';
-          link.appendChild(span);
+      function scramble(ts) {
+        if (!startTime) startTime = ts;
+        var elapsed = ts - startTime;
+        var chars = Array.from(originalText);
+        var out = '';
+
+        chars.forEach(function (char, i) {
+          if (char === ' ') { out += '\u00a0'; return; }
+          // Each character settles proportionally left-to-right
+          var settleAt = DURATION * (i / chars.length);
+          if (elapsed >= settleAt) {
+            out += char;
+          } else {
+            out += POOL[Math.floor(Math.random() * POOL.length)];
+          }
         });
-      }
 
-      function teardownSpans() {
-        link.textContent = originalText;
+        link.textContent = out;
+
+        if (elapsed < DURATION) {
+          rafId = requestAnimationFrame(scramble);
+        } else {
+          link.textContent = originalText;
+          rafId = null;
+        }
       }
 
       link.addEventListener('mouseenter', function () {
-        buildSpans();
-        // Trigger the colour animation next frame
-        requestAnimationFrame(function () {
-          link.querySelectorAll('.nav-char').forEach(function (span) {
-            span.classList.add('char-reveal');
-          });
-        });
+        if (rafId) cancelAnimationFrame(rafId);
+        startTime = null;
+        rafId = requestAnimationFrame(scramble);
       });
 
       link.addEventListener('mouseleave', function () {
-        var spans = link.querySelectorAll('.nav-char');
-        spans.forEach(function (span) {
-          span.classList.remove('char-reveal');
-        });
-        // Wait for the last transition to finish before restoring plain text
-        var maxDelay = (originalText.length - 1) * 30;
-        setTimeout(teardownSpans, maxDelay + 200);
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        link.textContent = originalText;
       });
     });
   }
@@ -213,6 +220,7 @@
     initStickyNav();
     initMobileNav();
     initActiveLink();
+    initCharHover();
   });
 
 }());
