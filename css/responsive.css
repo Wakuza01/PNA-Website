@@ -142,9 +142,10 @@
     --section-pad: 60px;
   }
 
-  /* about-sec-5 ends with the dark marquee — no padding needed below it */
+  /* about-sec-5 ends with the dark marquee — no padding or diagonal cut needed */
   .about-sec-5 {
     padding-bottom: 0 !important;
+    clip-path: none !important;
   }
 
   /* ---- NAVIGATION ---- */
