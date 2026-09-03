@@ -380,14 +380,38 @@
     order: -1;
   }
 
-  /* ---- ABOUT: hide 4-image mosaic gallery on mobile ---- */
+  /* ---- ABOUT: 4-image mosaic → 2 images on mobile ---- */
   .about-sec-4 > div:first-child {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .about-sec-4 > div:first-child img:nth-child(n+3) {
     display: none;
+  }
+  .about-sec-4 > div:first-child img {
+    height: 220px !important;
   }
 
   /* ---- TIMELINE ---- */
   .timeline-wrap {
     padding-left: 2rem;
+  }
+
+  /* Force line visible — skip scroll-triggered animation on mobile */
+  .timeline-wrap::before {
+    transform: scaleY(1) !important;
+  }
+
+  /* About page overrides line to desktop-calculated position — reset for 2rem padding */
+  .about-sec-2 .timeline-wrap::before {
+    left: 8px;
+  }
+
+  /* Make about timeline dots always visible on mobile */
+  .about-sec-2 .timeline-item::before {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+    animation: none !important;
   }
 
   /* Align dot centre with the vertical line at left: 8px of .timeline-wrap.
