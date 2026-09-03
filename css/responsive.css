@@ -159,7 +159,7 @@
 
   /* ---- HERO ---- */
   .hero-headline {
-    font-size: clamp(2rem, 8.5vw, 3rem);
+    font-size: clamp(2.4rem, 10.5vw, 3.2rem);
   }
 
   /* Hide sub-services text on mobile — buttons below are sufficient */
@@ -281,9 +281,7 @@
     overflow: visible;
     position: relative;
     flex-wrap: nowrap;
-    width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
   }
 
   /* Single continuous line through bubble centers */
@@ -291,8 +289,8 @@
     content: '';
     position: absolute;
     left: calc(1rem + 27px);      /* process-flow left-pad + half of 54px bubble */
-    top: calc(0.75rem + 27px);    /* first step top-pad + half bubble */
-    bottom: calc(0.75rem + 27px); /* last step bottom-pad + half bubble */
+    top: calc(0.5rem + 27px);     /* first step top-pad + half bubble */
+    bottom: calc(0.5rem + 27px);  /* last step bottom-pad + half bubble */
     width: 2px;
     background: var(--color-secondary);
     opacity: 0.5;
@@ -304,13 +302,13 @@
     flex-direction: row;
     align-items: center;
     gap: 1.25rem;
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
     position: relative;
     background: none;
     border: none;
     box-shadow: none;
     text-align: left;
-    width: auto;
+    width: 100%;
     max-width: none;
     min-width: 0;
   }
@@ -392,11 +390,11 @@
   }
 
   /* Align dot centre with the vertical line at left: 8px of .timeline-wrap.
-     Wrap padding-left = 2rem (32px), item padding-left = 1rem (16px).
-     Dot is 12px wide (6px radius). Centre must land at 8px + 1px (half line) = 9px.
-     left = 9px − 32px − 16px − 6px = −45px ≈ calc(−3rem + 3px) */
+     Wrap padding-left = 2rem (32px). Line centre = 8px + 1px = 9px from wrap left.
+     Item left edge = 32px from wrap left. Dot radius = 6px.
+     dot_left = 9 − 32 − 6 = −29px = calc(−2rem + 3px) */
   .timeline-item::before {
-    left: calc(-3rem + 3px);
+    left: calc(-2rem + 3px);
   }
 
   /* ---- VMV ---- */
