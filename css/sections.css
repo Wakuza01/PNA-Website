@@ -680,7 +680,7 @@
   display: flex;
   gap: 1.25rem;
   align-items: flex-start;
-  transition: border-color var(--transition-smooth), transform var(--transition-smooth);
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
 .capability-item:hover {
