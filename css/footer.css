@@ -230,8 +230,17 @@
   pointer-events: none;
 }
 
+/* Prevent nav.css .theme-toggle:hover (rgba white) from wiping the switch colour */
+.footer-switch:hover {
+  background: #4b5563;
+}
+
 [data-theme="dark"] .footer-switch {
   background: #269dcc;
+}
+
+[data-theme="dark"] .footer-switch:hover {
+  background: #1f8ab4;
 }
 
 [data-theme="dark"] .switch-thumb {
