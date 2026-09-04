@@ -31,6 +31,32 @@ $topPages = $db->prepare(
 $topPages->execute([$since30]);
 $topPages = $topPages->fetchAll();
 
+// Daily views — last 30 days for bar chart
+$dailyRows = $db->prepare(
+    "SELECT date(visited_at, 'unixepoch') AS day, COUNT(*) AS views
+     FROM page_views
+     WHERE visited_at >= ?
+     GROUP BY day
+     ORDER BY day ASC"
+);
+$dailyRows->execute([$since30]);
+$dailyData = $dailyRows->fetchAll();
+
+// Build a full 30-day array (fill gaps with 0)
+$chartLabels = [];
+$chartValues = [];
+$dailyMap = [];
+foreach ($dailyData as $row) {
+    $dailyMap[$row['day']] = (int)$row['views'];
+}
+for ($i = 29; $i >= 0; $i--) {
+    $day = date('Y-m-d', strtotime("-{$i} days"));
+    $chartLabels[] = date('d M', strtotime($day));
+    $chartValues[] = $dailyMap[$day] ?? 0;
+}
+$chartLabelsJson = json_encode($chartLabels);
+$chartValuesJson = json_encode($chartValues);
+
 // Recent visits — last 50
 $recentVisits = $db->query(
     "SELECT path, referrer, ip, visited_at
@@ -69,6 +95,16 @@ adminMain('Traffic', 'Page view analytics');
   <div class="stat-card">
     <div class="stat-label">Unique Pages</div>
     <div class="stat-num"><?= $uniquePages ?></div>
+  </div>
+</div>
+
+<!-- Daily Views Chart -->
+<div class="card">
+  <div class="card-header">
+    <h2>Daily Views — Last 30 Days</h2>
+  </div>
+  <div class="card-body" style="padding:1.25rem 1.5rem;">
+    <canvas id="trafficChart" height="90"></canvas>
   </div>
 </div>
 
@@ -152,4 +188,53 @@ adminMain('Traffic', 'Page view analytics');
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  var labels = <?= $chartLabelsJson ?>;
+  var values = <?= $chartValuesJson ?>;
+  var ctx = document.getElementById('trafficChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Page Views',
+        data: values,
+        backgroundColor: 'rgba(38, 157, 204, 0.55)',
+        borderColor:     'rgba(38, 157, 204, 0.9)',
+        borderWidth: 1,
+        borderRadius: 3,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1c2333',
+          borderColor:     'rgba(255,255,255,0.08)',
+          borderWidth: 1,
+          titleColor: '#e6edf3',
+          bodyColor:  '#7d8590',
+          callbacks: {
+            label: function(ctx) { return ' ' + ctx.parsed.y + ' views'; }
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: { color: '#7d8590', font: { size: 11 }, maxTicksLimit: 10 },
+          grid:  { color: 'rgba(255,255,255,0.04)' }
+        },
+        y: {
+          beginAtZero: true,
+          ticks: { color: '#7d8590', font: { size: 11 }, precision: 0 },
+          grid:  { color: 'rgba(255,255,255,0.06)' }
+        }
+      }
+    }
+  });
+})();
+</script>
 <?php adminFooter(); ?>
