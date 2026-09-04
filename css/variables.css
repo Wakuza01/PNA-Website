@@ -99,7 +99,7 @@
   --color-surface-light:  #1e2d42;          /* inputs, icon boxes */
 
   --color-text-primary:   #cbd5e1;          /* body text */
-  --color-text-heading:   #7ec8e8;          /* headings → light blue */
+  --color-text-heading:   #5bc8f5;          /* headings → bright cyan-blue */
   --color-text-dark:      #e2e8f0;          /* dark headings → inverted */
   --color-text-muted:     #8898aa;          /* secondary text */
   --color-text-on-dark:   #ffffff;
@@ -225,6 +225,11 @@
   background: #1e2d42;
   border-color: rgba(255, 255, 255, 0.10);
   color: #e2e8f0;
+}
+
+/* Section titles use --color-text-primary by default; switch to bright blue in dark mode */
+[data-theme="dark"] .section-title {
+  color: var(--color-text-heading);
 }
 
 /* ── Dark mode: hardcoded white sections ─────────────────────────
