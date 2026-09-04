@@ -85,6 +85,45 @@ function initSchema(PDO $pdo): void
         )
     ");
 
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS page_views (
+            id         INTEGER PRIMARY KEY AUTOINCREMENT,
+            path       TEXT NOT NULL,
+            referrer   TEXT NOT NULL DEFAULT '',
+            user_agent TEXT NOT NULL DEFAULT '',
+            ip         TEXT NOT NULL DEFAULT '',
+            visited_at INTEGER NOT NULL DEFAULT (strftime('%s','now'))
+        )
+    ");
+
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS traffic_ignored_ips (
+            ip TEXT PRIMARY KEY
+        )
+    ");
+
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS email_subscribers (
+            id              INTEGER PRIMARY KEY AUTOINCREMENT,
+            email           TEXT NOT NULL UNIQUE,
+            name            TEXT NOT NULL DEFAULT '',
+            status          TEXT NOT NULL DEFAULT 'active',
+            source          TEXT NOT NULL DEFAULT 'footer',
+            subscribed_at   INTEGER NOT NULL DEFAULT (strftime('%s','now')),
+            unsubscribed_at INTEGER
+        )
+    ");
+
+    $pdo->exec("
+        CREATE TABLE IF NOT EXISTS email_sends (
+            id       INTEGER PRIMARY KEY AUTOINCREMENT,
+            subject  TEXT NOT NULL,
+            body     TEXT NOT NULL,
+            sent_to  INTEGER NOT NULL DEFAULT 0,
+            sent_at  INTEGER NOT NULL DEFAULT (strftime('%s','now'))
+        )
+    ");
+
     // Seed admin user if table is empty
     $count = (int) $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
     if ($count === 0) {

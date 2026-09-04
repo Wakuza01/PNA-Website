@@ -11,10 +11,12 @@ requireAuth();
 $db = getDb();
 
 // Stats
-$newEnquiries   = (int) $db->query("SELECT COUNT(*) FROM enquiries WHERE status = 'new'")->fetchColumn();
-$totalEnquiries = (int) $db->query("SELECT COUNT(*) FROM enquiries")->fetchColumn();
-$publishedPosts = (int) $db->query("SELECT COUNT(*) FROM blog_posts WHERE status = 'published'")->fetchColumn();
-$draftPosts     = (int) $db->query("SELECT COUNT(*) FROM blog_posts WHERE status = 'draft'")->fetchColumn();
+$newEnquiries     = (int) $db->query("SELECT COUNT(*) FROM enquiries WHERE status = 'new'")->fetchColumn();
+$totalEnquiries   = (int) $db->query("SELECT COUNT(*) FROM enquiries")->fetchColumn();
+$publishedPosts   = (int) $db->query("SELECT COUNT(*) FROM blog_posts WHERE status = 'published'")->fetchColumn();
+$draftPosts       = (int) $db->query("SELECT COUNT(*) FROM blog_posts WHERE status = 'draft'")->fetchColumn();
+$viewsToday       = (int) $db->query("SELECT COUNT(*) FROM page_views WHERE visited_at >= " . strtotime('today'))->fetchColumn();
+$activeSubscribers = (int) $db->query("SELECT COUNT(*) FROM email_subscribers WHERE status = 'active'")->fetchColumn();
 
 // Recent data
 $recentEnquiries = $db->query(
@@ -51,6 +53,14 @@ adminMain('Dashboard', 'Welcome back, ' . currentUser());
   <div class="stat-card">
     <div class="stat-label">Draft Posts</div>
     <div class="stat-num"><?= $draftPosts ?></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Page Views Today</div>
+    <div class="stat-num"><?= $viewsToday ?></div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-label">Email Subscribers</div>
+    <div class="stat-num"><?= $activeSubscribers ?></div>
   </div>
 </div>
 
