@@ -2,9 +2,15 @@
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 $file = __DIR__ . $uri;
 
-// Serve existing static files directly (js, css, images, etc.) — no cache headers
-if ($uri !== '/' && file_exists($file) && !is_dir($file)) {
+// Execute PHP files — never return false for .php or it gets downloaded as raw text
+if ($uri !== '/' && file_exists($file) && !is_dir($file) && pathinfo($file, PATHINFO_EXTENSION) !== 'php') {
     return false;
+}
+
+// Route PHP files in subdirectories (e.g. /admin/login.php)
+if ($uri !== '/' && file_exists($file) && !is_dir($file) && pathinfo($file, PATHINFO_EXTENSION) === 'php') {
+    include $file;
+    exit;
 }
 
 // Prevent browser caching for HTML pages only
