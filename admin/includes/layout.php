@@ -51,10 +51,13 @@ function adminSidebar(string $active): void
         }
     }
 
-    echo '<button class="mobile-toggle" id="sidebar-toggle" aria-label="Toggle menu">' . "\n";
-    echo '  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M2 4h14M2 9h14M2 14h14"/></svg>' . "\n";
-    echo '</button>' . "\n";
-    echo '<div class="sidebar-overlay"></div>' . "\n";
+    echo '<div class="mobile-topbar">' . "\n";
+    echo '  <button class="mobile-toggle" id="sidebar-toggle" aria-label="Toggle menu">' . "\n";
+    echo '    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M2 4h14M2 9h14M2 14h14"/></svg>' . "\n";
+    echo '  </button>' . "\n";
+    echo '  <span class="topbar-title">P&amp;A Admin</span>' . "\n";
+    echo '</div>' . "\n";
+    echo '<div class="sidebar-overlay" id="sidebar-overlay"></div>' . "\n";
     echo '<aside class="sidebar">' . "\n";
     echo '  <div class="sidebar-logo">' . "\n";
     echo '    <span class="logo-mark">P&amp;A</span>' . "\n";
