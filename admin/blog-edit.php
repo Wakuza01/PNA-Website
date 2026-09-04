@@ -84,8 +84,9 @@ adminMain($pageTitle, $isEditing ? $post['title'] : 'Create a new blog article')
           </div>
 
           <div class="form-group">
-            <label for="excerpt">Excerpt</label>
-            <textarea id="excerpt" name="excerpt" class="short" rows="2" placeholder="Short summary shown in listings…"><?= h($post['excerpt']) ?></textarea>
+            <label for="excerpt">Intro Text</label>
+            <textarea id="excerpt" name="excerpt" class="short" rows="3" placeholder="Opening paragraph shown at the top of the article in larger text…"><?= h($post['excerpt']) ?></textarea>
+            <p class="form-hint">This appears as the large opening paragraph at the top of the post.</p>
           </div>
 
           <div class="form-group">
