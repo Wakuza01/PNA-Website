@@ -278,6 +278,10 @@
 }
 
 /* about-sec-5: hardcoded dark text colors */
+[data-theme="dark"] .about-sec-5 .section-label,
+[data-theme="dark"] .about-sec-5 .mie-number {
+  color: var(--color-accent) !important;
+}
 [data-theme="dark"] .about-sec-5 .mie-claim,
 [data-theme="dark"] .about-sec-5 .mie-sub,
 [data-theme="dark"] .about-sec-5 .section-title {
@@ -286,10 +290,23 @@
 [data-theme="dark"] .about-sec-5 .mie-description {
   color: rgba(255, 255, 255, 0.60) !important;
 }
+[data-theme="dark"] .about-sec-5 .mie-description strong {
+  color: #ffffff !important;
+}
 
 /* services.html */
 [data-theme="dark"] .svc-grid-section {
   background: var(--color-primary) !important;
+}
+
+/* Global: section-label uses --color-secondary (#205785) which is dark and unreadable in dark mode */
+[data-theme="dark"] .section-label {
+  color: var(--color-accent) !important;
+}
+
+/* facilities.html: stat numbers */
+[data-theme="dark"] .facility-stat-number {
+  color: var(--color-accent) !important;
 }
 
 /* privacy-policy.html + terms.html — section headings → light blue in dark mode */
