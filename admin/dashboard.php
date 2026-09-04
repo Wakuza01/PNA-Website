@@ -10,22 +10,22 @@ requireAuth();
 
 $db = getDb();
 
-// Stats
-$newEnquiries     = (int) $db->query("SELECT COUNT(*) FROM enquiries WHERE status = 'new'")->fetchColumn();
-$totalEnquiries   = (int) $db->query("SELECT COUNT(*) FROM enquiries")->fetchColumn();
-$publishedPosts   = (int) $db->query("SELECT COUNT(*) FROM blog_posts WHERE status = 'published'")->fetchColumn();
-$draftPosts       = (int) $db->query("SELECT COUNT(*) FROM blog_posts WHERE status = 'draft'")->fetchColumn();
-$viewsToday       = (int) $db->query("SELECT COUNT(*) FROM page_views WHERE visited_at >= " . strtotime('today'))->fetchColumn();
-$activeSubscribers = (int) $db->query("SELECT COUNT(*) FROM email_subscribers WHERE status = 'active'")->fetchColumn();
+// Stats — only load what the user has permission for
+$newEnquiries      = hasPermission('enquiries') ? (int) $db->query("SELECT COUNT(*) FROM enquiries WHERE status = 'new'")->fetchColumn() : null;
+$totalEnquiries    = hasPermission('enquiries') ? (int) $db->query("SELECT COUNT(*) FROM enquiries")->fetchColumn() : null;
+$publishedPosts    = hasPermission('blog')      ? (int) $db->query("SELECT COUNT(*) FROM blog_posts WHERE status = 'published'")->fetchColumn() : null;
+$draftPosts        = hasPermission('blog')      ? (int) $db->query("SELECT COUNT(*) FROM blog_posts WHERE status = 'draft'")->fetchColumn() : null;
+$viewsToday        = hasPermission('traffic')   ? (int) $db->query("SELECT COUNT(*) FROM page_views WHERE visited_at >= " . strtotime('today'))->fetchColumn() : null;
+$activeSubscribers = hasPermission('emails')    ? (int) $db->query("SELECT COUNT(*) FROM email_subscribers WHERE status = 'active'")->fetchColumn() : null;
 
-// Recent data
-$recentEnquiries = $db->query(
+// Recent data — only load what the user has permission for
+$recentEnquiries = hasPermission('enquiries') ? $db->query(
     "SELECT id, name, company, service, status, submitted_at FROM enquiries ORDER BY submitted_at DESC LIMIT 5"
-)->fetchAll();
+)->fetchAll() : [];
 
-$recentPosts = $db->query(
+$recentPosts = hasPermission('blog') ? $db->query(
     "SELECT id, title, category, status, created_at FROM blog_posts ORDER BY created_at DESC LIMIT 5"
-)->fetchAll();
+)->fetchAll() : [];
 
 adminHead('Dashboard');
 adminSidebar('dashboard');
@@ -38,33 +38,46 @@ adminMain('Dashboard', 'Welcome back, ' . currentUser());
 
 <!-- Stats -->
 <div class="stats-grid">
+  <?php if ($newEnquiries !== null): ?>
   <div class="stat-card">
     <div class="stat-label">New Enquiries</div>
     <div class="stat-num highlight"><?= $newEnquiries ?></div>
   </div>
+  <?php endif; ?>
+  <?php if ($totalEnquiries !== null): ?>
   <div class="stat-card">
     <div class="stat-label">Total Enquiries</div>
     <div class="stat-num"><?= $totalEnquiries ?></div>
   </div>
+  <?php endif; ?>
+  <?php if ($publishedPosts !== null): ?>
   <div class="stat-card">
     <div class="stat-label">Published Posts</div>
     <div class="stat-num"><?= $publishedPosts ?></div>
   </div>
+  <?php endif; ?>
+  <?php if ($draftPosts !== null): ?>
   <div class="stat-card">
     <div class="stat-label">Draft Posts</div>
     <div class="stat-num"><?= $draftPosts ?></div>
   </div>
+  <?php endif; ?>
+  <?php if ($viewsToday !== null): ?>
   <div class="stat-card">
     <div class="stat-label">Page Views Today</div>
     <div class="stat-num"><?= $viewsToday ?></div>
   </div>
+  <?php endif; ?>
+  <?php if ($activeSubscribers !== null): ?>
   <div class="stat-card">
     <div class="stat-label">Email Subscribers</div>
     <div class="stat-num"><?= $activeSubscribers ?></div>
   </div>
+  <?php endif; ?>
 </div>
 
 <!-- Recent Enquiries -->
+<?php if (hasPermission('enquiries')): ?>
 <div class="card">
   <div class="card-header">
     <h2>Recent Enquiries</h2>
@@ -105,8 +118,10 @@ adminMain('Dashboard', 'Welcome back, ' . currentUser());
     <?php endif; ?>
   </div>
 </div>
+<?php endif; ?>
 
 <!-- Recent Blog Posts -->
+<?php if (hasPermission('blog')): ?>
 <div class="card">
   <div class="card-header">
     <h2>Recent Blog Posts</h2>
@@ -148,5 +163,6 @@ adminMain('Dashboard', 'Welcome back, ' . currentUser());
     <?php endif; ?>
   </div>
 </div>
+<?php endif; ?>
 
 <?php adminFooter(); ?>

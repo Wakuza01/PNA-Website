@@ -28,7 +28,7 @@ function attemptLogin(string $u, string $p): bool
 
     try {
         $db   = getDb();
-        $stmt = $db->prepare("SELECT id, username, password_hash FROM users WHERE username = ? LIMIT 1");
+        $stmt = $db->prepare("SELECT id, username, password_hash, permissions FROM users WHERE username = ? LIMIT 1");
         $stmt->execute([trim($u)]);
         $user = $stmt->fetch();
 
@@ -37,6 +37,7 @@ function attemptLogin(string $u, string $p): bool
             $_SESSION['pa_admin_logged_in'] = true;
             $_SESSION['pa_admin_user']      = $user['username'];
             $_SESSION['pa_admin_uid']       = $user['id'];
+            $_SESSION['pa_admin_perms']     = $user['permissions'] ?? '[]';
             return true;
         }
     } catch (Exception $e) {
@@ -89,4 +90,41 @@ function getFlash(): ?array
     $flash = $_SESSION['pa_admin_flash'];
     unset($_SESSION['pa_admin_flash']);
     return $flash;
+}
+
+function currentPermissions(): array
+{
+    if (isset($_SESSION['pa_admin_perms'])) {
+        return json_decode($_SESSION['pa_admin_perms'], true) ?? [];
+    }
+    $uid = $_SESSION['pa_admin_uid'] ?? 0;
+    if (!$uid) {
+        return [];
+    }
+    try {
+        $db  = getDb();
+        $row = $db->prepare("SELECT permissions FROM users WHERE id = ? LIMIT 1");
+        $row->execute([$uid]);
+        $r    = $row->fetch();
+        $perms = json_decode($r['permissions'] ?? '[]', true) ?? [];
+        $_SESSION['pa_admin_perms'] = json_encode($perms);
+        return $perms;
+    } catch (\Exception $e) {
+        return [];
+    }
+}
+
+function hasPermission(string $perm): bool
+{
+    return in_array($perm, currentPermissions(), true);
+}
+
+function requirePermission(string $perm): void
+{
+    requireAuth();
+    if (!hasPermission($perm)) {
+        http_response_code(403);
+        echo '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Access Denied</title><link rel="stylesheet" href="/admin/assets/admin.css"></head><body style="display:flex;align-items:center;justify-content:center;min-height:100vh;"><div style="text-align:center;"><h1 style="font-family:\'Barlow Condensed\',sans-serif;font-size:3rem;color:var(--accent-light);">Access Denied</h1><p style="color:var(--muted);margin:1rem 0;">You do not have permission to view this page.</p><a href="/admin/dashboard.php" class="btn btn-ghost">&larr; Back to Dashboard</a></div></body></html>';
+        exit;
+    }
 }

@@ -6,7 +6,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/includes/layout.php';
-requireAuth();
+requirePermission('enquiries');
 
 $db = getDb();
 $id = (int)($_GET['id'] ?? 0);

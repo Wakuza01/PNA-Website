@@ -124,13 +124,24 @@ function initSchema(PDO $pdo): void
         )
     ");
 
+    // Add permissions column if it doesn't exist (SQLite has no IF NOT EXISTS on ALTER)
+    try {
+        $pdo->exec("ALTER TABLE users ADD COLUMN permissions TEXT NOT NULL DEFAULT '[]'");
+    } catch (\Exception $e) {
+        // Column already exists — ignore
+    }
+
     // Seed admin user if table is empty
     $count = (int) $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
     if ($count === 0) {
-        $hash = password_hash('admin123', PASSWORD_BCRYPT, ['cost' => 12]);
-        $stmt = $pdo->prepare("INSERT INTO users (username, password_hash) VALUES (?, ?)");
-        $stmt->execute(['admin', $hash]);
+        $hash  = password_hash('admin123', PASSWORD_BCRYPT, ['cost' => 12]);
+        $perms = '["enquiries","blog","traffic","emails","settings","users"]';
+        $stmt  = $pdo->prepare("INSERT INTO users (username, password_hash, permissions) VALUES (?, ?, ?)");
+        $stmt->execute(['admin', $hash, $perms]);
     }
+
+    // Ensure the existing admin user has full permissions if they have none
+    $pdo->exec("UPDATE users SET permissions = '[\"enquiries\",\"blog\",\"traffic\",\"emails\",\"settings\",\"users\"]' WHERE username = 'admin' AND (permissions = '[]' OR permissions = '')");
 
     // Seed default settings
     $defaults = [

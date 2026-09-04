@@ -6,7 +6,7 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/includes/layout.php';
-requireAuth();
+requirePermission('emails');
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('Location: /admin/emails.php');

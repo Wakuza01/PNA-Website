@@ -878,3 +878,58 @@ select {
     gap: 0.35rem;
   }
 }
+
+/* ── User permissions ── */
+.perm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.perm-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.perm-item:hover {
+  border-color: var(--border-focus);
+}
+
+.perm-item input[type="checkbox"] {
+  margin-top: 2px;
+  flex-shrink: 0;
+  accent-color: var(--accent-light);
+  width: 16px;
+  height: 16px;
+}
+
+.perm-item-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--text);
+  display: block;
+}
+
+.perm-item-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+.badge-you {
+  background: var(--accent-light);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 1px 6px;
+  border-radius: 100px;
+  margin-left: 0.4rem;
+  font-weight: 600;
+}

@@ -33,14 +33,23 @@ function adminSidebar(string $active): void
         // silently ignore
     }
 
-    $nav = [
-        'dashboard'  => ['label' => 'Dashboard',  'href' => '/admin/dashboard.php',  'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>'],
-        'enquiries'  => ['label' => 'Enquiries',  'href' => '/admin/enquiries.php',  'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 10.667A1.333 1.333 0 0 1 12.667 12H4.667L2 14.667V3.333A1.333 1.333 0 0 1 3.333 2h9.334A1.333 1.333 0 0 1 14 3.333v7.334z"/></svg>'],
-        'blog'       => ['label' => 'Blog Posts', 'href' => '/admin/blog.php',        'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.333 2H2.667A.667.667 0 0 0 2 2.667v10.666A.667.667 0 0 0 2.667 14h10.666A.667.667 0 0 0 14 13.333V2.667A.667.667 0 0 0 13.333 2z"/><path d="M5 5.333h6M5 8h6M5 10.667h3.333"/></svg>'],
-        'traffic'    => ['label' => 'Traffic',    'href' => '/admin/traffic.php',    'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1,11 5,6 9,9 15,2"/><polyline points="11,2 15,2 15,6"/></svg>'],
-        'emails'     => ['label' => 'Emails',     'href' => '/admin/emails.php',     'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="1.5"/><polyline points="1,3 8,9 15,3"/></svg>'],
-        'settings'   => ['label' => 'Settings',   'href' => '/admin/settings.php',   'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.414 1.414M11.536 11.536l1.414 1.414M3.05 12.95l1.414-1.414M11.536 4.464l1.414-1.414"/></svg>'],
+    $allNav = [
+        'dashboard'  => ['label' => 'Dashboard',  'href' => '/admin/dashboard.php',  'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>', 'always' => true],
+        'enquiries'  => ['label' => 'Enquiries',  'href' => '/admin/enquiries.php',  'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 10.667A1.333 1.333 0 0 1 12.667 12H4.667L2 14.667V3.333A1.333 1.333 0 0 1 3.333 2h9.334A1.333 1.333 0 0 1 14 3.333v7.334z"/></svg>', 'perm' => 'enquiries'],
+        'blog'       => ['label' => 'Blog Posts', 'href' => '/admin/blog.php',        'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.333 2H2.667A.667.667 0 0 0 2 2.667v10.666A.667.667 0 0 0 2.667 14h10.666A.667.667 0 0 0 14 13.333V2.667A.667.667 0 0 0 13.333 2z"/><path d="M5 5.333h6M5 8h6M5 10.667h3.333"/></svg>', 'perm' => 'blog'],
+        'traffic'    => ['label' => 'Traffic',    'href' => '/admin/traffic.php',    'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="1,11 5,6 9,9 15,2"/><polyline points="11,2 15,2 15,6"/></svg>', 'perm' => 'traffic'],
+        'emails'     => ['label' => 'Emails',     'href' => '/admin/emails.php',     'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="14" height="10" rx="1.5"/><polyline points="1,3 8,9 15,3"/></svg>', 'perm' => 'emails'],
+        'users'      => ['label' => 'Users',      'href' => '/admin/users.php',      'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="6" cy="5" r="3"/><path d="M1 14c0-3 2-5 5-5s5 2 5 5"/><path d="M13 7c1.1 0 2 .9 2 2v5"/><path d="M11 9a2 2 0 0 1 2-2"/></svg>', 'perm' => 'users'],
+        'settings'   => ['label' => 'Settings',   'href' => '/admin/settings.php',   'icon' => '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="2"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.414 1.414M11.536 11.536l1.414 1.414M3.05 12.95l1.414-1.414M11.536 4.464l1.414-1.414"/></svg>', 'perm' => 'settings'],
     ];
+
+    // Build visible nav based on permissions
+    $nav = [];
+    foreach ($allNav as $key => $item) {
+        if (!empty($item['always']) || (!empty($item['perm']) && hasPermission($item['perm']))) {
+            $nav[$key] = $item;
+        }
+    }
 
     echo '<button class="mobile-toggle" id="sidebar-toggle" aria-label="Toggle menu">' . "\n";
     echo '  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M2 4h14M2 9h14M2 14h14"/></svg>' . "\n";
