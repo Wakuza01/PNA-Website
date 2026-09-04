@@ -291,3 +291,8 @@
 [data-theme="dark"] .svc-grid-section {
   background: var(--color-primary) !important;
 }
+
+/* privacy-policy.html + terms.html — section headings → light blue in dark mode */
+[data-theme="dark"] .policy-content h2 {
+  color: var(--color-accent) !important;
+}
