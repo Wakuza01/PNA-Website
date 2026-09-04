@@ -98,10 +98,10 @@
   --color-surface:        #0f1520;          /* alternate section → deeper */
   --color-surface-light:  #1e2d42;          /* inputs, icon boxes */
 
-  --color-text-primary:   #cbd5e1;          /* body text */
-  --color-text-heading:   #5bc8f5;          /* headings → bright cyan-blue */
-  --color-text-dark:      #e2e8f0;          /* dark headings → inverted */
-  --color-text-muted:     #8898aa;          /* secondary text */
+  --color-text-primary:   #ffffff;          /* body text → white */
+  --color-text-heading:   #ffffff;          /* headings → white */
+  --color-text-dark:      #ffffff;          /* dark headings → white */
+  --color-text-muted:     rgba(255, 255, 255, 0.60); /* secondary text → 60% white */
   --color-text-on-dark:   #ffffff;
 
   --color-border:         rgba(255, 255, 255, 0.08);
@@ -227,11 +227,6 @@
   color: #e2e8f0;
 }
 
-/* Section titles use --color-text-primary by default; switch to bright blue in dark mode */
-[data-theme="dark"] .section-title {
-  color: var(--color-text-heading);
-}
-
 /* ── Dark mode: hardcoded white sections ─────────────────────────
    Each page's inline <style> block sets background:#ffffff on white
    sections AND redefines local CSS variables for dark-on-white text.
@@ -243,8 +238,8 @@
 [data-theme="dark"] .home-sec-3,
 [data-theme="dark"] .home-sec-4 {
   background: var(--color-primary) !important;
-  --color-text-primary:   #cbd5e1;
-  --color-text-muted:     rgba(203, 213, 225, 0.65);
+  --color-text-primary:   #ffffff;
+  --color-text-muted:     rgba(255, 255, 255, 0.60);
   --color-border:         rgba(255, 255, 255, 0.10);
   --color-surface-light:  rgba(255, 255, 255, 0.06);
   --color-surface:        rgba(255, 255, 255, 0.04);
@@ -256,7 +251,7 @@
 [data-theme="dark"] .home-sec-4 .mie-description,
 [data-theme="dark"] .home-sec-4 .mie-description strong,
 [data-theme="dark"] .home-sec-4 .process-step-label {
-  color: var(--color-text-primary) !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .home-sec-4 .process-step-bubble {
   background: rgba(255, 255, 255, 0.06) !important;
@@ -266,12 +261,13 @@
 }
 [data-theme="dark"] .home-sec-4 .btn--outline-dark {
   border-color: rgba(255, 255, 255, 0.25) !important;
+  color: #ffffff !important;
 }
 
 /* home-sec-1: badge has hardcoded dark text */
 [data-theme="dark"] .home-sec-1 .badge {
-  border-color: rgba(255, 255, 255, 0.15) !important;
-  color: rgba(203, 213, 225, 0.75) !important;
+  border-color: rgba(255, 255, 255, 0.20) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
 }
 
 /* about.html white sections — no local CSS vars, background only */
@@ -285,10 +281,10 @@
 [data-theme="dark"] .about-sec-5 .mie-claim,
 [data-theme="dark"] .about-sec-5 .mie-sub,
 [data-theme="dark"] .about-sec-5 .section-title {
-  color: var(--color-text-primary) !important;
+  color: #ffffff !important;
 }
 [data-theme="dark"] .about-sec-5 .mie-description {
-  color: rgba(203, 213, 225, 0.70) !important;
+  color: rgba(255, 255, 255, 0.60) !important;
 }
 
 /* services.html */
