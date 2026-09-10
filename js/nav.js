@@ -149,7 +149,7 @@
       try {
         var url = new URL(linkPath, window.location.href);
         var path = url.pathname.replace(/\/$/, '').replace(/\.html$/, '') || '/';
-        var normPath = path === '/index' ? '/' : path;
+        var normPath = (path === '/index' || path.endsWith('/index')) ? path.replace(/\/index$/, '') || '/' : path;
         if (normPath === currentPath) {
           link.classList.add('is-active');
           link.setAttribute('aria-current', 'page');

@@ -51,6 +51,7 @@
   justify-content: space-between;
   gap: 0.5rem;
   padding: 0.65rem 0.75rem;
+  width: 100%;
 }
 
 /* ----------------------------------------
@@ -82,10 +83,11 @@
 .nav-links {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 0;
   list-style: none;
-  flex-shrink: 0;
-  overflow: visible;
+  flex: 1 1 auto;
+  overflow: hidden;
 }
 
 /* ----------------------------------------
