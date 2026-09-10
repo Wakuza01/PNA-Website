@@ -38,14 +38,14 @@
   background:
     linear-gradient(
       to right,
-      rgba(10, 18, 32, 0.60) 0%,
-      rgba(10, 18, 32, 0.28) 40%,
-      rgba(10, 18, 32, 0.05) 65%,
+      rgba(10, 18, 32, 0.38) 0%,
+      rgba(10, 18, 32, 0.14) 40%,
+      rgba(10, 18, 32, 0.02) 65%,
       transparent 100%
     ),
     linear-gradient(
       to top,
-      rgba(10, 18, 32, 0.28) 0%,
+      rgba(10, 18, 32, 0.14) 0%,
       transparent 28%
     );
   z-index: 1;
