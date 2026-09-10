@@ -16,30 +16,41 @@
   max-width: 800px;
   z-index: var(--z-nav);
   overflow: hidden;
-  background: rgba(20, 28, 46, 0.18);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 50px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
   transition:
-    background 0.45s ease,
-    backdrop-filter 0.45s ease,
-    -webkit-backdrop-filter 0.45s ease,
     border-color 0.45s ease,
     box-shadow 0.45s ease,
     border-radius 0.45s cubic-bezier(0.4, 0, 0.2, 1),
     max-width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Backdrop blur on pseudo-element — avoids Chrome bug where
+   backdrop-filter on the same element breaks overflow:hidden */
+#site-nav::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(20, 28, 46, 0.18);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  transition: background 0.45s ease, backdrop-filter 0.45s ease;
+  z-index: 0;
+}
+
 #site-nav.scrolled {
-  background: rgba(20, 28, 46, 0.82);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
   border-color: rgba(255, 255, 255, 0.10);
   box-shadow: 0 8px 48px rgba(0, 0, 0, 0.45);
   border-radius: 16px;
   max-width: 1280px;
+}
+
+#site-nav.scrolled::before {
+  background: rgba(20, 28, 46, 0.82);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
 }
 
 /* ----------------------------------------
@@ -53,6 +64,8 @@
   gap: 0.5rem;
   padding: 0.65rem 0.75rem;
   width: 100%;
+  position: relative;
+  z-index: 1;
 }
 
 /* ----------------------------------------
@@ -145,10 +158,6 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
-.prox-char {
-  display: inline-block;
-  transition: font-weight 0.08s ease;
-}
 
 .nav-links a.is-active {
   color: #ffffff;

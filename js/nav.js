@@ -160,69 +160,11 @@
     });
   }
 
-  // ─── Variable Font Cursor Proximity ──────────────────────────────────────────
-  function initCharHover() {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    var MIN_WEIGHT  = 400;
-    var MAX_WEIGHT  = 800;
-    var MAX_DIST    = 100; // px — distance at which effect begins
-
-    var links = document.querySelectorAll('.nav-links a');
-    if (!links.length) return;
-
-    // Wrap every character in a span so we can measure individual positions
-    links.forEach(function (link) {
-      var text = link.textContent;
-      link.textContent = '';
-      Array.from(text).forEach(function (char) {
-        var span = document.createElement('span');
-        span.className = 'prox-char';
-        span.textContent = char === ' ' ? '\u00a0' : char;
-        link.appendChild(span);
-      });
-    });
-
-    var pendingRaf = null;
-    var mouseX = -999, mouseY = -999;
-
-    function update() {
-      pendingRaf = null;
-      document.querySelectorAll('.nav-links a .prox-char').forEach(function (span) {
-        var r   = span.getBoundingClientRect();
-        var cx  = r.left + r.width  / 2;
-        var cy  = r.top  + r.height / 2;
-        var d   = Math.sqrt((mouseX - cx) * (mouseX - cx) + (mouseY - cy) * (mouseY - cy));
-        var t   = Math.max(0, 1 - d / MAX_DIST);
-        var w   = Math.round(MIN_WEIGHT + t * (MAX_WEIGHT - MIN_WEIGHT));
-        span.style.fontWeight = w;
-      });
-    }
-
-    document.addEventListener('mousemove', function (e) {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-      if (!pendingRaf) pendingRaf = requestAnimationFrame(update);
-    });
-
-    // Reset all to normal weight when mouse leaves the nav
-    var nav = document.querySelector('.nav-links');
-    if (nav) {
-      nav.addEventListener('mouseleave', function () {
-        mouseX = -999; mouseY = -999;
-        document.querySelectorAll('.nav-links a .prox-char').forEach(function (span) {
-          span.style.fontWeight = MIN_WEIGHT;
-        });
-      });
-    }
-  }
-
   // ─── Boot ────────────────────────────────────────────────────────────────────
   document.addEventListener('DOMContentLoaded', function () {
     initStickyNav();
     initMobileNav();
     initActiveLink();
-    initCharHover();
   });
 
 }());
