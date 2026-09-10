@@ -100,8 +100,7 @@
   justify-content: flex-end;
   gap: 0;
   list-style: none;
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 0 0 auto;
   margin-left: auto;
   overflow: hidden;
 }
@@ -135,6 +134,10 @@
 }
 
 #site-nav.scrolled .nav-links li:not([data-compact]) {
+  animation: navLinkIn 0.3s ease forwards;
+}
+
+#site-nav.scrolled .nav-contact-link {
   animation: navLinkIn 0.3s ease forwards;
 }
 
@@ -178,6 +181,7 @@
 .nav-contact-link {
   display: inline-flex;
   align-items: center;
+  margin-top: -1px;
   font-family: var(--font-body);
   font-size: 0.75rem;
   font-weight: 500;
