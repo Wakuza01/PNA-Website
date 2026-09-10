@@ -103,7 +103,7 @@ $ogImage  = $imageUrl !== '' ? esc($imageUrl) : $siteUrl . '/assets/images/og-im
       <li><a href="capabilities.html">Capabilities</a></li>
       <li><a href="facilities.html">Facilities</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="training-academy.html">Training Academy</a></li>
+      <li><a href="training-academy.html">Academy</a></li>
       <li><a href="blog.html" class="is-active">Blog</a></li>
       <li data-compact><a href="contact.html">Contact</a></li>
     </ul>
@@ -128,7 +128,7 @@ $ogImage  = $imageUrl !== '' ? esc($imageUrl) : $siteUrl . '/assets/images/og-im
       <li><a href="capabilities.html">Capabilities</a></li>
       <li><a href="facilities.html">Facilities</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="training-academy.html">Training Academy</a></li>
+      <li><a href="training-academy.html">Academy</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -224,7 +224,7 @@ $ogImage  = $imageUrl !== '' ? esc($imageUrl) : $siteUrl . '/assets/images/og-im
             <li><a href="capabilities.html">Capabilities</a></li>
       <li><a href="facilities.html">Facilities</a></li>
             <li><a href="projects.html">Projects</a></li>
-            <li><a href="training-academy.html">Training Academy</a></li>
+            <li><a href="training-academy.html">Academy</a></li>
             <li><a href="blog.html">News &amp; Blog</a></li>
             <li><a href="contact.html">Contact Us</a></li>
           </ul>
