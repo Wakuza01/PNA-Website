@@ -15,6 +15,7 @@
   width: calc(100% - 40px);
   max-width: 800px;
   z-index: var(--z-nav);
+  overflow: hidden;
   background: rgba(20, 28, 46, 0.18);
   backdrop-filter: blur(12px) saturate(140%);
   -webkit-backdrop-filter: blur(12px) saturate(140%);
@@ -48,7 +49,7 @@
 .nav-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 0.5rem;
   padding: 0.65rem 0.75rem;
   width: 100%;
@@ -87,6 +88,7 @@
   gap: 0;
   list-style: none;
   flex: 1 1 auto;
+  margin-left: auto;
   overflow: hidden;
 }
 
