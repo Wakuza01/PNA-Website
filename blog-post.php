@@ -53,7 +53,7 @@ $ogImage  = $imageUrl !== '' ? esc($imageUrl) : $siteUrl . '/assets/images/og-im
 <head>
   <meta charset="UTF-8">
   <script>!function(){var t=localStorage.getItem('pna-theme')||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t)}();</script>
-  <link rel="icon" type="image/png" href="assets/images/logo.png">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= esc($title) ?> | P&amp;A Fabricators</title>
   <meta name="description" content="<?= esc(mb_substr($excerpt ?: $title, 0, 160)) ?>">
