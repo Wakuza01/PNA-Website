@@ -172,6 +172,36 @@
 }
 
 /* ----------------------------------------
+   Contact Link (standalone flex item in nav-inner)
+   ---------------------------------------- */
+
+.nav-contact-link {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  padding: 0.35rem 0.48rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color var(--transition-fast), background var(--transition-fast);
+}
+
+.nav-contact-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-contact-link.is-active {
+  color: #ffffff;
+  background: var(--color-accent);
+  box-shadow: 0 0 12px rgba(38, 157, 204, 0.45);
+}
+
+/* ----------------------------------------
    CTA Wrap / Button
    ---------------------------------------- */
 
@@ -404,5 +434,6 @@
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-cta-wrap { display: none; }
+  .nav-contact-link { display: none; }
   .nav-hamburger { display: flex; }
 }

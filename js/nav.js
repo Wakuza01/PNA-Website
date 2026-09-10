@@ -131,7 +131,7 @@
 
   // ─── Active Nav Link ─────────────────────────────────────────────────────────
   function initActiveLink() {
-    var links = document.querySelectorAll('.nav-links a');
+    var links = document.querySelectorAll('.nav-links a, .nav-contact-link');
     if (!links.length) return;
 
     var currentPath = window.location.pathname.replace(/\/$/, '').replace(/\.html$/, '') || '/';
