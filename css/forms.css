@@ -16,7 +16,116 @@
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 5rem;
+  /* Right column aligns to the top of the form, not vertically centred */
+  align-items: start;
+}
+
+/* File upload field */
+.form-file-wrap {
+  position: relative;
+}
+
+.form-file-label {
+  display: flex;
   align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: var(--color-surface-light);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  transition: border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.form-file-label:hover {
+  border-color: var(--color-secondary);
+  background: rgba(32, 87, 133, 0.04);
+}
+
+.form-file-label svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--color-secondary);
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+.form-file-input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.form-file-selected {
+  display: none;
+  font-size: 0.8rem;
+  color: var(--color-secondary);
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.form-file-hint {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  margin-top: 0.4rem;
+}
+
+/* Map tabs */
+.map-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.map-tab-btn {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.map-tab-btn.is-active,
+.map-tab-btn:hover {
+  color: var(--color-secondary);
+  border-bottom-color: var(--color-secondary);
+}
+
+.map-panel {
+  display: none;
+}
+
+.map-panel.is-active {
+  display: block;
+}
+
+.map-embed {
+  width: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 220px;
+  display: block;
+  border: 0;
+  border-radius: var(--border-radius);
 }
 
 /* ============================================================

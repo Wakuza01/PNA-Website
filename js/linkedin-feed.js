@@ -58,10 +58,20 @@
     container.innerHTML = skeletons;
   }
 
-  function renderEmptyState(container) {
+  // Empty state for homepage: hides the entire feed section
+  function hideHomeFeedSection() {
+    var section = document.querySelector('.home-sec-5');
+    if (section) section.style.display = 'none';
+  }
+
+  // Empty state for blog page: friendly message with LinkedIn link
+  function renderBlogEmptyState(container) {
     container.innerHTML = [
       '<div class="blog-empty-state">',
-      '  <p>No posts available at this time. Check back soon.</p>',
+      '  <p>Our latest articles and updates are published on LinkedIn.</p>',
+      '  <a href="https://www.linkedin.com/company/pinion-adams" class="btn btn--outline" target="_blank" rel="noopener noreferrer">',
+      '    <span>Follow us on LinkedIn</span>',
+      '  </a>',
       '</div>'
     ].join('\n');
   }
@@ -73,7 +83,6 @@
     var filterBar = document.querySelector('.blog-filter-bar');
     if (!filterBar) return;
 
-    // Collect unique categories
     var categories = ['All'];
     posts.forEach(function (post) {
       if (post.category && categories.indexOf(post.category) === -1) {
@@ -81,7 +90,6 @@
       }
     });
 
-    // Render filter buttons
     filterBar.innerHTML = categories.map(function (cat) {
       return '<button class="filter-btn' + (cat === 'All' ? ' is-active' : '') + '" data-category="' + escapeHtml(cat) + '">' + escapeHtml(cat) + '</button>';
     }).join('');
@@ -91,13 +99,11 @@
     filterBtns.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var category = btn.dataset.category;
-
         filterBtns.forEach(function (b) { b.classList.remove('is-active'); });
         btn.classList.add('is-active');
 
         var cards = container.querySelectorAll('.blog-card');
 
-        // First pass: hide non-matching cards immediately (removes them from grid flow)
         cards.forEach(function (card) {
           var postCat = card.dataset.postcategory;
           var show = (category === 'All' || postCat === category);
@@ -108,7 +114,6 @@
           }
         });
 
-        // Second pass: stagger-animate matching cards back in
         var visibleIndex = 0;
         cards.forEach(function (card) {
           var postCat = card.dataset.postcategory;
@@ -138,7 +143,6 @@
     var cards = container.querySelectorAll('.reveal');
     if (!cards.length) return;
 
-    // Small delay to allow DOM to paint
     setTimeout(function () {
       cards.forEach(function (card, i) {
         setTimeout(function () {
@@ -154,7 +158,8 @@
   function loadFeed(container, limit, isBlogPage) {
     renderSkeletons(container, Math.min(limit, 3));
 
-    var apiUrl = '/api/linkedin-feed.php?limit=' + (limit === 'all' ? 'all' : limit);
+    // Use relative paths so site works at any subpath (e.g. /PNA-Website/)
+    var apiUrl = 'api/linkedin-feed.php?limit=' + (limit === 'all' ? 'all' : limit);
 
     fetch(apiUrl)
       .then(function (res) {
@@ -169,7 +174,7 @@
       })
       .catch(function () {
         // Fallback: try cache directly
-        fetch('/api/linkedin-cache.json')
+        fetch('api/linkedin-cache.json')
           .then(function (res) {
             if (!res.ok) throw new Error('Cache error');
             return res.json();
@@ -180,7 +185,12 @@
             renderPosts(container, sliced, isBlogPage);
           })
           .catch(function () {
-            renderEmptyState(container);
+            // Both fetches failed — fail silently with appropriate empty state
+            if (isBlogPage) {
+              renderBlogEmptyState(container);
+            } else {
+              hideHomeFeedSection();
+            }
           });
       });
   }
@@ -189,7 +199,6 @@
     var html = posts.map(renderCard).join('\n');
     container.innerHTML = html;
 
-    // Add data attributes for filtering
     var cards = container.querySelectorAll('.blog-card');
     cards.forEach(function (card, i) {
       if (posts[i]) {

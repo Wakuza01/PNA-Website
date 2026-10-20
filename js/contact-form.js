@@ -147,19 +147,19 @@
       var file = fileInput.files[0];
       if (!file) return;
 
-      var allowedExts = ['pdf', 'jpg', 'jpeg', 'png', 'dwg'];
+      var allowedExts = ['pdf', 'jpg', 'jpeg', 'png', 'dxf', 'dwg', 'step', 'stp', 'zip'];
       var ext = file.name.split('.').pop().toLowerCase();
-      var maxSize = 5 * 1024 * 1024; // 5MB
+      var maxSize = 10 * 1024 * 1024; // 10 MB
 
       if (!allowedExts.includes(ext)) {
-        showFieldError(fileInput, 'Invalid file type. Please upload PDF, JPG, PNG, or DWG.');
+        showFieldError(fileInput, 'Invalid file type. Accepted: PDF, DXF, DWG, STEP, STP, ZIP, JPG, PNG.');
         fileInput.value = '';
         if (fileSelectedLabel) fileSelectedLabel.style.display = 'none';
         return;
       }
 
       if (file.size > maxSize) {
-        showFieldError(fileInput, 'File too large. Maximum size is 5MB.');
+        showFieldError(fileInput, 'File too large. Maximum size is 10 MB.');
         fileInput.value = '';
         if (fileSelectedLabel) fileSelectedLabel.style.display = 'none';
         return;
@@ -205,7 +205,7 @@
 
     var formData = new FormData(form);
 
-    fetch('/api/contact.php', {
+    fetch('api/contact.php', {
       method: 'POST',
       body: formData
     })

@@ -13,7 +13,8 @@
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - 40px);
-  max-width: 800px;
+  /* Wide enough to show all links at page load; consistent across every page */
+  max-width: 1100px;
   z-index: var(--z-nav);
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -45,6 +46,14 @@
   box-shadow: 0 8px 48px rgba(0, 0, 0, 0.45);
   border-radius: 16px;
   max-width: 1280px;
+}
+
+/* ----------------------------------------
+   Logo — always white on the dark pill
+   ---------------------------------------- */
+
+.nav-logo img {
+  filter: brightness(0) invert(1);
 }
 
 #site-nav.scrolled::before {
@@ -106,39 +115,15 @@
 }
 
 /* ----------------------------------------
-   Compact state (default): only show [data-compact] links
-   Scrolled state: reveal all links
+   All links visible at all times on desktop.
+   data-compact attribute kept in HTML for mobile overlay but
+   does not affect desktop visibility.
    ---------------------------------------- */
 
-/* Hide non-compact links in pill state */
-.nav-links li:not([data-compact]) {
-  display: none;
-}
-
-/* Always show compact links */
-.nav-links li[data-compact] {
+/* All desktop nav links always visible */
+.nav-links li {
   display: block;
   opacity: 1;
-}
-
-/* Scrolled: show everything */
-#site-nav.scrolled .nav-links li {
-  display: block;
-  opacity: 1;
-}
-
-/* Animate the newly revealed links in */
-@keyframes navLinkIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-#site-nav.scrolled .nav-links li:not([data-compact]) {
-  animation: navLinkIn 0.3s ease forwards;
-}
-
-#site-nav.scrolled .nav-contact-link {
-  animation: navLinkIn 0.3s ease forwards;
 }
 
 .nav-links a {

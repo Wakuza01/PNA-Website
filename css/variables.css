@@ -246,6 +246,10 @@
 }
 
 /* home-sec-4: additional hardcoded dark text not using CSS vars */
+[data-theme="dark"] .home-sec-4 .mie-number {
+  /* "First" — was near-invisible on dark background */
+  color: var(--color-accent) !important;
+}
 [data-theme="dark"] .home-sec-4 .mie-claim,
 [data-theme="dark"] .home-sec-4 .mie-sub,
 [data-theme="dark"] .home-sec-4 .mie-description,
@@ -253,8 +257,16 @@
 [data-theme="dark"] .home-sec-4 .process-step-label {
   color: #ffffff !important;
 }
+[data-theme="dark"] .home-sec-4 .process-step-num {
+  /* 01–05 step numbers */
+  color: var(--color-accent) !important;
+}
 [data-theme="dark"] .home-sec-4 .process-step-bubble {
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: rgba(38, 157, 204, 0.12) !important;
+  border-color: rgba(38, 157, 204, 0.35) !important;
+}
+[data-theme="dark"] .home-sec-4 .process-step-bubble svg {
+  stroke: var(--color-accent) !important;
 }
 [data-theme="dark"] .home-sec-4 .process-step:not(:last-child)::after {
   background: rgba(255, 255, 255, 0.10) !important;

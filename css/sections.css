@@ -229,7 +229,8 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  /* 5 columns on wide screens → 10 tiles fill exactly 2 rows with no orphans */
+  grid-template-columns: repeat(5, 1fr);
   gap: 1.25rem;
 }
 
@@ -443,7 +444,8 @@
   background: linear-gradient(135deg, #0d1525 0%, #1a2a4a 60%, #1e4a7a 100%);
   display: flex;
   align-items: center;
-  padding: 5rem 4rem;
+  /* Left padding tracks the container's left edge so text aligns with every other section */
+  padding: 5rem 4rem 5rem max(4rem, calc((100vw - var(--container-lg)) / 2 + clamp(1rem, 4vw, 2.5rem)));
   position: relative;
 }
 
@@ -520,6 +522,20 @@
 }
 .home-sec-6 .academy-teaser-right::after {
   background: none;
+}
+
+/* ── Dark mode: homepage academy left panel ── */
+[data-theme="dark"] .home-sec-6 .academy-teaser-left {
+  background: var(--color-primary) !important;
+}
+[data-theme="dark"] .home-sec-6 .academy-teaser-left::after {
+  background: linear-gradient(to right, var(--color-primary), transparent) !important;
+}
+[data-theme="dark"] .home-sec-6 h2 {
+  color: var(--color-text-primary) !important;
+}
+[data-theme="dark"] .home-sec-6 .academy-teaser-content p {
+  color: rgba(255,255,255,0.65) !important;
 }
 
 /* ============================================================
@@ -670,6 +686,7 @@
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
   margin-top: 3rem;
+  align-items: stretch;
 }
 
 .capability-item {
@@ -680,6 +697,8 @@
   display: flex;
   gap: 1.25rem;
   align-items: flex-start;
+  /* Stretch to fill grid cell height so all cards in a row are equal */
+  align-self: stretch;
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
 
@@ -743,7 +762,9 @@
 .facility-stats {
   display: flex;
   flex-wrap: wrap;
-  gap: 3rem;
+  /* Spread all 4 stats evenly across the full container width */
+  justify-content: space-between;
+  gap: 1.5rem;
   margin-top: 3rem;
   padding-top: 2.5rem;
   border-top: 1px solid var(--color-border);

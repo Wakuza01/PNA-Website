@@ -25,10 +25,10 @@
   <meta name="twitter:description" content="50+ years of precision sheet metal fabrication. ISO 9001:2015 certified. KZN-based, nationally trusted.">
   <meta name="twitter:image" content="https://www.pinionadams.co.za/assets/images/og-image.jpg">
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts — single consolidated request -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 
   <!-- Stylesheets (critical order) -->
   <link rel="stylesheet" href="css/reset.css">
@@ -318,7 +318,7 @@
     <ul class="nav-links" role="list">
       <li data-compact><a href="index.html" class="is-active">Home</a></li>
       <li data-compact><a href="about.html">About</a></li>
-      <li><a href="geralds-story.html">Founder</a></li>
+      <li><a href="geralds-story.html">Leadership</a></li>
       <li data-compact><a href="services.html">Services</a></li>
       <li><a href="capabilities.html">Capabilities</a></li>
       <li><a href="facilities.html">Facilities</a></li>
@@ -355,7 +355,7 @@
     <ul class="nav-mobile-links" role="list">
       <li data-compact><a href="index.html">Home</a></li>
       <li data-compact><a href="about.html">About</a></li>
-      <li><a href="geralds-story.html">Founder</a></li>
+      <li><a href="geralds-story.html">Leadership</a></li>
       <li data-compact><a href="services.html">Services</a></li>
       <li><a href="capabilities.html">Capabilities</a></li>
       <li><a href="facilities.html">Facilities</a></li>
@@ -375,7 +375,7 @@
 <section class="hero" aria-label="Hero">
   <div class="hero-bg">
     <img
-      src="assets/images/Welding 2.jpg"
+      src="assets/images/welding-2.jpg"
       alt="Precision sheet metal fabrication at Pinion and Adams Fabricators, Durban"
       fetchpriority="high"
     >
@@ -448,7 +448,7 @@
 ============================================================ -->
 <section class="about-section section home-sec home-sec-1" aria-labelledby="about-heading">
   <div class="container">
-    <div class="grid-2">
+    <div class="grid-2 grid-2--top">
       <div class="about-text-col">
         <span class="section-label reveal">Our Story</span>
         <h2 class="section-title reveal-heading" id="about-heading">
@@ -509,8 +509,10 @@
       <!-- Card 1 -->
       <article class="card reveal">
         <div class="card-icon">
+          <!-- Drafting / design: pencil editing a document -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+            <path d="M12 20h9"/>
+            <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
           </svg>
         </div>
         <h3 class="card-title">Design &amp; Engineering</h3>
@@ -524,11 +526,11 @@
       <!-- Card 2 -->
       <article class="card reveal">
         <div class="card-icon">
+          <!-- Stacked layers — sheet metal sheets -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-            <line x1="3" y1="9" x2="21" y2="9"></line>
-            <line x1="3" y1="15" x2="21" y2="15"></line>
-            <line x1="9" y1="3" x2="9" y2="21"></line>
+            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+            <polyline points="2 17 12 22 22 17"/>
+            <polyline points="2 12 12 17 22 12"/>
           </svg>
         </div>
         <h3 class="card-title">Sheet Metal Fabrication</h3>
@@ -542,15 +544,9 @@
       <!-- Card 3 -->
       <article class="card reveal">
         <div class="card-icon">
+          <!-- Zap / spark — welding arc -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"></path>
-            <path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path>
-            <path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"></path>
-            <path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"></path>
-            <path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"></path>
-            <path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"></path>
-            <path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"></path>
-            <path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"></path>
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
           </svg>
         </div>
         <h3 class="card-title">Manufacturing &amp; Welding</h3>
@@ -564,9 +560,10 @@
       <!-- Card 4 -->
       <article class="card reveal">
         <div class="card-icon">
+          <!-- Settings/gear — CNC precision machinery -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="3"></circle>
-            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path>
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
           </svg>
         </div>
         <h3 class="card-title">CNC Services</h3>
@@ -580,11 +577,9 @@
       <!-- Card 5 -->
       <article class="card reveal">
         <div class="card-icon">
+          <!-- Water droplet / paint — epoxy coating -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"></path>
-            <path d="M12 12h.01"></path>
-            <path d="M17 12h.01"></path>
-            <path d="M7 12h.01"></path>
+            <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>
           </svg>
         </div>
         <h3 class="card-title">Epoxy Powder Coating</h3>
@@ -598,11 +593,10 @@
       <!-- Card 6 -->
       <article class="card reveal">
         <div class="card-icon">
+          <!-- Graduation cap — Training Academy -->
           <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-            <circle cx="9" cy="7" r="4"></circle>
-            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
           </svg>
         </div>
         <h3 class="card-title">Training Academy</h3>
@@ -695,15 +689,16 @@
       <p class="clients-eyebrow">Trusted by Industry Giants</p>
     </div>
     <div class="marquee-section" aria-label="Client logos">
+      <!-- Each item: swap in a real logo by replacing data-logo-src with an img src and adding .has-logo class -->
       <div class="marquee-track" aria-hidden="true">
-        <span class="marquee-item">MAN</span>
-        <span class="marquee-item">Bell Equipment</span>
-        <span class="marquee-item">Cash Connect Group</span>
-        <span class="marquee-item">ND Engineering</span>
-        <span class="marquee-item">Bosch Projects</span>
-        <span class="marquee-item">Gateway Theatre of Shopping</span>
-        <span class="marquee-item">Sun Coast Casino</span>
-        <span class="marquee-item">SASSDA</span>
+        <span class="marquee-item"><img src="" alt="MAN" class="marquee-logo" aria-hidden="true" hidden><span class="marquee-text">MAN</span></span>
+        <span class="marquee-item"><img src="" alt="Bell Equipment" class="marquee-logo" aria-hidden="true" hidden><span class="marquee-text">Bell Equipment</span></span>
+        <span class="marquee-item"><img src="" alt="Cash Connect Group" class="marquee-logo" aria-hidden="true" hidden><span class="marquee-text">Cash Connect Group</span></span>
+        <span class="marquee-item"><img src="" alt="ND Engineering" class="marquee-logo" aria-hidden="true" hidden><span class="marquee-text">ND Engineering</span></span>
+        <span class="marquee-item"><img src="" alt="Bosch Projects" class="marquee-logo" aria-hidden="true" hidden><span class="marquee-text">Bosch Projects</span></span>
+        <span class="marquee-item"><img src="" alt="Gateway Theatre of Shopping" class="marquee-logo" aria-hidden="true" hidden><span class="marquee-text">Gateway Theatre of Shopping</span></span>
+        <span class="marquee-item"><img src="" alt="Sun Coast Casino" class="marquee-logo" aria-hidden="true" hidden><span class="marquee-text">Sun Coast Casino</span></span>
+        <span class="marquee-item"><img src="" alt="SASSDA" class="marquee-logo" aria-hidden="true" hidden><span class="marquee-text">SASSDA</span></span>
       </div>
     </div>
   </div>
@@ -814,10 +809,10 @@
     <h2 class="reveal-heading" id="cta-heading">Have Drawings? Let's Talk Spec.</h2>
     <p class="reveal">Submit your drawings or describe your requirements — our engineering team will review and respond within 1 business day.</p>
     <div class="cta-banner-btns reveal">
-      <a href="contact.html" class="btn btn--outline-red">
+      <a href="contact.html" class="btn btn--primary">
         <span>Submit Drawings &amp; Get a Quote</span>
       </a>
-      <a href="tel:+27317053104" class="btn btn--outline-red">
+      <a href="tel:+27317053104" class="btn btn--outline">
         <span>Call Us: 031 705 3104</span>
       </a>
     </div>

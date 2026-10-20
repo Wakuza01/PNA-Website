@@ -23,7 +23,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/variables.css">
@@ -53,7 +53,7 @@
     <ul class="nav-links" role="list">
       <li data-compact><a href="index.html">Home</a></li>
       <li data-compact><a href="about.html">About</a></li>
-      <li><a href="geralds-story.html">Founder</a></li>
+      <li><a href="geralds-story.html">Leadership</a></li>
       <li data-compact><a href="services.html">Services</a></li>
       <li><a href="capabilities.html">Capabilities</a></li>
       <li><a href="facilities.html">Facilities</a></li><li><a href="projects.html">Projects</a></li>
@@ -78,7 +78,7 @@
   <nav aria-label="Mobile navigation links">
     <ul class="nav-mobile-links" role="list">
       <li data-compact><a href="index.html">Home</a></li><li data-compact><a href="about.html">About</a></li>
-      <li><a href="geralds-story.html">Founder</a></li><li data-compact><a href="services.html">Services</a></li><li><a href="capabilities.html">Capabilities</a></li>
+      <li><a href="geralds-story.html">Leadership</a></li><li data-compact><a href="services.html">Services</a></li><li><a href="capabilities.html">Capabilities</a></li>
       <li><a href="facilities.html">Facilities</a></li><li><a href="projects.html">Projects</a></li><li><a href="training-academy.html">Academy</a></li><li><a href="blog.html">Blog</a></li>
     </ul>
     
@@ -97,7 +97,7 @@
     <div class="container page-hero-content">
       <span class="page-hero-label">Get in Touch</span>
       <h1>Contact P&amp;A</h1>
-      <p>Submit your drawings or project brief — our engineering team will review specifications and respond within 1 business day.</p>
+      <p>Upload your drawings directly or describe your project brief — our engineering team will review and respond within 1 business day.</p>
     </div>
   </section>
 
@@ -201,9 +201,30 @@
 
             <!-- Message -->
             <div class="form-group">
-              <label class="form-label" for="contact-message">Project Description / Drawing Reference <span class="required">*</span></label>
-              <textarea class="form-textarea" id="contact-message" name="message" placeholder="Describe your requirements — material, thickness, quantity, tolerances, finish spec. If you have drawings, reference them here and email them to sales@pinionadams.co.za." required minlength="20" maxlength="2000"></textarea>
+              <label class="form-label" for="contact-message">Project Description <span class="required">*</span></label>
+              <textarea class="form-textarea" id="contact-message" name="message" placeholder="Describe your requirements — material, thickness, quantity, tolerances, finish spec." required minlength="20" maxlength="2000"></textarea>
               <span class="form-char-count">2000 characters remaining</span>
+              <span class="field-error" role="alert"></span>
+            </div>
+
+            <!-- File Upload -->
+            <div class="form-group">
+              <label class="form-label" for="contact-files">Attach Drawings <span style="font-weight:400;text-transform:none;letter-spacing:0;font-size:0.7rem;">(optional)</span></label>
+              <div class="form-file-wrap">
+                <label class="form-file-label" for="contact-files">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  <span>Click to upload or drag &amp; drop</span>
+                </label>
+                <input
+                  class="form-file-input"
+                  type="file"
+                  id="contact-files"
+                  name="attachment"
+                  accept=".dxf,.dwg,.step,.stp,.pdf,.zip,.png,.jpg,.jpeg"
+                >
+              </div>
+              <span class="form-file-selected" aria-live="polite"></span>
+              <span class="form-file-hint">DXF, DWG, STEP, STP, PDF, ZIP, PNG, JPG &mdash; max 10 MB</span>
               <span class="field-error" role="alert"></span>
             </div>
 
@@ -236,19 +257,50 @@
             We aim to respond to all enquiries within 1 business day.
           </div>
 
-          <!-- Google Maps — Durban -->
-          <div class="map-embed">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460.1835!2d30.9003!3d-29.8286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQ5JzQyLjkiUyAzMMKwNTQnMDEuMSJF!5e0!3m2!1sen!2sza!4v1234567890"
-              width="600"
-              height="250"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Map showing P&amp;A Fabricators Durban location"
-            ></iframe>
+          <!-- Location maps — tabbed KZN / Gauteng -->
+          <div class="map-tabs" role="tablist" aria-label="Office locations">
+            <button class="map-tab-btn is-active" role="tab" aria-selected="true" aria-controls="map-kzn" data-map="kzn">KZN — Durban</button>
+            <button class="map-tab-btn" role="tab" aria-selected="false" aria-controls="map-gauteng" data-map="gauteng">Gauteng</button>
           </div>
+          <div class="map-panel is-active" id="map-kzn" role="tabpanel">
+            <div class="map-embed">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3460.1835!2d30.9003!3d-29.8286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjnCsDQ5JzQyLjkiUyAzMMKwNTQnMDEuMSJF!5e0!3m2!1sen!2sza!4v1234567890"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="P&amp;A Fabricators — 15 Pineside Road, New Germany, KZN"
+              ></iframe>
+            </div>
+          </div>
+          <div class="map-panel" id="map-gauteng" role="tabpanel">
+            <div class="map-embed">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.0!2d28.1600!3d-26.1200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2s4+Essex+Road+Meadowdale!5e0!3m2!1sen!2sza!4v1234567891"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="P&amp;A Fabricators — Unit B1, The Meadows, 4 Essex Road, Meadowdale Ext 2, Gauteng"
+              ></iframe>
+            </div>
+          </div>
+
+          <script>
+            (function () {
+              var tabs = document.querySelectorAll('.map-tab-btn');
+              tabs.forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                  tabs.forEach(function (t) { t.classList.remove('is-active'); t.setAttribute('aria-selected', 'false'); });
+                  document.querySelectorAll('.map-panel').forEach(function (p) { p.classList.remove('is-active'); });
+                  btn.classList.add('is-active');
+                  btn.setAttribute('aria-selected', 'true');
+                  var panelId = 'map-' + btn.dataset.map;
+                  var panel = document.getElementById(panelId);
+                  if (panel) panel.classList.add('is-active');
+                });
+              });
+            })();
+          </script>
 
         </div>
 
