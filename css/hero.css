@@ -85,9 +85,21 @@
   color: #ffffff;
   margin-bottom: 1.25rem;
   padding: 0.35rem 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(38, 157, 204, 0.9);
   border-radius: var(--border-radius);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(38, 157, 204, 0.08);
+  animation: eyebrow-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes eyebrow-glow {
+  0%, 100% {
+    border-color: rgba(38, 157, 204, 0.6);
+    box-shadow: 0 0 6px rgba(38, 157, 204, 0.4), 0 0 18px rgba(38, 157, 204, 0.2);
+  }
+  50% {
+    border-color: rgba(38, 157, 204, 1);
+    box-shadow: 0 0 10px rgba(38, 157, 204, 0.8), 0 0 30px rgba(38, 157, 204, 0.45), 0 0 60px rgba(38, 157, 204, 0.2);
+  }
 }
 
 /* Headline */
