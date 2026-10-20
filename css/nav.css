@@ -49,12 +49,8 @@
 }
 
 /* ----------------------------------------
-   Logo — always white on the dark pill
+   Logo
    ---------------------------------------- */
-
-.nav-logo img {
-  filter: brightness(0) invert(1);
-}
 
 #site-nav.scrolled::before {
   background: rgba(20, 28, 46, 0.82);

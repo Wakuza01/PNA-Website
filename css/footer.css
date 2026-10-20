@@ -252,10 +252,6 @@
 }
 
 /* ── Bottom bar ── */
-/* Dark mode: invert footer logo to white */
-[data-theme="dark"] .footer-logo img {
-  filter: brightness(0) invert(1);
-}
 
 .footer-bottom {
   background: transparent;
