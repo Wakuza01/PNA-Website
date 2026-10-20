@@ -78,13 +78,13 @@
 .hero-eyebrow {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: #ffffff;
   margin-bottom: 1.25rem;
-  padding: 0.35rem 0.85rem;
+  padding: 0.45rem 1.1rem;
   border: 1px solid rgba(38, 157, 204, 0.9);
   border-radius: var(--border-radius);
   background: rgba(38, 157, 204, 0.08);

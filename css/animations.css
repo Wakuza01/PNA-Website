@@ -102,7 +102,9 @@
   opacity: 0;
 }
 .page-loaded .hero-eyebrow {
-  animation: fade-in 0.5s 0.2s ease forwards;
+  animation:
+    fade-in 0.5s 0.2s ease forwards,
+    eyebrow-glow 2.4s 0.7s ease-in-out infinite;
 }
 
 /* ============================================================
