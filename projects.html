@@ -57,6 +57,56 @@
   }
   </script>
   <script src="js/track.js" defer></script>
+<style>
+.pf-section{background:var(--color-primary);}
+.pf-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin:2.5rem 0 2rem;}
+.pf-stats>div{padding:1.2rem 1.3rem;border-radius:14px;background:var(--color-surface-light);border:1px solid var(--color-border);}
+.pf-stats b{display:block;font-family:var(--font-heading);font-size:2.6rem;line-height:1;font-weight:800;color:#269dcc;}
+.pf-stats span{display:block;margin-top:.35rem;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--color-text-muted);}
+.pf-filters{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.75rem;}
+.pf-chip{cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:100px;border:1px solid var(--color-border);background:var(--color-surface-light);color:var(--color-text-heading);font-family:var(--font-heading);font-size:1rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;transition:background .25s,color .25s,border-color .25s,transform .25s;}
+.pf-chip b{font-family:var(--font-body);font-size:.7rem;font-weight:600;padding:.15rem .5rem;border-radius:100px;background:rgba(38,157,204,.16);color:#269dcc;transition:inherit;}
+.pf-chip:hover{border-color:#269dcc;transform:translateY(-2px);}
+.pf-chip.is-active{background:#205785;border-color:#205785;color:#fff;}
+.pf-chip.is-active b{background:rgba(255,255,255,.2);color:#fff;}
+.pf-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;grid-auto-flow:dense;gap:1rem;}
+.pf-card{position:relative;margin:0;overflow:hidden;border-radius:16px;background:#111;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .35s;}
+.pf-card.pf-big{grid-column:span 2;grid-row:span 2;}
+.pf-card.pf-wide{grid-column:span 2;}
+.pf-card.pf-hide{opacity:0!important;transform:scale(.92)!important;pointer-events:none;}
+.pf-card[hidden]{display:none;}
+.pf-open{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;background:none;cursor:zoom-in;}
+.pf-open img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.12);transition:transform 1.3s cubic-bezier(.2,.8,.2,1);}
+.pf-card.is-visible .pf-open img{transform:scale(1);}
+.pf-card.is-visible:hover .pf-open img{transform:scale(1.07);transition-duration:.7s;}
+.pf-card.is-visible:hover{box-shadow:0 18px 40px rgba(0,0,0,.28);}
+.pf-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,18,36,.88) 0%,rgba(10,18,36,.25) 45%,transparent 70%);pointer-events:none;transition:opacity .4s;}
+.pf-card figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.2rem 1.3rem;display:flex;flex-direction:column;gap:.25rem;pointer-events:none;transform:translateY(8px);transition:transform .45s cubic-bezier(.2,.8,.2,1);}
+.pf-card:hover figcaption{transform:none;}
+.pf-tag{font-size:.68rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7fd0ee;}
+.pf-title{font-family:var(--font-heading);font-size:1.35rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;line-height:1.1;}
+.pf-big .pf-title{font-size:1.9rem;}
+.pf-zoom{position:absolute;top:.9rem;right:.9rem;z-index:2;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.92);opacity:0;transform:scale(.7);transition:opacity .3s,transform .35s cubic-bezier(.2,.8,.2,1);pointer-events:none;}
+.pf-zoom svg{width:18px;height:18px;fill:none;stroke:#205785;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.pf-card:hover .pf-zoom,.pf-open:focus-visible~.pf-zoom{opacity:1;transform:none;}
+.pf-open:focus-visible{outline:3px solid #7fd0ee;outline-offset:-3px;}
+.pf-note{margin-top:1.75rem;font-size:.85rem;color:var(--color-text-muted);}
+.pf-lb{position:fixed;inset:0;z-index:2000;display:none;align-items:center;justify-content:center;background:rgba(6,12,24,.92);padding:2rem;}
+.pf-lb.is-open{display:flex;animation:pf-fade .3s ease;}
+@keyframes pf-fade{from{opacity:0}to{opacity:1}}
+.pf-lb figure{margin:0;max-width:min(1100px,100%);text-align:center;}
+.pf-lb img{max-width:100%;max-height:78vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.5);animation:pf-zoom .4s cubic-bezier(.2,.8,.2,1);}
+@keyframes pf-zoom{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+.pf-lb figcaption{margin-top:1rem;color:#fff;font-family:var(--font-heading);font-size:1.3rem;letter-spacing:.05em;text-transform:uppercase;}
+.pf-lb figcaption small{display:block;margin-top:.2rem;font-family:var(--font-body);font-size:.75rem;letter-spacing:.14em;color:#7fd0ee;}
+.pf-lb button{position:absolute;display:grid;place-items:center;width:46px;height:46px;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;transition:background .25s;}
+.pf-lb button:hover{background:#269dcc;}
+.pf-lb button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.pf-lb .pf-x{top:1.2rem;right:1.2rem;}.pf-lb .pf-prev{left:1.2rem;top:50%;margin-top:-23px;}.pf-lb .pf-next{right:1.2rem;top:50%;margin-top:-23px;}
+@media(max-width:1000px){.pf-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:200px;}.pf-stats{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.pf-grid{grid-template-columns:1fr;grid-auto-rows:240px;}.pf-card.pf-big,.pf-card.pf-wide{grid-column:span 1;grid-row:span 1;}.pf-stats b{font-size:2.1rem;}.pf-lb .pf-prev{left:.4rem}.pf-lb .pf-next{right:.4rem}}
+@media(hover:none){.pf-card figcaption{transform:none;}}
+</style>
 </head>
 <body>
 
@@ -64,7 +114,7 @@
 
 <nav id="site-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Pinion &amp; Adams Fabricators — Home"><img src="assets/images/logo.png" alt="Pinion &amp; Adams Fabricators"></a>
+    <a href="index.html" class="nav-logo" aria-label="Pinion &amp; Adams Fabricators — Home"><img src="assets/images/logo-light.png" alt="Pinion &amp; Adams Fabricators"></a>
     <ul class="nav-links" role="list">
       <li data-compact><a href="index.html">Home</a></li>
       <li data-compact><a href="about.html">About</a></li>
@@ -133,112 +183,130 @@
     </div>
   </section>
 
-  <!-- MANUFACTURING PROJECTS -->
-  <section class="section" style="background:#ffffff;" aria-labelledby="manufacturing-heading">
+  <!-- PORTFOLIO -->
+  <section class="section pf-section" aria-labelledby="portfolio-heading">
     <div class="container">
-      <div class="projects-section-heading">
-        <span class="section-label reveal">Our Work</span>
-        <h2 class="section-title reveal-heading" id="manufacturing-heading">Manufacturing</h2>
-        <p class="section-intro reveal" style="max-width:700px;">From precision sheet metal enclosures to heavy structural assemblies, P&amp;A has delivered fabricated components and structures for some of South Africa's most recognised industrial clients.</p>
-      </div>
-      <div class="projects-grid stagger-children">
-        <div class="project-card reveal">
-          <img src="assets/images/projects/manuf3_electrical_control_console.jpg" alt="Electrical control console" loading="lazy" data-needs-clean-photo="true">
-          <p class="project-card-caption">Electrical Box</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/projects/manuf4_ticket_dispensing_kiosks.jpg" alt="Ticket dispensing kiosk fabricated by P&amp;A" loading="lazy" data-needs-clean-photo="true">
-          <p class="project-card-caption">Ticket Kiosk</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/projects/manuf5_generator_enclosure.jpg" alt="Custom generator housing" loading="lazy" data-needs-clean-photo="true">
-          <p class="project-card-caption">Generator Housings</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/projects/manuf6_tail_cones_for_armament.jpg" alt="Precision rolled metal casings" loading="lazy" data-needs-clean-photo="true">
-          <p class="project-card-caption">Rolled Casings</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/projects/manuf3_air_slides.jpg" alt="Concrete Moulds" loading="lazy">
-          <p class="project-card-caption">Concrete Moulds</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/projects/manuf2_aluminium_facade.jpg" alt="Architectural Facade" loading="lazy">
-          <p class="project-card-caption">Architectural Facade</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/products/concrete-moulds.jpg" alt="Concrete Moulds" loading="lazy">
-          <p class="project-card-caption">Concrete Moulds</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/products/truck-bus-components.jpg" alt="Bus Components" loading="lazy">
-          <p class="project-card-caption">Bus Components</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/Bin.jpeg" alt="Industrial Bin" loading="lazy">
-          <p class="project-card-caption">Industrial Bin</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/Press insert.jpg" alt="Press Insert Component" loading="lazy">
-          <p class="project-card-caption">Press Insert</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <span class="section-label reveal">Our Work</span>
+      <h2 class="section-title reveal-heading" id="portfolio-heading">Built By P&amp;A</h2>
+      <p class="section-intro reveal" style="max-width:700px;">From precision sheet metal enclosures to heavy structural assemblies, tanks and filtration plant, P&amp;A has delivered fabricated components and structures for some of South Africa's most recognised industrial clients.</p>
 
-  <!-- FABRICATION PROJECTS -->
-  <section class="section" style="background:var(--color-primary);" aria-labelledby="fabrication-heading">
-    <div class="container">
-      <div class="projects-section-heading">
-        <span class="section-label reveal">Our Work</span>
-        <h2 class="section-title reveal-heading" id="fabrication-heading">Fabrication</h2>
+      <div class="pf-stats reveal" aria-label="P&amp;A at a glance">
+        <div><b data-count="21">21</b><span>Projects shown</span></div>
+        <div><b data-count="50" data-suffix="+">50+</b><span>Years fabricating</span></div>
+        <div><b>ISO</b><span>9001:2015 certified</span></div>
+        <div><b data-count="2">2</b><span>Branches: Durban &amp; Johannesburg</span></div>
       </div>
-      <div class="projects-grid stagger-children">
-        <div class="project-card reveal">
-          <img src="assets/images/projects/fabri7_pipe_clamp.jpg" alt="Subway Pipe Clamp" loading="lazy">
-          <p class="project-card-caption">Subway Pipe Clamp</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/projects/fabri_1air_filtration.jpg" alt="Filtration Hoppers" loading="lazy">
-          <p class="project-card-caption">Filtration Hoppers</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/projects/fabri_2air_filtration_unit.jpg" alt="Filtration Unit" loading="lazy">
-          <p class="project-card-caption">Filtration Unit</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/projects/fabri_2entrainment_separator.jpg" alt="Bios Rouge Entrainment" loading="lazy">
-          <p class="project-card-caption">Bios Rouge Entrainment</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/projects/fabri_5_mixing_tank.jpg" alt="Protea Tex Mixer Tank" loading="lazy">
-          <p class="project-card-caption">Protea Tex Mixer Tank</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/projects/fabri_8_spray_booth.jpg" alt="Spray Booth" loading="lazy">
-          <p class="project-card-caption">Spray Booth</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/304 SUGAR TANKS.jpg" alt="304 Stainless Steel Sugar Tanks" loading="lazy">
-          <p class="project-card-caption">304 Sugar Tanks</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/COMPLETE FILTER CARTRIDGE.jpg" alt="Complete Filter Cartridge Assembly" loading="lazy">
-          <p class="project-card-caption">Filter Cartridge</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/SS BLENDER PLANT.jpeg" alt="Stainless Steel Blender Plant" loading="lazy">
-          <p class="project-card-caption">SS Blender Plant</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/TANK 1.jpeg" alt="Custom Fabricated Tank" loading="lazy">
-          <p class="project-card-caption">Custom Tank</p>
-        </div>
-        <div class="project-card reveal">
-          <img src="assets/images/Water Filter tanks.jpg" alt="Water Filter Tanks" loading="lazy">
-          <p class="project-card-caption">Water Filter Tanks</p>
-        </div>
+
+      <div class="pf-filters reveal" role="group" aria-label="Filter projects"><button type="button" class="pf-chip is-active" data-filter="all">All <b>21</b></button><button type="button" class="pf-chip" data-filter="enc">Enclosures &amp; Housings <b>3</b></button><button type="button" class="pf-chip" data-filter="com">Components &amp; Structures <b>8</b></button><button type="button" class="pf-chip" data-filter="tank">Tanks &amp; Vessels <b>5</b></button><button type="button" class="pf-chip" data-filter="fil">Filtration &amp; Air <b>5</b></button></div>
+
+      <div class="pf-grid" id="pf-grid">
+        <figure class="pf-card reveal pf-big" data-cat="enc" data-title="Generator Housings" data-cat-label="Enclosures &amp; Housings">
+          <button type="button" class="pf-open" aria-label="View Generator Housings"><img src="assets/images/projects/manuf5_generator_enclosure.jpg" alt="Generator Housings" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Enclosures &amp; Housings</span><span class="pf-title">Generator Housings</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="enc" data-title="Ticket Kiosks" data-cat-label="Enclosures &amp; Housings">
+          <button type="button" class="pf-open" aria-label="View Ticket Kiosks"><img src="assets/images/projects/manuf4_ticket_dispensing_kiosks.jpg" alt="Ticket Kiosks" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Enclosures &amp; Housings</span><span class="pf-title">Ticket Kiosks</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="enc" data-title="Electrical Control Console" data-cat-label="Enclosures &amp; Housings">
+          <button type="button" class="pf-open" aria-label="View Electrical Control Console"><img src="assets/images/projects/manuf3_electrical_control_console.jpg" alt="Electrical Control Console" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Enclosures &amp; Housings</span><span class="pf-title">Electrical Control Console</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal pf-wide" data-cat="tank" data-title="304 Stainless Sugar Tanks" data-cat-label="Tanks &amp; Vessels">
+          <button type="button" class="pf-open" aria-label="View 304 Stainless Sugar Tanks"><img src="assets/images/304 SUGAR TANKS.jpg" alt="304 Stainless Sugar Tanks" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Tanks &amp; Vessels</span><span class="pf-title">304 Stainless Sugar Tanks</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="fil" data-title="Filtration Hoppers" data-cat-label="Filtration &amp; Air">
+          <button type="button" class="pf-open" aria-label="View Filtration Hoppers"><img src="assets/images/projects/fabri_1air_filtration.jpg" alt="Filtration Hoppers" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Filtration &amp; Air</span><span class="pf-title">Filtration Hoppers</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="fil" data-title="Filtration Unit" data-cat-label="Filtration &amp; Air">
+          <button type="button" class="pf-open" aria-label="View Filtration Unit"><img src="assets/images/projects/fabri_2air_filtration_unit.jpg" alt="Filtration Unit" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Filtration &amp; Air</span><span class="pf-title">Filtration Unit</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal pf-wide" data-cat="com" data-title="Architectural Facade" data-cat-label="Components &amp; Structures">
+          <button type="button" class="pf-open" aria-label="View Architectural Facade"><img src="assets/images/projects/manuf2_aluminium_facade.jpg" alt="Architectural Facade" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Components &amp; Structures</span><span class="pf-title">Architectural Facade</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="tank" data-title="Protea Tex Mixer Tank" data-cat-label="Tanks &amp; Vessels">
+          <button type="button" class="pf-open" aria-label="View Protea Tex Mixer Tank"><img src="assets/images/projects/fabri_5_mixing_tank.jpg" alt="Protea Tex Mixer Tank" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Tanks &amp; Vessels</span><span class="pf-title">Protea Tex Mixer Tank</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal pf-big" data-cat="tank" data-title="Stainless Steel Blender Plant" data-cat-label="Tanks &amp; Vessels">
+          <button type="button" class="pf-open" aria-label="View Stainless Steel Blender Plant"><img src="assets/images/SS BLENDER PLANT.jpeg" alt="Stainless Steel Blender Plant" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Tanks &amp; Vessels</span><span class="pf-title">Stainless Steel Blender Plant</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="fil" data-title="Spray Booth" data-cat-label="Filtration &amp; Air">
+          <button type="button" class="pf-open" aria-label="View Spray Booth"><img src="assets/images/projects/fabri_8_spray_booth.jpg" alt="Spray Booth" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Filtration &amp; Air</span><span class="pf-title">Spray Booth</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="com" data-title="Rolled Casings" data-cat-label="Components &amp; Structures">
+          <button type="button" class="pf-open" aria-label="View Rolled Casings"><img src="assets/images/projects/manuf6_tail_cones_for_armament.jpg" alt="Rolled Casings" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Components &amp; Structures</span><span class="pf-title">Rolled Casings</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="fil" data-title="Bios Rouge Entrainment Separator" data-cat-label="Filtration &amp; Air">
+          <button type="button" class="pf-open" aria-label="View Bios Rouge Entrainment Separator"><img src="assets/images/projects/fabri_2entrainment_separator.jpg" alt="Bios Rouge Entrainment Separator" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Filtration &amp; Air</span><span class="pf-title">Bios Rouge Entrainment Separator</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="com" data-title="Truck &amp; Bus Components" data-cat-label="Components &amp; Structures">
+          <button type="button" class="pf-open" aria-label="View Truck &amp; Bus Components"><img src="assets/images/products/truck-bus-components.jpg" alt="Truck &amp; Bus Components" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Components &amp; Structures</span><span class="pf-title">Truck &amp; Bus Components</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal pf-wide" data-cat="tank" data-title="Water Filter Tanks" data-cat-label="Tanks &amp; Vessels">
+          <button type="button" class="pf-open" aria-label="View Water Filter Tanks"><img src="assets/images/Water Filter tanks.jpg" alt="Water Filter Tanks" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Tanks &amp; Vessels</span><span class="pf-title">Water Filter Tanks</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="fil" data-title="Filter Cartridge Assembly" data-cat-label="Filtration &amp; Air">
+          <button type="button" class="pf-open" aria-label="View Filter Cartridge Assembly"><img src="assets/images/COMPLETE FILTER CARTRIDGE.jpg" alt="Filter Cartridge Assembly" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Filtration &amp; Air</span><span class="pf-title">Filter Cartridge Assembly</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="com" data-title="Concrete Moulds" data-cat-label="Components &amp; Structures">
+          <button type="button" class="pf-open" aria-label="View Concrete Moulds"><img src="assets/images/projects/manuf3_air_slides.jpg" alt="Concrete Moulds" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Components &amp; Structures</span><span class="pf-title">Concrete Moulds</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="tank" data-title="Custom Fabricated Tank" data-cat-label="Tanks &amp; Vessels">
+          <button type="button" class="pf-open" aria-label="View Custom Fabricated Tank"><img src="assets/images/TANK 1.jpeg" alt="Custom Fabricated Tank" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Tanks &amp; Vessels</span><span class="pf-title">Custom Fabricated Tank</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="com" data-title="Subway Pipe Clamp" data-cat-label="Components &amp; Structures">
+          <button type="button" class="pf-open" aria-label="View Subway Pipe Clamp"><img src="assets/images/projects/fabri7_pipe_clamp.jpg" alt="Subway Pipe Clamp" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Components &amp; Structures</span><span class="pf-title">Subway Pipe Clamp</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="com" data-title="Industrial Bin" data-cat-label="Components &amp; Structures">
+          <button type="button" class="pf-open" aria-label="View Industrial Bin"><img src="assets/images/Bin.jpeg" alt="Industrial Bin" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Components &amp; Structures</span><span class="pf-title">Industrial Bin</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="com" data-title="Press Insert Component" data-cat-label="Components &amp; Structures">
+          <button type="button" class="pf-open" aria-label="View Press Insert Component"><img src="assets/images/Press insert.jpg" alt="Press Insert Component" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Components &amp; Structures</span><span class="pf-title">Press Insert Component</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
+        <figure class="pf-card reveal " data-cat="com" data-title="Pressed Sheet Metal Parts" data-cat-label="Components &amp; Structures">
+          <button type="button" class="pf-open" aria-label="View Pressed Sheet Metal Parts"><img src="assets/images/products/concrete-moulds.jpg" alt="Pressed Sheet Metal Parts" loading="lazy"></button>
+          <figcaption><span class="pf-tag">Components &amp; Structures</span><span class="pf-title">Pressed Sheet Metal Parts</span></figcaption>
+          <span class="pf-zoom" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
+        </figure>
       </div>
+      <p class="pf-note reveal">More projects and clean, high-resolution photography coming soon.</p>
     </div>
   </section>
 
@@ -261,7 +329,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="footer-logo"><img src="assets/images/logo.png" alt="Pinion &amp; Adams Fabricators" width="140" height="47"></a>
+          <a href="index.html" class="footer-logo"><img src="assets/images/logo-light.png" alt="Pinion &amp; Adams Fabricators" width="140" height="47"></a>
           <p class="footer-tagline">South Africa's leading sheet metal fabricating and manufacturing company. ISO 9001:2015 certified. Precision-built since 1971.</p>
           <span class="footer-iso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg>ISO 9001:2015 Certified</span>
         </div>
@@ -326,6 +394,12 @@
   </div>
 </footer>
 
+<div class="pf-lb" id="pf-lb" role="dialog" aria-modal="true" aria-label="Project viewer">
+  <button type="button" class="pf-x" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <button type="button" class="pf-prev" aria-label="Previous project"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+  <button type="button" class="pf-next" aria-label="Next project"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  <figure><img src="" alt=""><figcaption></figcaption></figure>
+</div>
 <button class="scroll-top-btn" id="scroll-top" aria-label="Scroll to top of page">
   <svg viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
 </button>
@@ -336,29 +410,42 @@
 <script src="js/scroll-effects.js" defer></script>
 <script>document.getElementById('footer-year').textContent = new Date().getFullYear();</script>
 <script>
-(function () {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.project-card').forEach(function (card) {
-      card.addEventListener('mousemove', function (e) {
-        var r   = card.getBoundingClientRect();
-        var x   = e.clientX - r.left;
-        var y   = e.clientY - r.top;
-        var cx  = r.width  / 2;
-        var cy  = r.height / 2;
-        var rotY =  ((x - cx) / cx) * 12;
-        var rotX = -((y - cy) / cy) *  9;
-        card.style.transform = 'perspective(900px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale3d(1.03,1.03,1.03)';
-        card.style.setProperty('--shine-x', x + 'px');
-        card.style.setProperty('--shine-y', y + 'px');
-      });
-      card.addEventListener('mouseleave', function () {
-        card.style.transform = '';
-        card.style.setProperty('--shine-x', '50%');
-        card.style.setProperty('--shine-y', '50%');
-      });
+(function(){
+  var grid=document.getElementById('pf-grid'); if(!grid) return;
+  var cards=[].slice.call(grid.querySelectorAll('.pf-card'));
+  var chips=[].slice.call(document.querySelectorAll('.pf-chip'));
+  chips.forEach(function(ch){ch.addEventListener('click',function(){
+    chips.forEach(function(c){c.classList.toggle('is-active',c===ch)});
+    var f=ch.getAttribute('data-filter');
+    cards.forEach(function(c){
+      var show=f==='all'||c.getAttribute('data-cat')===f;
+      if(show){c.hidden=false;void c.offsetWidth;c.classList.remove('pf-hide');c.classList.add('is-visible');}
+      else{c.classList.add('pf-hide');setTimeout(function(){if(c.classList.contains('pf-hide'))c.hidden=true;},350);}
     });
-  });
+  });});
+  /* lightbox */
+  var lb=document.getElementById('pf-lb'),img=lb.querySelector('img'),cap=lb.querySelector('figcaption'),cur=0,last=null;
+  function vis(){return cards.filter(function(c){return !c.hidden&&!c.classList.contains('pf-hide');});}
+  function show(i){var v=vis();cur=(i+v.length)%v.length;var c=v[cur];img.src=c.querySelector('img').src;img.alt=c.getAttribute('data-title');
+    cap.innerHTML='';cap.appendChild(document.createTextNode(c.getAttribute('data-title')));var sm=document.createElement('small');sm.innerHTML=c.getAttribute('data-cat-label');cap.appendChild(sm);}
+  function open(c){last=c;lb.classList.add('is-open');document.body.style.overflow='hidden';show(vis().indexOf(c));lb.querySelector('.pf-x').focus();}
+  function close(){lb.classList.remove('is-open');document.body.style.overflow='';if(last)last.querySelector('.pf-open').focus();}
+  cards.forEach(function(c){c.querySelector('.pf-open').addEventListener('click',function(){open(c);});});
+  lb.querySelector('.pf-x').addEventListener('click',close);
+  lb.querySelector('.pf-prev').addEventListener('click',function(){show(cur-1);});
+  lb.querySelector('.pf-next').addEventListener('click',function(){show(cur+1);});
+  lb.addEventListener('click',function(e){if(e.target===lb)close();});
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('is-open'))return;
+    if(e.key==='Escape')close();else if(e.key==='ArrowLeft')show(cur-1);else if(e.key==='ArrowRight')show(cur+1);});
+  /* count-up */
+  var stats=document.querySelectorAll('.pf-stats b[data-count]');
+  if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;io.unobserve(e.target);
+      var el=e.target,n=+el.getAttribute('data-count'),suf=el.getAttribute('data-suffix')||'',t0=null;
+      (function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1400,1);el.textContent=Math.round(n*(1-Math.pow(1-p,3)))+suf;if(p<1)requestAnimationFrame(step);})(performance.now());
+    });},{threshold:.6});
+    stats.forEach(function(el){el.textContent='0'+(el.getAttribute('data-suffix')||'');io.observe(el);});
+  }
 }());
 </script>
 <script src="js/theme.js" defer></script>

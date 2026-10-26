@@ -44,7 +44,7 @@
   <style>
 /* ── Linear Card Grid ────────────────────────────────────────── */
 .svc-grid-section{background:#ffffff;padding:3rem 2rem 5rem;}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1400px;margin:0 auto;}
+.svc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;max-width:1400px;margin:0 auto;}
 .svc-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;cursor:pointer;background:#111;}
 .svc-card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.4s ease;z-index:0;}
 .svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.35) 45%,transparent 100%);z-index:1;transition:background 0.4s ease;}
@@ -72,7 +72,7 @@
 .svc-media figure{margin:0;}
 .svc-media img{width:100%;height:auto;display:block;border-radius:12px;background:#fff;}
 .svc-media figcaption{margin-top:0.6rem;font-size:0.82rem;line-height:1.5;color:var(--color-text-muted);}
-.svc-detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+.svc-detail-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem;margin-top:3rem;}.svc-detail-grid>.svc-detail{grid-column:span 2;}.svc-detail-grid>.svc-detail:nth-child(n+4){grid-column:span 3;}
 .svc-detail{background:var(--color-surface-light);border:1px solid var(--color-border);border-radius:16px;padding:1.9rem 1.75rem 1.75rem;display:flex;flex-direction:column;scroll-margin-top:110px;}
 .svc-detail h3{font-family:var(--font-heading);font-size:1.45rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;color:var(--color-text-heading);margin:0 0 0.7rem;}
 .svc-detail>p{font-size:0.95rem;line-height:1.7;color:var(--color-text-primary);margin:0 0 1.1rem;}
@@ -85,7 +85,7 @@
 .svc-floor img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
 .svc-floor figure:hover img{transform:scale(1.05);}
 .svc-floor figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 0.9rem 0.7rem;background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);color:#fff;font-size:0.8rem;font-weight:500;letter-spacing:0.02em;}
-.svc-quality{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2.5rem;}
+.svc-quality{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;margin-top:2.5rem;}
 .svc-quality p{font-size:0.98rem;line-height:1.75;color:var(--color-text-primary);margin:0 0 1rem;}
 .svc-quote{margin:0;padding:1.6rem 1.8rem;border-left:4px solid #269dcc;background:var(--color-surface-light);border-radius:0 14px 14px 0;}
 .svc-quote p{font-size:1.05rem;line-height:1.7;font-style:italic;color:var(--color-text-heading);margin:0 0 0.8rem;}
@@ -156,11 +156,13 @@
 @media(max-width:900px){.svc-industries{grid-template-columns:repeat(2,1fr);}.svc-steps li::after{display:none;}}
 @media(max-width:700px){.svc-track ol{grid-template-columns:1fr;gap:1.1rem;padding-left:0.4rem;}.svc-track ol::before,.svc-track ol::after{top:0;bottom:0;left:11px;right:auto;width:3px;height:auto;}.svc-track ol::after{transform:scaleY(0);transform-origin:top;width:3px;}.svc-track.is-visible ol::after{transform:scaleY(1);}.svc-track li{text-align:left;padding:0 0 0 2.4rem;}.svc-track li::before{left:0;top:0;margin-left:2px;}}
 @media(prefers-reduced-motion:reduce){.svc-industries svg,.svc-track li::before{animation:none!important;}.svc-track ol::after{transition:none;}}
-@media(max-width:1100px){.svc-steps{grid-template-columns:repeat(4,1fr);}.svc-detail-grid{grid-template-columns:repeat(2,1fr);}.svc-floor{grid-template-columns:repeat(2,1fr);}.svc-why{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:700px){.svc-deep{padding:3.5rem 1.25rem;}.svc-media{grid-template-columns:1fr;}.svc-steps{grid-template-columns:repeat(2,1fr);}.svc-detail-grid,.svc-why,.svc-quality{grid-template-columns:1fr;}.svc-quality{gap:1.5rem;}}
-@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:1100px){.svc-steps{grid-template-columns:repeat(4,1fr);}.svc-detail-grid{grid-template-columns:repeat(2,1fr);}.svc-detail-grid>.svc-detail,.svc-detail-grid>.svc-detail:nth-child(n+4){grid-column:span 1;}.svc-detail-grid>.svc-detail:last-child{grid-column:span 2;}.svc-floor{grid-template-columns:repeat(2,1fr);}.svc-why{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:700px){.svc-deep{padding:3.5rem 1.25rem;}.svc-media{grid-template-columns:1fr;}.svc-steps{grid-template-columns:repeat(2,1fr);}.svc-detail-grid,.svc-why,.svc-quality{grid-template-columns:1fr;}.svc-detail-grid>.svc-detail:last-child{grid-column:span 1;}.svc-quality{gap:1.5rem;}}
+.svc-grid>.svc-card{grid-column:span 2;}.svc-grid>.svc-card:nth-child(n+4){grid-column:span 3;}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}.svc-grid>.svc-card,.svc-grid>.svc-card:nth-child(n+4){grid-column:span 1;}.svc-grid>.svc-card:last-child{grid-column:span 2;}}
 @media(max-width:560px){
   .svc-grid{grid-template-columns:1fr;}
+  .svc-grid>.svc-card:last-child{grid-column:span 1;}
   .svc-card{aspect-ratio:3/4;}
   /* Tap to expand — controlled by JS .is-open class */
   .svc-card.is-open{aspect-ratio:auto;min-height:320px;}
@@ -180,7 +182,7 @@
 
 <nav id="site-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="Pinion &amp; Adams Fabricators — Home"><img src="assets/images/logo.png" alt="Pinion &amp; Adams Fabricators"></a>
+    <a href="index.html" class="nav-logo" aria-label="Pinion &amp; Adams Fabricators — Home"><img src="assets/images/logo-light.png" alt="Pinion &amp; Adams Fabricators"></a>
     <ul class="nav-links" role="list">
       <li data-compact><a href="index.html">Home</a></li>
       <li data-compact><a href="about.html">About</a></li>
@@ -262,52 +264,19 @@
         </div>
       </a>
 
-      <!-- 02 Sheet Metal Fabrication -->
-      <a class="svc-card" href="contact.html" id="fabrication" aria-label="Sheet Metal Fabrication — Request a quote">
-        <img class="svc-card-img" src="assets/images/services/sheet-metal-fabrication.jpg" alt="Sheet Metal Fabrication" loading="lazy">
-        <div class="svc-card-body">
-          <p class="svc-card-desc">Stainless steel, mild steel and aluminium fabrication — CNC laser cutting and CNC press brake bending up to 4000mm long, plus rolling and forming. 1mm to 20mm plate, from one-offs to high-volume repeat runs.</p>
-          <div class="svc-card-chips">
-            <span class="svc-card-chip">Press brake to 4000mm</span>
-            <span class="svc-card-chip">Rolling &amp; forming</span>
-            <span class="svc-card-chip">Stainless / Mild / Alu</span>
-            <span class="svc-card-chip">1mm – 20mm plate</span>
-          </div>
-        </div>
-        <div class="svc-card-footer">
-          <span class="svc-card-name">Sheet Metal Fabrication</span>
-          <span class="svc-card-plus" aria-hidden="true">+</span>
-        </div>
-      </a>
-
-      <!-- 03 Manufacturing & Welding -->
-      <a class="svc-card" href="contact.html" id="welding" aria-label="Manufacturing and Welding — Request a quote">
-        <img class="svc-card-img" src="assets/images/services/welding.jpg" alt="Manufacturing and Welding" loading="lazy">
-        <div class="svc-card-body">
-          <p class="svc-card-desc">Coded and non-coded TIG, MIG, robotic and laser welding in aluminium, carbon steel and stainless steel — light gauge to heavy structural. SANS-compliant, with every job tracked through MIE Trak.</p>
-          <div class="svc-card-chips">
-            <span class="svc-card-chip">Coded &amp; non-coded</span>
-            <span class="svc-card-chip">TIG &amp; MIG</span>
-            <span class="svc-card-chip">Robotic</span>
-            <span class="svc-card-chip">Laser welding</span>
-          </div>
-        </div>
-        <div class="svc-card-footer">
-          <span class="svc-card-name">Manufacturing &amp; Welding</span>
-          <span class="svc-card-plus" aria-hidden="true">+</span>
-        </div>
-      </a>
-
       <!-- 04 CNC Services -->
       <a class="svc-card" href="contact.html" id="cnc" aria-label="CNC Services and Machining — Request a quote">
         <img class="svc-card-img" src="assets/images/services/cnc-machining.jpg" alt="CNC Services and Machining" loading="lazy">
         <div class="svc-card-body">
-          <p class="svc-card-desc">CNC laser cutting — including brass, copper and aluminium — CNC punching and press brake programming, plus machining and milling. CAD to finished component in one facility, with tight tolerances on every repeat run.</p>
+          <p class="svc-card-desc">CNC laser cutting — including brass, copper and aluminium — CNC punching, tube cutting and tube bending, CNC press brake bending up to 4000mm long, rolling and forming, plus machining and milling. Stainless steel, mild steel and aluminium from 1mm to 20mm plate, programmed from your CAD file for tight tolerances on every repeat run.</p>
           <div class="svc-card-chips">
-            <span class="svc-card-chip">Laser: incl. brass &amp; copper</span>
+            <span class="svc-card-chip">Laser cutting</span>
             <span class="svc-card-chip">CNC punching</span>
+            <span class="svc-card-chip">Tube cutting &amp; bending</span>
+            <span class="svc-card-chip">Press brake to 4000mm</span>
+            <span class="svc-card-chip">Rolling &amp; forming</span>
             <span class="svc-card-chip">Machining &amp; milling</span>
-            <span class="svc-card-chip">Tight tolerances</span>
+            <span class="svc-card-chip">1mm – 20mm plate</span>
           </div>
         </div>
         <div class="svc-card-footer">
@@ -316,14 +285,36 @@
         </div>
       </a>
 
+      <!-- 03 Manufacturing & Welding -->
+      <a class="svc-card" href="contact.html" id="welding" aria-label="Manufacturing and Welding — Request a quote">
+        <img class="svc-card-img" src="assets/images/services/welding.jpg" alt="Manufacturing and Welding" loading="lazy">
+        <div class="svc-card-body">
+          <p class="svc-card-desc">CNC laser cutting — including brass, copper and aluminium — CNC punching, tube cutting and tube bending, CNC press brake bending up to 4000mm long, rolling and forming, plus machining and milling. Stainless steel, mild steel and aluminium from 1mm to 20mm plate, programmed from your CAD file for tight tolerances on every repeat run.</p>
+          <div class="svc-card-chips">
+            <span class="svc-card-chip">Laser cutting</span>
+            <span class="svc-card-chip">CNC punching</span>
+            <span class="svc-card-chip">Tube cutting &amp; bending</span>
+            <span class="svc-card-chip">Press brake to 4000mm</span>
+            <span class="svc-card-chip">Rolling &amp; forming</span>
+            <span class="svc-card-chip">Machining &amp; milling</span>
+            <span class="svc-card-chip">1mm – 20mm plate</span>
+          </div>
+        </div>
+        <div class="svc-card-footer">
+          <span class="svc-card-name">Manufacturing &amp; Welding</span>
+          <span class="svc-card-plus" aria-hidden="true">+</span>
+        </div>
+      </a>
+
       <!-- 05 Epoxy Powder Coating -->
       <a class="svc-card" href="contact.html" id="coating" aria-label="Epoxy Powder Coating — Request a quote">
         <img class="svc-card-img" src="assets/images/services/powder-coating.jpg" alt="Epoxy Powder Coating" loading="lazy">
         <div class="svc-card-body">
-          <p class="svc-card-desc">In-house epoxy powder coating with pre-treatment and phosphating — full RAL colour range, corrosion-rated finish. No outsourcing means no delays and single-point accountability from fabrication to final coat.</p>
+          <p class="svc-card-desc">In-house epoxy powder coating, starting with pre-treatment and phosphating and finished in a fully automated Nordson ColorMax spraying system for a consistent, corrosion-rated coat. No outsourcing means no delays and single-point accountability from fabrication to final coat.</p>
           <div class="svc-card-chips">
+            <span class="svc-card-chip">Pre-treatment &amp; phosphating</span>
+            <span class="svc-card-chip">Nordson ColorMax automated spraying</span>
             <span class="svc-card-chip">Full RAL range</span>
-            <span class="svc-card-chip">Phosphating</span>
             <span class="svc-card-chip">Corrosion-rated</span>
             <span class="svc-card-chip">In-house</span>
           </div>
@@ -404,22 +395,24 @@
           </ul>
         </article>
 
-        <article class="svc-detail reveal" id="fabrication-detail">
-          <h3>Sheet Metal Fabrication</h3>
-          <p>We fabricate in stainless steel, mild steel and aluminium — from large hoppers and tanks to high-volume production runs, with the consistency and repeatability OEMs depend on.</p>
+        <article class="svc-detail reveal" id="cnc-detail">
+          <h3>CNC Services &amp; Machining</h3>
+          <p>CNC programmed straight from your CAD file, so profiles and tolerances carry through unchanged from the first part to the thousandth. We work in stainless steel, mild steel and aluminium — from large hoppers and tanks to high-volume production runs.</p>
           <ul class="svc-checklist">
-            <li>Stainless steel fabrication</li>
-            <li>Mild steel fabrication</li>
-            <li>Aluminium fabrication</li>
+            <li>CNC laser cutting — including brass, copper and aluminium</li>
+            <li>CNC punching</li>
+            <li>Tube cutting and tube bending</li>
             <li>CNC press brake bending — up to 4000mm long</li>
             <li>Bending, rolling and forming</li>
-            <li>Plate from 1mm to 20mm</li>
+            <li>Machining and milling</li>
+            <li>Stainless steel, mild steel and aluminium, plate from 1mm to 20mm</li>
+            <li>Tight tolerances across high-volume repeat runs</li>
           </ul>
         </article>
 
         <article class="svc-detail reveal-right" id="welding-detail">
           <h3>Manufacturing &amp; Welding</h3>
-          <p>Coded and non-coded welding in aluminium, carbon steel and stainless steel — by hand, robot or laser — with every job tracked from enquiry to delivery in MIE Trak.</p>
+          <p>Coded and non-coded TIG, MIG, laser and robotic welding in aluminium, carbon steel and stainless steel — with every job tracked from enquiry to delivery in MIE Trak.</p>
           <ul class="svc-checklist">
             <li>Coded and non-coded welding</li>
             <li>TIG and MIG welding</li>
@@ -430,24 +423,13 @@
           </ul>
         </article>
 
-        <article class="svc-detail reveal-left" id="cnc-detail">
-          <h3>CNC Services &amp; Machining</h3>
-          <p>CNC programmed straight from your CAD file, so profiles and tolerances carry through unchanged from the first part to the thousandth.</p>
-          <ul class="svc-checklist">
-            <li>CNC laser cutting — including brass, copper and aluminium</li>
-            <li>CNC punching</li>
-            <li>CNC press brake bending — up to 4000mm long</li>
-            <li>Machining and milling</li>
-            <li>Tight tolerances across high-volume repeat runs</li>
-          </ul>
-        </article>
-
-        <article class="svc-detail reveal" id="coating-detail">
+        <article class="svc-detail reveal-left" id="coating-detail">
           <h3>Epoxy Powder Coating</h3>
-          <p>Finishing is done in-house, so there is no outsourcing delay and one team is accountable from the first cut to the final coat.</p>
+          <p>Parts are pre-treated and phosphated, then coated in a fully automated Nordson ColorMax spraying system. Finishing is done in-house, so there is no outsourcing delay and one team is accountable from the first cut to the final coat.</p>
           <ul class="svc-checklist">
             <li>In-house epoxy powder coating</li>
             <li>Pre-treatment and phosphating</li>
+            <li>Fully automated Nordson ColorMax spraying system</li>
             <li>Full RAL colour range</li>
             <li>Corrosion-rated finish</li>
           </ul>
@@ -570,7 +552,7 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="footer-logo"><img src="assets/images/logo.png" alt="Pinion &amp; Adams Fabricators" width="140" height="47"></a>
+          <a href="index.html" class="footer-logo"><img src="assets/images/logo-light.png" alt="Pinion &amp; Adams Fabricators" width="140" height="47"></a>
           <p class="footer-tagline">South Africa's leading sheet metal fabricating and manufacturing company. ISO 9001:2015 certified. Precision-built since 1971.</p>
           <span class="footer-iso"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 7l9 5 9-5-9-5zM3 17l9 5 9-5M3 12l9 5 9-5"/></svg>ISO 9001:2015 Certified</span>
         </div>
