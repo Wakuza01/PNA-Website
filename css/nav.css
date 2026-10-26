@@ -425,3 +425,57 @@
   .nav-contact-link { display: none; }
   .nav-hamburger { display: flex; }
 }
+
+/* ============================================================
+   LIGHT NAV — keeps the dark-blue "FABRICATORS" wordmark legible
+   ============================================================ */
+
+#site-nav {
+  border-color: rgba(26, 39, 68, 0.12);
+  box-shadow: 0 6px 28px rgba(10, 20, 45, 0.22);
+}
+
+#site-nav::before {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+}
+
+#site-nav.scrolled {
+  border-color: rgba(26, 39, 68, 0.10);
+  box-shadow: 0 8px 40px rgba(10, 20, 45, 0.30);
+}
+
+#site-nav.scrolled::before {
+  background: rgba(255, 255, 255, 0.97);
+}
+
+.nav-links a,
+.nav-contact-link {
+  color: #1a2744;
+  font-weight: 600;
+}
+
+.nav-links a:hover,
+.nav-contact-link:hover {
+  color: #205785;
+  background: rgba(32, 87, 133, 0.10);
+}
+
+.nav-links a.is-active,
+.nav-contact-link.is-active,
+#site-nav.scrolled .nav-links a.is-active {
+  color: #ffffff;
+  background: var(--color-accent);
+}
+
+.theme-toggle {
+  background: rgba(26, 39, 68, 0.06);
+  border-color: rgba(26, 39, 68, 0.18);
+  color: #1a2744;
+}
+.theme-toggle:hover { background: rgba(26, 39, 68, 0.12); color: #205785; }
+
+.hamburger-bar,
+#site-nav.scrolled .hamburger-bar { background: #1a2744; }
+.nav-hamburger[aria-expanded="true"] .hamburger-bar { background: #ffffff; }
