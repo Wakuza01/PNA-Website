@@ -28,7 +28,7 @@
 
       // Clone items until we have ≥ 4× the viewport width
       var origHTML = track.innerHTML;
-      while (track.scrollWidth < window.innerWidth * 4) {
+      while (track.scrollWidth < singleW + window.innerWidth * 2) {
         track.insertAdjacentHTML('beforeend', origHTML);
       }
 
