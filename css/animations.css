@@ -141,8 +141,8 @@
 /* Base fade + rise */
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.75s ease, transform 0.75s ease;
+  transform: translateY(32px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: opacity, transform;
 }
 
@@ -201,7 +201,7 @@
 
 /* Stagger children — JS sets --stagger-index on each child */
 .stagger-children > * {
-  transition-delay: calc(var(--stagger-index, 0) * 80ms) !important;
+  transition-delay: calc(var(--stagger-index, 0) * 70ms) !important;
 }
 
 /* ============================================================
@@ -382,4 +382,26 @@
 
 .clip-both {
   clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+}
+
+
+/* Capabilities + equipment polish */
+.capability-item.reveal {
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.2s ease, box-shadow 0.3s ease;
+}
+.capability-item.is-visible:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+.capability-item.is-visible .capability-icon {
+  animation: cap-icon-pop 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes cap-icon-pop {
+  from { transform: scale(0.5) rotate(-12deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0); opacity: 1; }
+}
+.equipment-list li.reveal { transform: translateX(-28px); }
+.equipment-list li.reveal.is-visible { transform: translateX(0); }
+@media (prefers-reduced-motion: reduce) {
+  .capability-item.is-visible .capability-icon { animation: none; }
 }

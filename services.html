@@ -85,17 +85,76 @@
 .svc-floor img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s ease;}
 .svc-floor figure:hover img{transform:scale(1.05);}
 .svc-floor figcaption{position:absolute;left:0;right:0;bottom:0;padding:1.6rem 0.9rem 0.7rem;background:linear-gradient(to top,rgba(0,0,0,0.85),transparent);color:#fff;font-size:0.8rem;font-weight:500;letter-spacing:0.02em;}
-.svc-industries{list-style:none;margin:2.5rem 0 0;padding:0;display:flex;flex-wrap:wrap;gap:0.7rem;}
-.svc-industries li{padding:0.65rem 1.2rem;border-radius:100px;background:var(--color-surface-light);border:1px solid var(--color-border);font-family:var(--font-heading);font-weight:600;font-size:1.05rem;letter-spacing:0.04em;text-transform:uppercase;color:var(--color-text-heading);}
-.svc-why{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem;}
-.svc-why-item{background:var(--color-surface-light);border:1px solid var(--color-border);border-radius:14px;padding:1.5rem 1.4rem;}
-.svc-why-item strong{display:block;font-family:var(--font-heading);font-size:1.25rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;color:var(--color-text-heading);margin-bottom:0.35rem;}
-.svc-why-item span{font-size:0.9rem;line-height:1.6;color:var(--color-text-primary);}
 .svc-quality{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2.5rem;}
 .svc-quality p{font-size:0.98rem;line-height:1.75;color:var(--color-text-primary);margin:0 0 1rem;}
 .svc-quote{margin:0;padding:1.6rem 1.8rem;border-left:4px solid #269dcc;background:var(--color-surface-light);border-radius:0 14px 14px 0;}
 .svc-quote p{font-size:1.05rem;line-height:1.7;font-style:italic;color:var(--color-text-heading);margin:0 0 0.8rem;}
 .svc-quote cite{font-style:normal;font-size:0.85rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-text-muted);}
+/* ---- motion + redesigned sections ---- */
+.svc-steps li{transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),border-color .3s,box-shadow .3s;}
+.svc-steps li:not(:last-child)::after{content:'';position:absolute;top:50%;right:-0.75rem;width:0.75rem;height:2px;background:#269dcc;transform:scaleX(0);transform-origin:left;transition:transform .4s ease .45s;}
+.svc-steps li.is-visible::after{transform:scaleX(1);}
+.svc-steps li.is-visible:hover{transform:translateY(-5px);border-color:#269dcc;box-shadow:0 10px 24px rgba(0,0,0,.12);}
+.svc-detail{position:relative;overflow:hidden;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;}
+.svc-detail::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:#269dcc;transform:scaleX(0);transform-origin:left;transition:transform .5s ease;}
+.svc-detail.is-visible:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(0,0,0,.14);border-color:#269dcc;}
+.svc-detail:hover::before{transform:scaleX(1);}
+.svc-floor figure{transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);}
+.svc-floor figure.reveal{transform:translateY(28px) scale(.94);}
+.svc-floor figure.reveal.is-visible{transform:none;}
+.svc-floor figure img{transform:scale(1.22);transition:transform 1.5s cubic-bezier(.2,.8,.2,1);}
+.svc-floor figure.is-visible img{transform:scale(1);}
+.svc-floor figure.is-visible:hover img{transform:scale(1.08);transition-duration:.6s;}
+.svc-floor figcaption{transform:translateY(40%);opacity:0;transition:transform .5s ease .25s,opacity .5s ease .25s;}
+.svc-floor figure.is-visible figcaption{transform:none;opacity:1;}
+.svc-industries{list-style:none;margin:2.5rem 0 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;}
+.svc-industries li{position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.9rem;min-height:150px;padding:1.5rem 0.8rem 1.3rem;border-radius:16px;background:var(--color-surface-light);border:1px solid var(--color-border);text-align:center;font-family:var(--font-heading);font-weight:700;font-size:1.1rem;letter-spacing:0.05em;text-transform:uppercase;line-height:1.15;color:var(--color-text-heading);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;}
+.svc-industries li::before{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;background:#269dcc;transform:scaleX(0);transform-origin:left;transition:transform .45s ease;}
+.svc-industries li.is-visible:hover{transform:translateY(-6px);box-shadow:0 14px 30px rgba(0,0,0,.14);border-color:#269dcc;}
+.svc-industries li:hover::before{transform:scaleX(1);}
+.svc-industries svg{width:46px;height:46px;stroke:#269dcc;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .45s cubic-bezier(.2,.8,.2,1);}
+.svc-industries li.is-visible svg{animation:svc-pop .7s cubic-bezier(.2,.8,.2,1) both;}
+.svc-industries li:hover svg{transform:scale(1.18) rotate(-6deg);}
+@keyframes svc-pop{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+.svc-why{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem;}
+.svc-why-item{position:relative;overflow:hidden;background:var(--color-surface-light);border:1px solid var(--color-border);border-radius:16px;padding:2.4rem 1.6rem 1.7rem;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;}
+.svc-why-item::after{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:#269dcc;transform:scaleY(0);transform-origin:top;transition:transform .5s ease .3s;}
+.svc-why-item.is-visible::after{transform:scaleY(1);}
+.svc-why-item.is-visible:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(0,0,0,.14);border-color:#269dcc;}
+.svc-why-num{position:absolute;top:0.4rem;right:1.1rem;font-family:var(--font-heading);font-weight:800;font-size:4.2rem;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(38,157,204,.45);transition:transform .5s ease,-webkit-text-stroke-color .3s;}
+.svc-why-item:hover .svc-why-num{transform:translateY(-4px) scale(1.06);-webkit-text-stroke-color:#269dcc;}
+.svc-why-item strong{display:block;max-width:80%;font-family:var(--font-heading);font-size:1.3rem;font-weight:700;text-transform:uppercase;letter-spacing:0.03em;color:var(--color-text-heading);margin-bottom:0.5rem;}
+.svc-why-item p{margin:0;font-size:0.92rem;line-height:1.65;color:var(--color-text-primary);}
+.svc-track{margin-top:3.5rem;padding:2.4rem 2rem 2.2rem;border-radius:20px;background:linear-gradient(135deg,#14213d,#1f3a63);color:#fff;overflow:hidden;position:relative;}
+.svc-track-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:0.6rem 1.4rem;margin-bottom:2.2rem;}
+.svc-track-head h3{margin:0;font-family:var(--font-heading);font-size:1.6rem;text-transform:uppercase;letter-spacing:0.04em;color:#fff;}
+.svc-track-head span{font-size:0.85rem;letter-spacing:0.12em;text-transform:uppercase;color:#7fd0ee;}
+.svc-iso{margin-left:auto;background:#fff;border-radius:6px;padding:4px 6px;height:auto;width:71px;}
+.svc-track ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);position:relative;}
+.svc-track ol::before,.svc-track ol::after{content:'';position:absolute;top:11px;left:calc(100%/12);height:3px;border-radius:3px;}
+.svc-track ol::before{right:calc(100%/12);background:rgba(255,255,255,.18);}
+.svc-track ol::after{width:calc(100% - 100%/6);background:linear-gradient(90deg,#269dcc,#7fd0ee);transform:scaleX(0);transform-origin:left;transition:transform 2.4s cubic-bezier(.4,0,.2,1) .4s;}
+.svc-track.is-visible ol::after{transform:scaleX(1);}
+.svc-track li{position:relative;text-align:center;font-size:0.85rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:rgba(255,255,255,.55);padding-top:2.1rem;transition:color .4s ease;}
+.svc-track li::before{content:'';position:absolute;top:2px;left:50%;width:20px;height:20px;margin-left:-10px;border-radius:50%;background:#14213d;border:3px solid rgba(255,255,255,.3);z-index:1;transition:background .4s,border-color .4s,box-shadow .4s;}
+.svc-track.is-visible li{color:#fff;}
+.svc-track.is-visible li::before{background:#269dcc;border-color:#7fd0ee;}
+.svc-track.is-visible li:last-child::before{animation:svc-pulse 2s ease-in-out 3.2s infinite;}
+.svc-track li:nth-child(1),.svc-track li:nth-child(1)::before{transition-delay:.4s;}
+.svc-track li:nth-child(2),.svc-track li:nth-child(2)::before{transition-delay:.9s;}
+.svc-track li:nth-child(3),.svc-track li:nth-child(3)::before{transition-delay:1.4s;}
+.svc-track li:nth-child(4),.svc-track li:nth-child(4)::before{transition-delay:1.9s;}
+.svc-track li:nth-child(5),.svc-track li:nth-child(5)::before{transition-delay:2.4s;}
+.svc-track li:nth-child(6),.svc-track li:nth-child(6)::before{transition-delay:2.9s;}
+@keyframes svc-pulse{0%,100%{box-shadow:0 0 0 0 rgba(127,208,238,.6)}50%{box-shadow:0 0 0 10px rgba(127,208,238,0)}}
+.svc-track .svc-track-foot{margin:2rem 0 0;font-size:0.95rem;line-height:1.6;color:rgba(255,255,255,.78);max-width:62ch;}
+.svc-quote{position:relative;background:linear-gradient(135deg,#14213d,#1f3a63)!important;color:#fff!important;border-left:4px solid #269dcc!important;overflow:hidden;}
+.svc-quote::before{content:'\201C';position:absolute;top:-1.2rem;right:1rem;font-family:Georgia,serif;font-size:9rem;line-height:1;color:rgba(127,208,238,.18);}
+.svc-quote p{color:#fff!important;position:relative;}
+.svc-quote cite{color:#7fd0ee!important;position:relative;}
+@media(max-width:900px){.svc-industries{grid-template-columns:repeat(2,1fr);}.svc-steps li::after{display:none;}}
+@media(max-width:700px){.svc-track ol{grid-template-columns:1fr;gap:1.1rem;padding-left:0.4rem;}.svc-track ol::before,.svc-track ol::after{top:0;bottom:0;left:11px;right:auto;width:3px;height:auto;}.svc-track ol::after{transform:scaleY(0);transform-origin:top;width:3px;}.svc-track.is-visible ol::after{transform:scaleY(1);}.svc-track li{text-align:left;padding:0 0 0 2.4rem;}.svc-track li::before{left:0;top:0;margin-left:2px;}}
+@media(prefers-reduced-motion:reduce){.svc-industries svg,.svc-track li::before{animation:none!important;}.svc-track ol::after{transition:none;}}
 @media(max-width:1100px){.svc-steps{grid-template-columns:repeat(4,1fr);}.svc-detail-grid{grid-template-columns:repeat(2,1fr);}.svc-floor{grid-template-columns:repeat(2,1fr);}.svc-why{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:700px){.svc-deep{padding:3.5rem 1.25rem;}.svc-media{grid-template-columns:1fr;}.svc-steps{grid-template-columns:repeat(2,1fr);}.svc-detail-grid,.svc-why,.svc-quality{grid-template-columns:1fr;}.svc-quality{gap:1.5rem;}}
 @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
@@ -301,14 +360,14 @@
       <span class="section-label reveal">Turnkey Solution</span>
       <h2 class="section-title reveal-heading" id="turnkey-heading">Designed, Built &amp; Delivered Under One Roof</h2>
       <p class="svc-lead reveal">P&amp;A supports OEMs with a complete manufacturing solution — from large fabrications such as hoppers and tanks to high-volume production runs. One team and one quality system carry your component from the first drawing to the loading bay, for reliability, consistency, and repeatability at scale.</p>
-      <ol class="svc-steps reveal" aria-label="Production flow">
-        <li>Design</li>
-        <li>Laser cutting &amp; CNC punching</li>
-        <li>Bending, rolling &amp; forming</li>
-        <li>Welding</li>
-        <li>Machining &amp; milling</li>
-        <li>Powder coating</li>
-        <li>Delivery</li>
+      <ol class="svc-steps stagger-children" aria-label="Production flow">
+        <li class="reveal">Design</li>
+        <li class="reveal">Laser cutting &amp; CNC punching</li>
+        <li class="reveal">Bending, rolling &amp; forming</li>
+        <li class="reveal">Welding</li>
+        <li class="reveal">Machining &amp; milling</li>
+        <li class="reveal">Powder coating</li>
+        <li class="reveal">Delivery</li>
       </ol>
       <div class="svc-media reveal">
         <figure>
@@ -332,7 +391,7 @@
 
       <div class="svc-detail-grid">
 
-        <article class="svc-detail reveal" id="design-detail">
+        <article class="svc-detail reveal-left" id="design-detail">
           <h3>Design &amp; Engineering</h3>
           <p>From design through to the finished product, one team stays with your job. We turn your concept or CAD files into 3D SolidWorks product manufacturing drawings so the part you approve is the part we build.</p>
           <ul class="svc-checklist">
@@ -357,7 +416,7 @@
           </ul>
         </article>
 
-        <article class="svc-detail reveal" id="welding-detail">
+        <article class="svc-detail reveal-right" id="welding-detail">
           <h3>Manufacturing &amp; Welding</h3>
           <p>Coded and non-coded welding in aluminium, carbon steel and stainless steel — by hand, robot or laser — with every job tracked from enquiry to delivery in MIE Trak.</p>
           <ul class="svc-checklist">
@@ -370,7 +429,7 @@
           </ul>
         </article>
 
-        <article class="svc-detail reveal" id="cnc-detail">
+        <article class="svc-detail reveal-left" id="cnc-detail">
           <h3>CNC Services &amp; Machining</h3>
           <p>CNC programmed straight from your CAD file, so profiles and tolerances carry through unchanged from the first part to the thousandth.</p>
           <ul class="svc-checklist">
@@ -393,7 +452,7 @@
           </ul>
         </article>
 
-        <article class="svc-detail reveal" id="turnkey-detail">
+        <article class="svc-detail reveal-right" id="turnkey-detail">
           <h3>Turnkey Fabrication Solutions</h3>
           <p>Hand us the whole job. We take it from design through fabrication, finishing and delivery under one quality system.</p>
           <ul class="svc-checklist">
@@ -434,16 +493,16 @@
       <span class="section-label reveal">Who We Serve</span>
       <h2 class="section-title reveal-heading" id="industries-heading">Industries We Service</h2>
       <ul class="svc-industries stagger-children">
-        <li class="reveal">Agriculture</li>
-        <li class="reveal">Automotive</li>
-        <li class="reveal">Automation</li>
-        <li class="reveal">Engineering</li>
-        <li class="reveal">Electrical</li>
-        <li class="reveal">Filtration</li>
-        <li class="reveal">Locomotive</li>
-        <li class="reveal">Medical</li>
-        <li class="reveal">Mining</li>
-        <li class="reveal">Water &amp; Sanitation</li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-9"/><path d="M12 12c0-4 3-7 8-7 0 5-3 7-8 7z"/><path d="M12 15c0-3-2-5-6-5 0 4 2 5 6 5z"/></svg><span>Agriculture</span></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 14l2-6h14l2 6v4H3z"/><path d="M5 11h14"/><circle cx="7.5" cy="18" r="1.8"/><circle cx="16.5" cy="18" r="1.8"/></svg><span>Automotive</span></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="6.5"/><path d="M12 2v3.5M12 18.5V22M2 12h3.5M18.5 12H22M4.9 4.9l2.4 2.4M16.7 16.7l2.4 2.4M4.9 19.1l2.4-2.4M16.7 7.3l2.4-2.4"/></svg><span>Automation</span></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v16h16z"/><path d="M4 9h3M4 14h5M9 20v-3M14 20v-5"/></svg><span>Engineering</span></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg><span>Electrical</span></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18l-7 9v7l-4-2v-5z"/></svg><span>Filtration</span></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14"/><circle cx="9" cy="14" r=".6"/><circle cx="15" cy="14" r=".6"/><path d="M8 21l2-4M16 21l-2-4"/></svg><span>Locomotive</span></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg><span>Medical</span></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9c4-5 12-6 18-2-4-1-7 0-8 2"/><path d="M13 9L6 21"/></svg><span>Mining</span></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg><span>Water &amp; Sanitation</span></li>
       </ul>
     </div>
   </section>
@@ -454,12 +513,12 @@
       <span class="section-label reveal">Why P&amp;A</span>
       <h2 class="section-title reveal-heading" id="why-heading">Why Choose Us</h2>
       <div class="svc-why stagger-children">
-        <div class="svc-why-item reveal"><strong>One Stop Solution</strong><span>Design, fabrication, welding, machining, coating and delivery with a single point of contact.</span></div>
-        <div class="svc-why-item reveal"><strong>Cutting Edge Technology</strong><span>Incorporate cutting edge technology into your design, backed by our CNC, robotic and laser capability.</span></div>
-        <div class="svc-why-item reveal"><strong>Over 50 Years</strong><span>Proudly South African, in sheet metal fabrication since 1971.</span></div>
-        <div class="svc-why-item reveal"><strong>National &amp; International</strong><span>Supply capability across South Africa and abroad, including rail components for international supply.</span></div>
-        <div class="svc-why-item reveal"><strong>Scalable &amp; Flexible</strong><span>From a single prototype to high-volume production runs, with the same quality on every part.</span></div>
-        <div class="svc-why-item reveal"><strong>Weekly Deliveries</strong><span>Scheduled deliveries to Johannesburg and Richards Bay.</span></div>
+        <div class="svc-why-item reveal"><span class="svc-why-num" aria-hidden="true">01</span><strong>One Stop Solution</strong><p>Design, fabrication, welding, machining, coating and delivery with a single point of contact.</p></div>
+        <div class="svc-why-item reveal"><span class="svc-why-num" aria-hidden="true">02</span><strong>Cutting Edge Technology</strong><p>Incorporate cutting edge technology into your design, backed by our CNC, robotic and laser capability.</p></div>
+        <div class="svc-why-item reveal"><span class="svc-why-num" aria-hidden="true">03</span><strong>Over 50 Years</strong><p>Proudly South African, in sheet metal fabrication since 1971.</p></div>
+        <div class="svc-why-item reveal"><span class="svc-why-num" aria-hidden="true">04</span><strong>National &amp; International</strong><p>Supply capability across South Africa and abroad, including rail components for international supply.</p></div>
+        <div class="svc-why-item reveal"><span class="svc-why-num" aria-hidden="true">05</span><strong>Scalable &amp; Flexible</strong><p>From a single prototype to high-volume production runs, with the same quality on every part.</p></div>
+        <div class="svc-why-item reveal"><span class="svc-why-num" aria-hidden="true">06</span><strong>Weekly Deliveries</strong><p>Scheduled deliveries to Johannesburg and Richards Bay.</p></div>
       </div>
 
       <div class="svc-quality">
@@ -474,6 +533,19 @@
           <p>&ldquo;Getting every job right, first time and within budget, this is our guarantee to you!&rdquo;</p>
           <cite>Gerald Anthony, Director</cite>
         </blockquote>
+      </div>
+
+      <div class="svc-track reveal" aria-label="MIE Trak job stages">
+        <div class="svc-track-head"><h3>Every Job, Tracked Live</h3><span>MIE Trak production control</span><img class="svc-iso" src="assets/logos/iso-9001-2015.png" alt="ISO 9001:2015 certified" width="71" height="32"></div>
+        <ol>
+          <li>Enquiry</li>
+          <li>Bill of materials</li>
+          <li>Order</li>
+          <li>Manufacture</li>
+          <li>Dispatch</li>
+          <li>Delivery</li>
+        </ol>
+        <p class="svc-track-foot">Know at the click of a mouse button exactly what stage each and every job is at, so your product is delivered on time, every time.</p>
       </div>
     </div>
   </section>

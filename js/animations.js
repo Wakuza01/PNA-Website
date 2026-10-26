@@ -18,7 +18,7 @@
       });
     }, {
       threshold: 0,
-      rootMargin: '0px 0px 0px 0px'
+      rootMargin: '0px 0px -40px 0px'
     });
   }
 
@@ -117,17 +117,25 @@
         if (!entry.isIntersecting) return;
 
         var children = Array.from(entry.target.children);
+        var cols = 0;
+        if (children.length) {
+          var top0 = children[0].offsetTop;
+          children.forEach(function (c) { if (c.offsetTop === top0) cols++; });
+        }
+        cols = Math.max(1, Math.min(cols || 4, 6));
         children.forEach(function (child, i) {
-          setTimeout(function () {
-            child.classList.add('is-visible');
-          }, 80 * i);
+          child.style.setProperty('--stagger-index', i % cols);
+          if (!child.matches('.reveal, .reveal-left, .reveal-right, .reveal-heading, .reveal-image')) {
+            setTimeout(function () { child.classList.add('is-visible'); }, 70 * (i % cols));
+          }
+          setTimeout(function () { child.style.setProperty('--stagger-index', 0); }, 1800);
         });
 
         staggerObserver.unobserve(entry.target);
       });
     }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -50px 0px'
+      threshold: 0.05,
+      rootMargin: '0px 0px 0px 0px'
     });
 
     groups.forEach(function (parent) {
@@ -139,7 +147,8 @@
   function forceRevealAll() {
     var selectors = '.reveal, .reveal-left, .reveal-right, .reveal-heading, .reveal-image';
     document.querySelectorAll(selectors).forEach(function (el) {
-      if (!el.classList.contains('is-visible')) {
+      // Only rescue elements already in/above the viewport; leave the rest for scroll reveals
+      if (!el.classList.contains('is-visible') && el.getBoundingClientRect().top < window.innerHeight) {
         el.classList.add('is-visible');
       }
     });
