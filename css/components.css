@@ -403,12 +403,11 @@
 .process-step:not(:last-child)::after {
   content: '';
   position: absolute;
-  right: -12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 24px;
+  left: calc(50% + 38px);
+  right: calc(-50% + 38px);
+  top: calc(1.5rem + 25px);
   height: 2px;
-  background: linear-gradient(to right, var(--color-border), rgba(32, 87, 133, 0.4));
+  background: linear-gradient(to right, rgba(32, 87, 133, 0.45), rgba(32, 87, 133, 0.2));
   z-index: 1;
 }
 
