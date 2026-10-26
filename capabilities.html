@@ -41,6 +41,33 @@
   {"@context":"https://schema.org","@type":"ManufacturingBusiness","name":"Pinion & Adams Fabricators","url":"https://www.pinionadams.co.za","telephone":"+27317053104","email":"sales@pinionadams.co.za","address":{"@type":"PostalAddress","streetAddress":"15 Pineside Road","addressLocality":"New Germany","postalCode":"3610","addressCountry":"ZA"}}
   </script>
   <script src="js/track.js" defer></script>
+<style>
+.eq-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.25rem;margin-top:2.5rem;}
+.eq-group{grid-column:span 2;position:relative;overflow:hidden;background:var(--color-surface-light);border:1px solid var(--color-border);border-radius:16px;padding:1.6rem 1.5rem 1.4rem;transition:opacity .6s ease,transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .35s,border-color .35s;}
+.eq-group:nth-child(n+4){grid-column:span 3;}
+.eq-group::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:#269dcc;transform:scaleX(0);transform-origin:left;transition:transform .7s ease .3s;}
+.eq-group.is-visible::before{transform:scaleX(1);}
+.eq-group.is-visible:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(0,0,0,.14);border-color:#269dcc;}
+.eq-head{display:flex;align-items:center;gap:0.9rem;margin-bottom:1.1rem;padding-bottom:1rem;border-bottom:1px solid var(--color-border);}
+.eq-icon{flex:none;display:grid;place-items:center;width:46px;height:46px;border-radius:12px;background:rgba(38,157,204,.14);}
+.eq-icon svg{width:24px;height:24px;fill:none;stroke:#269dcc;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
+.eq-group.is-visible .eq-icon{animation:eq-pop .6s cubic-bezier(.2,.8,.2,1) .2s both;}
+@keyframes eq-pop{from{transform:scale(.5) rotate(-15deg);opacity:0}to{transform:none;opacity:1}}
+.eq-head h3{margin:0;flex:1;font-family:var(--font-heading);font-size:1.3rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--color-text-heading);}
+.eq-count{font-family:var(--font-heading);font-weight:800;font-size:2rem;line-height:1;color:transparent;-webkit-text-stroke:1.3px rgba(38,157,204,.55);}
+.eq-group ul{list-style:none;margin:0;padding:0;display:grid;gap:0.55rem;}
+.eq-group li{position:relative;padding-left:1.5rem;font-size:0.95rem;line-height:1.5;color:var(--color-text-primary);opacity:0;transform:translateX(-14px);transition:opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1),color .25s;}
+.eq-group li::before{content:'';position:absolute;left:0;top:0.5em;width:0.65rem;height:0.65rem;border-radius:2px;background:#269dcc;transform:rotate(45deg) scale(.8);transition:transform .3s;}
+.eq-group li:hover{color:var(--color-text-heading);}
+.eq-group li:hover::before{transform:rotate(45deg) scale(1.15);}
+.eq-group.is-visible li{opacity:1;transform:none;}
+.eq-group.is-visible li:nth-child(1){transition-delay:.3s;}
+.eq-group.is-visible li:nth-child(2){transition-delay:.42s;}
+.eq-group.is-visible li:nth-child(3){transition-delay:.54s;}
+@media(max-width:1000px){.eq-grid{grid-template-columns:repeat(2,1fr);}.eq-group,.eq-group:nth-child(n+4){grid-column:span 1;}.eq-group:last-child{grid-column:span 2;}}
+@media(max-width:640px){.eq-grid{grid-template-columns:1fr;}.eq-group:last-child{grid-column:span 1;}}
+@media(prefers-reduced-motion:reduce){.eq-group li{opacity:1;transform:none;}}
+</style>
 </head>
 <body>
 
@@ -279,21 +306,46 @@
       <h2 class="section-title reveal-heading" id="equipment-heading">Key Plant &amp; Equipment</h2>
       <p class="section-intro reveal">P&amp;A operates modern CNC and conventional fabrication equipment maintained to ISO 9001:2015 standards.</p>
 
-      <ul class="equipment-list stagger-children" style="margin-top:2.5rem;">
-        <li class="reveal">AMADA HG1003 CNC Press Brake (100t, 3.1m)</li>
-        <li class="reveal">CNC press brake bending up to 4000mm long</li>
-        <li class="reveal">AMADA CNC Turret Punch</li>
-        <li class="reveal">CNC Laser Profile Cutter</li>
-        <li class="reveal">Plate Rolling Machine (up to 20mm)</li>
-        <li class="reveal">MIG Welding Stations</li>
-        <li class="reveal">TIG Welding Stations (stainless &amp; aluminium)</li>
-        <li class="reveal">Plasma Cutting Equipment</li>
-        <li class="reveal">Epoxy Powder Coating Plant</li>
-        <li class="reveal">Pre-Treatment &amp; Phosphating Plant</li>
-        <li class="reveal">Overhead Crane (multiple capacities)</li>
-        <li class="reveal">Shot Blasting Equipment</li>
-        <li class="reveal">Precision Measuring &amp; Inspection Equipment</li>
-      </ul>
+      <div class="eq-grid stagger-children">
+        <div class="eq-group reveal">
+          <div class="eq-head"><span class="eq-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><path d="M8 7.5L20 18M8 16.5L20 6"/></svg></span><h3>Cutting &amp; Punching</h3><span class="eq-count">03</span></div>
+          <ul>
+            <li>AMADA CNC Turret Punch</li>
+            <li>CNC Laser Profile Cutter (incl. brass, copper &amp; aluminium)</li>
+            <li>Plasma Cutting Equipment</li>
+          </ul>
+        </div>
+        <div class="eq-group reveal">
+          <div class="eq-head"><span class="eq-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 19h9l4-13h5"/><path d="M3 22h18"/></svg></span><h3>Bending &amp; Forming</h3><span class="eq-count">03</span></div>
+          <ul>
+            <li>AMADA HG1003 CNC Press Brake (100t, 3.1m)</li>
+            <li>CNC press brake bending up to 4000mm long</li>
+            <li>Plate Rolling Machine (up to 20mm)</li>
+          </ul>
+        </div>
+        <div class="eq-group reveal">
+          <div class="eq-head"><span class="eq-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg></span><h3>Welding</h3><span class="eq-count">02</span></div>
+          <ul>
+            <li>MIG Welding Stations</li>
+            <li>TIG Welding Stations (stainless &amp; aluminium)</li>
+          </ul>
+        </div>
+        <div class="eq-group reveal">
+          <div class="eq-head"><span class="eq-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="15" height="6" rx="1"/><path d="M19 6h2v5h-9v3"/><rect x="10" y="14" width="4" height="7" rx="1"/></svg></span><h3>Finishing</h3><span class="eq-count">03</span></div>
+          <ul>
+            <li>Epoxy Powder Coating Plant</li>
+            <li>Pre-Treatment &amp; Phosphating Plant</li>
+            <li>Shot Blasting Equipment</li>
+          </ul>
+        </div>
+        <div class="eq-group reveal">
+          <div class="eq-head"><span class="eq-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><h3>Handling &amp; Inspection</h3><span class="eq-count">02</span></div>
+          <ul>
+            <li>Overhead Crane (multiple capacities)</li>
+            <li>Precision Measuring &amp; Inspection Equipment</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 

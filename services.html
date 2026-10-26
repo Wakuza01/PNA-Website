@@ -152,6 +152,7 @@
 .svc-quote::before{content:'\201C';position:absolute;top:-1.2rem;right:1rem;font-family:Georgia,serif;font-size:9rem;line-height:1;color:rgba(127,208,238,.18);}
 .svc-quote p{color:#fff!important;position:relative;}
 .svc-quote cite{color:#7fd0ee!important;position:relative;}
+@media(max-width:700px){.svc-detail.reveal-left,.svc-detail.reveal-right{transform:translateY(32px);}.svc-detail.reveal-left.is-visible,.svc-detail.reveal-right.is-visible{transform:none;}}
 @media(max-width:900px){.svc-industries{grid-template-columns:repeat(2,1fr);}.svc-steps li::after{display:none;}}
 @media(max-width:700px){.svc-track ol{grid-template-columns:1fr;gap:1.1rem;padding-left:0.4rem;}.svc-track ol::before,.svc-track ol::after{top:0;bottom:0;left:11px;right:auto;width:3px;height:auto;}.svc-track ol::after{transform:scaleY(0);transform-origin:top;width:3px;}.svc-track.is-visible ol::after{transform:scaleY(1);}.svc-track li{text-align:left;padding:0 0 0 2.4rem;}.svc-track li::before{left:0;top:0;margin-left:2px;}}
 @media(prefers-reduced-motion:reduce){.svc-industries svg,.svc-track li::before{animation:none!important;}.svc-track ol::after{transition:none;}}
@@ -501,7 +502,7 @@
         <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18l-7 9v7l-4-2v-5z"/></svg><span>Filtration</span></li>
         <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14"/><circle cx="9" cy="14" r=".6"/><circle cx="15" cy="14" r=".6"/><path d="M8 21l2-4M16 21l-2-4"/></svg><span>Locomotive</span></li>
         <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v6h6v6h-6v6H9v-6H3V9h6z"/></svg><span>Medical</span></li>
-        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9c4-5 12-6 18-2-4-1-7 0-8 2"/><path d="M13 9L6 21"/></svg><span>Mining</span></li>
+        <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><g transform="rotate(40 12 12)"><path d="M2 12C4 3.5 20 3.5 22 12C17 8.5 7 8.5 2 12Z"/><path d="M12 8.6V22.5"/></g></svg><span>Mining</span></li>
         <li class="reveal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c4 5 6 8 6 11a6 6 0 0 1-12 0c0-3 2-6 6-11z"/></svg><span>Water &amp; Sanitation</span></li>
       </ul>
     </div>
