@@ -45,7 +45,7 @@
 /* ── Linear Card Grid ────────────────────────────────────────── */
 .svc-grid-section{background:#ffffff;padding:3rem 2rem 5rem;}
 .svc-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;max-width:1400px;margin:0 auto;}
-.svc-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:3/4;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;cursor:pointer;background:#111;}
+.svc-card{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:1/1;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;cursor:pointer;background:#111;}
 .svc-card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94),filter 0.4s ease;z-index:0;}
 .svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.92) 0%,rgba(0,0,0,0.35) 45%,transparent 100%);z-index:1;transition:background 0.4s ease;}
 .svc-card:hover::before{background:linear-gradient(to top,rgba(0,0,0,0.97) 0%,rgba(0,0,0,0.65) 55%,rgba(0,0,0,0.15) 100%);}
@@ -158,11 +158,13 @@
 @media(prefers-reduced-motion:reduce){.svc-industries svg,.svc-track li::before{animation:none!important;}.svc-track ol::after{transition:none;}}
 @media(max-width:1100px){.svc-steps{grid-template-columns:repeat(4,1fr);}.svc-detail-grid{grid-template-columns:repeat(2,1fr);}.svc-detail-grid>.svc-detail,.svc-detail-grid>.svc-detail:nth-child(n+4){grid-column:span 1;}.svc-detail-grid>.svc-detail:last-child{grid-column:span 2;}.svc-floor{grid-template-columns:repeat(2,1fr);}.svc-why{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:700px){.svc-deep{padding:3.5rem 1.25rem;}.svc-media{grid-template-columns:1fr;}.svc-steps{grid-template-columns:repeat(2,1fr);}.svc-detail-grid,.svc-why,.svc-quality{grid-template-columns:1fr;}.svc-detail-grid>.svc-detail:last-child{grid-column:span 1;}.svc-quality{gap:1.5rem;}}
-.svc-grid>.svc-card{grid-column:span 2;}.svc-grid>.svc-card:nth-child(n+4){grid-column:span 3;}
-@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}.svc-grid>.svc-card,.svc-grid>.svc-card:nth-child(n+4){grid-column:span 1;}.svc-grid>.svc-card:last-child{grid-column:span 2;}}
+.svc-grid>.svc-card{grid-column:span 2;}.svc-grid>.svc-card:nth-child(n+4){grid-column:span 3;aspect-ratio:3/2;}
+@media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}.svc-grid>.svc-card,.svc-grid>.svc-card:nth-child(n+4){grid-column:span 1;}.svc-grid>.svc-card:last-child{grid-column:span 2;}.svc-grid>.svc-card,.svc-grid>.svc-card:nth-child(n+4){aspect-ratio:1/1;}.svc-grid>.svc-card:last-child{aspect-ratio:2/1;}}
 @media(max-width:560px){
   .svc-grid{grid-template-columns:1fr;}
   .svc-grid>.svc-card:last-child{grid-column:span 1;}
+  .svc-grid>.svc-card,.svc-grid>.svc-card:nth-child(n+4),.svc-grid>.svc-card:last-child{aspect-ratio:3/4;}
+  .svc-grid>.svc-card.is-open{aspect-ratio:auto;}
   .svc-card{aspect-ratio:3/4;}
   /* Tap to expand — controlled by JS .is-open class */
   .svc-card.is-open{aspect-ratio:auto;min-height:320px;}
