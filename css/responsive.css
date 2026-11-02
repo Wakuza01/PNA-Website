@@ -245,10 +245,14 @@
 
   .blog-filter-bar {
     overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 0;
   }
+
+  .filter-btn::after { bottom: 0; }
 
   .filter-btn {
     white-space: nowrap;
