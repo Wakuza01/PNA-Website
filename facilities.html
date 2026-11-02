@@ -65,6 +65,9 @@
   .transport-section .transport-thumbs{order:2;grid-template-columns:1fr 1fr!important;}
   .transport-section .transport-thumbs img:first-child{grid-column:1/-1;aspect-ratio:16/9!important;}
 }
+/* Stats: equal columns so every number/label lines up */
+.facility-stats{display:grid!important;grid-template-columns:repeat(4,1fr);gap:1.5rem 2rem;justify-content:normal!important;}
+@media(max-width:700px){.facility-stats{grid-template-columns:1fr 1fr;gap:2rem 1.25rem;}}
 </style>
 </head>
 <body>
