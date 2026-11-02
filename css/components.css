@@ -568,6 +568,33 @@
   margin-top: 0.5rem;
 }
 
+/* The outline button was white-on-white here — use the dark-outline look */
+.blog-empty-state .btn {
+  margin-top: 1.25rem;
+}
+.blog-empty-state .btn--outline {
+  color: var(--color-secondary);
+  border-color: var(--color-secondary);
+}
+.blog-empty-state .btn--outline::before {
+  background: var(--color-secondary);
+}
+.blog-empty-state .btn--outline:hover {
+  color: #ffffff;
+  border-color: var(--color-secondary);
+}
+[data-theme="dark"] .blog-empty-state .btn--outline {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+[data-theme="dark"] .blog-empty-state .btn--outline::before {
+  background: var(--color-accent);
+}
+[data-theme="dark"] .blog-empty-state .btn--outline:hover {
+  color: #ffffff;
+  border-color: var(--color-accent);
+}
+
 /* ============================================================
    SCROLL PROGRESS BAR
 ============================================================ */
