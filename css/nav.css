@@ -373,7 +373,7 @@
 .nav-mobile-links a {
   display: block;
   font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 5.2vh, 2.5rem);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.02em;
@@ -382,28 +382,32 @@
   padding: 0.5rem 1rem;
   transform: translateY(30px);
   opacity: 0;
-  transition: color 0.2s ease, transform 0.5s ease, opacity 0.5s ease;
+  /* delay applies only to the entrance (transform/opacity), never to hover colour */
+  transition: color 0.12s ease, transform 0.4s ease var(--d, 0s), opacity 0.4s ease var(--d, 0s);
 }
 
-.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(1) a { transform: translateY(0); opacity: 1; transition-delay: 0.10s; }
-.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(2) a { transform: translateY(0); opacity: 1; transition-delay: 0.15s; }
-.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(3) a { transform: translateY(0); opacity: 1; transition-delay: 0.20s; }
-.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(4) a { transform: translateY(0); opacity: 1; transition-delay: 0.25s; }
-.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(5) a { transform: translateY(0); opacity: 1; transition-delay: 0.30s; }
-.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(6) a { transform: translateY(0); opacity: 1; transition-delay: 0.35s; }
-.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(7) a { transform: translateY(0); opacity: 1; transition-delay: 0.40s; }
-.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(8) a { transform: translateY(0); opacity: 1; transition-delay: 0.45s; }
+.nav-mobile-overlay.is-open .nav-mobile-links a { transform: translateY(0); opacity: 1; }
+.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(1) a { --d: 0.09s; }
+.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(2) a { --d: 0.13s; }
+.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(3) a { --d: 0.17s; }
+.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(4) a { --d: 0.21s; }
+.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(5) a { --d: 0.25s; }
+.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(6) a { --d: 0.29s; }
+.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(7) a { --d: 0.33s; }
+.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(8) a { --d: 0.37s; }
+.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(9) a { --d: 0.41s; }
+.nav-mobile-overlay.is-open .nav-mobile-links li:nth-child(10) a { --d: 0.45s; }
 
 .nav-mobile-links a:hover,
 .nav-mobile-links a.is-active {
-  color: var(--color-secondary);
+  color: var(--color-accent);
 }
 
 /* Mobile CTA */
 .nav-mobile-overlay .btn {
   opacity: 0;
   transform: translateY(20px);
-  transition: background 0.2s ease, opacity 0.5s ease 0.45s, transform 0.5s ease 0.45s;
+  transition: background 0.2s ease, opacity 0.4s ease 0.45s, transform 0.4s ease 0.45s;
 }
 
 .nav-mobile-overlay.is-open .btn {
