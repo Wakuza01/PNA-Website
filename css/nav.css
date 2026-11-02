@@ -414,12 +414,12 @@
    Desktop show/hide
    ---------------------------------------- */
 
-@media (min-width: 769px) {
+@media (min-width: 1101px) {
   .nav-hamburger { display: none; }
   .nav-mobile-overlay { display: none; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1100px) {
   .nav-links { display: none; }
   .nav-cta-wrap { display: none; }
   .nav-contact-link { display: none; }
