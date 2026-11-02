@@ -277,6 +277,7 @@
   position: relative;
   z-index: calc(var(--z-overlay) + 10);
   flex-shrink: 0;
+  margin-left: auto;
 }
 
 .hamburger-bar {
