@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -40,6 +40,33 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"Gerald Anthony","jobTitle":"Managing Director","worksFor":{"@type":"ManufacturingBusiness","name":"Pinion & Adams Fabricators","url":"https://www.pinionadams.co.za"}}
   </script>
+<style>
+/* 55 years / ownership journey */
+.own-sec{background:var(--color-surface-dark);color:#fff;padding:5rem 0;position:relative;overflow:hidden}
+.own-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(38,157,204,.22),transparent 60%);pointer-events:none}
+.own-head{text-align:center;max-width:720px;margin:0 auto 3rem;position:relative}
+.own-head .own-big{font-family:var(--font-heading);font-weight:800;font-size:clamp(3.2rem,9vw,6rem);line-height:1;color:#fff;margin:0}
+.own-head .own-years{font-family:var(--font-heading);font-weight:700;font-size:clamp(1.2rem,3vw,1.7rem);letter-spacing:.2em;color:var(--color-accent);margin:.4rem 0 1.25rem}
+.own-head p{color:rgba(255,255,255,.85);font-size:1.05rem;line-height:1.6;margin:0}
+.own-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:2.5rem;align-items:start;position:relative}
+.own-steps{display:flex;flex-direction:column;gap:.75rem}
+.own-step{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-left:5px solid var(--color-accent);border-radius:10px;padding:1rem 1.25rem;transition:transform .25s,background .25s}
+.own-step:hover{transform:translateX(6px);background:rgba(255,255,255,.12)}
+.own-step-yr{font-family:var(--font-heading);font-weight:700;font-size:1.05rem;letter-spacing:.06em;color:var(--color-accent);margin:0}
+.own-step-t{font-family:var(--font-heading);font-weight:700;font-size:1.35rem;letter-spacing:.02em;text-transform:uppercase;color:#fff;margin:.1rem 0 0;line-height:1.2}
+.own-step-s{font-size:.9rem;color:rgba(255,255,255,.75);margin:.2rem 0 0}
+.own-photo{margin:0;border-radius:14px;overflow:hidden;border:3px solid rgba(38,157,204,.7);box-shadow:0 18px 50px rgba(0,0,0,.4)}
+.own-photo img{display:block;width:100%;height:auto}
+.own-family{margin-top:1rem;text-align:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.25rem 1.5rem}
+.own-family h3{font-family:var(--font-heading);font-weight:700;font-size:1.5rem;letter-spacing:.04em;text-transform:uppercase;color:#fff;margin:0}
+.own-family p{color:var(--color-accent);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.85rem;margin:.4rem 0 0}
+.own-foot{margin-top:3rem;text-align:center;position:relative}
+.own-foot-box{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:1.5rem 2.5rem}
+.own-foot-box h3{font-family:var(--font-heading);font-weight:800;font-size:clamp(1.6rem,4vw,2.2rem);letter-spacing:.03em;text-transform:uppercase;color:#fff;margin:0}
+.own-foot-box p{color:var(--color-accent);font-weight:600;margin:.3rem 0 0}
+.own-foot-tag{margin:1.5rem 0 0;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#fff}
+@media(max-width:860px){.own-grid{grid-template-columns:1fr}.own-sec{padding:3.5rem 0}.own-foot-box{padding:1.25rem 1.25rem;display:block}}
+</style>
 </head>
 <body>
 
@@ -143,6 +170,65 @@
       <div class="reveal" style="margin-top:2.5rem;">
         <a href="about.html" class="btn btn--outline"><span>Back to About P&amp;A</span></a>
         <a href="training-academy.html" class="btn btn--primary" style="margin-left:1rem;"><span>The Training Academy</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 55 YEARS / FROM FACTORY FLOOR TO OWNER -->
+  <section class="own-sec" aria-labelledby="own-heading">
+    <div class="container">
+      <div class="own-head">
+        <p class="own-big reveal" id="own-heading">55 Years</p>
+        <p class="own-years reveal">1971 — 2026</p>
+        <p class="reveal">Celebrating the past, embracing the future. <strong>Gerald Anthony: from factory floor to CEO.</strong></p>
+      </div>
+      <div class="own-grid">
+        <div class="own-steps stagger-children">
+          <div class="own-step reveal">
+            <p class="own-step-yr">1971–1975</p>
+            <h3 class="own-step-t">Founding Years</h3>
+            <p class="own-step-s">Jack Pinion &amp; Johnny Adams</p>
+          </div>
+          <div class="own-step reveal">
+            <p class="own-step-yr">1975–2000</p>
+            <h3 class="own-step-t">Next Chapter</h3>
+            <p class="own-step-s">Mike Davies</p>
+          </div>
+          <div class="own-step reveal">
+            <p class="own-step-yr">1987</p>
+            <h3 class="own-step-t">General Worker</h3>
+            <p class="own-step-s">Gerald Anthony joins P&amp;A</p>
+          </div>
+          <div class="own-step reveal">
+            <p class="own-step-yr">2000–2007</p>
+            <h3 class="own-step-t">33.33% Owner</h3>
+            <p class="own-step-s">Gerald becomes a shareholder</p>
+          </div>
+          <div class="own-step reveal">
+            <p class="own-step-yr">2007–2015</p>
+            <h3 class="own-step-t">50% Owner</h3>
+            <p class="own-step-s">Gerald &amp; Nic Davies</p>
+          </div>
+          <div class="own-step reveal">
+            <p class="own-step-yr">2015–2026</p>
+            <h3 class="own-step-t">100% Owner</h3>
+            <p class="own-step-s">Gerald Anthony, sole owner</p>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <figure class="own-photo"><img src="assets/images/about/anthony-family-55-years.jpg" alt="The Anthony family and P&amp;A team at a company celebration" loading="lazy"></figure>
+          <div class="own-family">
+            <h3>The Anthony Family</h3>
+            <p>A legacy of commitment and continuity</p>
+          </div>
+        </div>
+      </div>
+      <div class="own-foot reveal">
+        <div class="own-foot-box">
+          <h3>55 Years of Excellence</h3>
+          <p>Built on Quality. Driven by Service.</p>
+        </div>
+        <p class="own-foot-tag">When quality counts, count on P&amp;A.</p>
       </div>
     </div>
   </section>
